@@ -447,3 +447,5 @@ body.noscroll{overflow:hidden}
 .legal a{color:var(--or-d)}
 .legal .ph{background:#fff1a8;color:var(--ink);border-radius:6px;padding:0 4px}
 .legal .muted{opacity:.75;font-size:15px}
+.legal .notice{border:3px solid var(--or);border-radius:16px;background:var(--or-xl);padding:10px 14px;margin:10px 0}
+.legal .notice p{margin:4px 0}
