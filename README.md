@@ -23,9 +23,14 @@ Beyaz–turuncu renklerde, telefon, tablet ve bilgisayarda çalışır. Kurulum 
 ## Dosyalar
 
 ```
-index.html   sayfa yapısı
-style.css    görünüm
-script.js    oyunlar, çeviriler ve ayarlar
+index.html        sayfa yapısı
+style.css         görünüm
+script.js         oyunlar, çeviriler ve ayarlar
+impressum.html    Impressum (Almanca)
+datenschutz.html  Datenschutzerklärung (Almanca)
+fonts/            Baloo 2 yazı tipi (yerel, SIL Open Font License – fonts/OFL.txt)
 ```
+
+Site dışarıdan hiçbir kaynak yüklemez: çerez, takip ya da Google Fonts yoktur.
 
 Yeni bir metin eklerken çevirisini `script.js` içindeki `I18N` listesine eklemek yeterlidir.
