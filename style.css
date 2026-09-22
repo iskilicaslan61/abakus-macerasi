@@ -298,7 +298,9 @@ body{padding:max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-r
     font-weight:800;font-size:15px;border-radius:999px;padding:6px 12px}
   .set-toggle .arr{font-style:normal;transition:transform .2s}
   .set-toggle.open .arr{transform:rotate(180deg)}
-  /* menü açıkken oyun listesi en üstte, tam genişlikte, 2 sütun */
+  /* menü açıkken: önce sayı seçimi (tablolar), sonra oyun listesi; ikisi de tam genişlikte */
+  .settings .set.nums{order:-2;grid-column:1 / -1}
+  .settings .set.nums .modes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
   .settings .set.games{order:-1;grid-column:1 / -1}
   .settings .set.games .modes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
   .settings .set.games .modes button{font-size:16px;padding:8px 10px}

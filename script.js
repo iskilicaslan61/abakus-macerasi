@@ -1644,6 +1644,8 @@ function updToggles(){
 // oyun listesini işaretle: telefonda menüde en üste gelsin
 document.querySelectorAll(".settings .set").forEach(set => {
   if(set.querySelector("[data-g], [data-ag]")) set.classList.add("games");
+  // sayı seçimi (tablolar / sayı aralığı / bölen) telefonda oyunlardan önce gelsin
+  if(set.querySelector("#tables, [data-am], [data-dv]")) set.classList.add("nums");
 });
 // telefonda oyun seçilince menü kapanır ve oyuna kaydırılır
 document.addEventListener("click", e => {
