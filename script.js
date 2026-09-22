@@ -131,6 +131,8 @@ const I18N = {
   "Kaçar zıplasın?": ["Jump size", "Sprunggröße", "Taille du saut"],
   "Kaç kere zıplasın?": ["Number of jumps", "Anzahl Sprünge", "Nombre de sauts"],
   "Boş bırakırsan rastgele seçilir.": ["Leave empty for a random number.", "Leer lassen = Zufallszahl.", "Laisse vide pour un nombre au hasard."],
+  "Canların bitti!": ["Out of lives!", "Keine Leben mehr!", "Plus de vies !"],
+  "🔄 Tekrar dene": ["🔄 Try again", "🔄 Nochmal versuchen", "🔄 Réessayer"],
   "🎲 Rastgele": ["🎲 Random", "🎲 Zufällig", "🎲 Au hasard"],
   "✅ {0} doğru": ["✅ {0} correct", "✅ {0} richtig", "✅ {0} bonnes"],
   "❌ {0} yanlış": ["❌ {0} wrong", "❌ {0} falsch", "❌ {0} fausses"],
@@ -985,6 +987,14 @@ function targetNew(){
 }
 
 // ---------- 🌧️ Katları Yakala ----------
+// yakala oyunları: canlar bitince yağmur alanının üstünde büyük "tekrar dene" ekranı
+function rainOver(rain, onRetry){
+  const o = document.createElement("div");
+  o.className = "rain-over";
+  o.innerHTML = `<div class="ro-emoji">😢</div><div class="ro-t">${$t`Canların bitti!`}</div><button type="button" class="ro-btn">${$t`🔄 Tekrar dene`}</button>`;
+  o.querySelector("button").onclick = onRetry;
+  rain.appendChild(o);
+}
 function catchNew(){
   stopG(); mLocked = false; if(noTables()) return;
   // 1 tablosunda her sayı kat olur, oyun anlamsızlaşır
@@ -1027,7 +1037,10 @@ function catchNew(){
         d.classList.add("bad"); setTimeout(() => d.remove(), 400);
         hearts--; streak = 0; updateStats(); sad();
         $("hearts").textContent = "❤️".repeat(hearts) + "🤍".repeat(3 - hearts);
-        if(hearts <= 0) end($t`Canların bitti! ${v}, ${n} tablosunda yok. ▶️ Başla ile tekrar dene`, "bad");
+        if(hearts <= 0){
+          end($t`Canların bitti! ${v}, ${n} tablosunda yok. ▶️ Başla ile tekrar dene`, "bad");
+          rainOver(rain, () => { mCorrect = 0; moveRocket(); catchNew(); });
+        }
         else gMsg($t`${v}, ${n} tablosunda yok! Dikkat 👀`, "bad");
       }
     };
@@ -1413,7 +1426,10 @@ function asCatch(){
         d.classList.add("bad"); setTimeout(() => d.remove(), 400);
         hearts--; streak = 0; updateStats(); sad();
         $("asHearts").textContent = "❤️".repeat(hearts) + "🤍".repeat(3 - hearts);
-        if(hearts <= 0) end($t`Canların bitti! ${f.t} = ${f.ans}, ${T} değil. ▶️ Başla ile tekrar dene`, "bad");
+        if(hearts <= 0){
+          end($t`Canların bitti! ${f.t} = ${f.ans}, ${T} değil. ▶️ Başla ile tekrar dene`, "bad");
+          rainOver(rain, () => { asStop(); asCorrect = 0; asMove(); asCatch(); });
+        }
         else asMsg($t`${f.t} = ${f.ans}, ${T} değil! Dikkat 👀`, "bad");
       }
     };

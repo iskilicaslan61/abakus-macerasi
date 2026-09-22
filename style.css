@@ -413,3 +413,12 @@ body.noscroll{overflow:hidden}
   .tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
   .tabs button{font-size:17px;padding:9px 6px;min-height:50px}
 }
+
+/* yakala oyunları: canlar bitince "tekrar dene" ekranı */
+.rain-over{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  padding:16px;text-align:center;background:rgba(255,243,232,.93);animation:flashIn .35s cubic-bezier(.3,1.6,.5,1)}
+.ro-emoji{font-size:clamp(56px,12cqw,90px);line-height:1}
+.ro-t{font-size:clamp(28px,7cqw,52px);font-weight:800;color:var(--bad)}
+.ro-btn{font:inherit;font-weight:800;font-size:clamp(20px,4.5cqw,30px);padding:12px 28px;border-radius:18px;border:none;cursor:pointer;
+  background:var(--or);color:var(--white);box-shadow:0 6px 0 #c2530a}
+.ro-btn:active{transform:translateY(4px);box-shadow:none}
