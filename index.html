@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ff7a1a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Abaküs">
+<meta name="format-detection" content="telephone=no">
+<title>Abaküs Macerası</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>Abaküs <span>Macerası</span></h1>
+    <div class="stats">
+      <div class="pill">⭐ <span id="score">0</span></div>
+      <div class="pill">🔥 <span id="streak">0</span></div>
+    </div>
+    <button class="fs-open" id="fsOpen" type="button">⛶ <span>Tam ekran</span></button>
+    <div class="langs" id="langs">
+      <button data-lang="de">DE</button><button data-lang="en">EN</button><button data-lang="tr">TR</button><button data-lang="fr">FR</button>
+    </div>
+  </header>
+
+  <div class="tabs">
+    <button data-tab="abacusView" class="active">🧮 Abaküs</button>
+    <button data-tab="flashView">⚡ Hızlı Sayılar</button>
+    <button data-tab="asView" data-op="+">➕ Toplama</button>
+    <button data-tab="asView" data-op="-">➖ Çıkarma</button>
+    <button data-tab="asView" data-op="/">➗ Bölme</button>
+    <button data-tab="mulView">✖️ Çarpım Tablosu</button>
+  </div>
+
+  <!-- ============ HIZLI SAYILAR (zihinden hesap) ============ -->
+  <div id="flashView" class="view" hidden>
+    <div class="card settings">
+      <div class="set">
+        <div class="lbl">Kaç sayı?</div>
+        <div class="stepper">
+          <button data-step="-1">−</button><input id="countIn" type="number" inputmode="numeric" min="2" max="30" value="3"><button data-step="1">+</button>
+        </div>
+      </div>
+      <div class="set">
+        <div class="lbl">Hız</div>
+        <div class="modes" data-set="speed">
+          <button data-v="2200">🐢 Yavaş</button><button data-v="1500" class="active">🐇 Orta</button><button data-v="900">🚀 Hızlı</button>
+        </div>
+      </div>
+      <div class="set">
+        <div class="lbl">Sayılar</div>
+        <div class="range">
+          <label>En az<input id="minIn" type="number" inputmode="numeric" min="0" max="999" value="1"></label>
+          <label>En çok<input id="maxIn" type="number" inputmode="numeric" min="1" max="999" value="9"></label>
+        </div>
+        <div class="presets">
+          <button data-r="1-9">1–9</button><button data-r="1-20">1–20</button><button data-r="10-50">10–50</button>
+        </div>
+      </div>
+      <div class="set">
+        <div class="lbl">İşlem</div>
+        <div class="modes" data-set="ops">
+          <button data-v="+" class="active">➕ Sadece toplama</button><button data-v="+-">➕➖ Toplama ve çıkarma</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="flash-main">
+    <div class="card screen" id="screen">
+      <button class="fs-btn" id="fsBtn" type="button" aria-label="Tam ekran">⛶</button>
+      <div class="flash small" id="flash">Hazır mısın?</div>
+      <div class="step" id="step"></div>
+    </div>
+
+    <div id="answerBox" class="card answer" hidden>
+      <div class="ask">Sonuç kaç? 🤔</div>
+      <div class="display" id="display">&nbsp;</div>
+      <div class="pad" id="pad"></div>
+      <div class="msg" id="fmsg"></div>
+      <div class="reveal" id="reveal"></div>
+    </div>
+
+    <div class="actions three">
+      <button id="replay">🔁 Tekrar İzle</button>
+      <button id="fcheck">✅ Kontrol Et</button>
+      <button id="start" class="main">▶️ Başla</button>
+    </div>
+    </div>
+  </div>
+
+  <!-- ============ ÇARPIM TABLOSU ============ -->
+  <div id="mulView" class="view" hidden>
+    <div class="card settings">
+      <div class="set">
+        <div class="lbl">Hangi tablolar?</div>
+        <div class="tables" id="tables"></div>
+        <div class="mini"><button id="tAll">Hepsi</button><button id="tEasy">2·5·10</button><button id="tNone">Temizle</button></div>
+      </div>
+      <div class="set">
+        <div class="lbl">Oyun</div>
+        <div class="modes" id="mGame">
+          <button data-g="free" class="active">🎈 Balon Patlat</button>
+          <button data-g="time">⏱️ 60 Saniye Yarışı</button>
+          <button data-g="match">🃏 Hafıza Kartları</button>
+          <button data-g="arr">🍎 Grupları Say</button>
+          <button data-g="frog">🐸 Kurbağa Zıplat</button>
+          <button data-g="tf">🤔 Doğru mu Yanlış mı?</button>
+          <button data-g="miss">🔍 Kayıp Sayı</button>
+          <button data-g="cmp">⚖️ Hangisi Büyük?</button>
+          <button data-g="target">🎯 Hedef Sayı</button>
+          <button data-g="catch">🌧️ Katları Yakala</button>
+        </div>
+      </div>
+      <div class="set" id="catchSpeedSet" hidden>
+        <div class="lbl">Yağmur hızı</div>
+        <div class="modes">
+          <button data-cs="slow">🐢 Yavaş</button>
+          <button data-cs="mid">🐇 Orta</button>
+          <button data-cs="fast">🚀 Hızlı</button>
+        </div>
+      </div>
+      <div class="set">
+        <div class="lbl">Öğren</div>
+        <div class="modes"><button id="showTable">📖 Tabloyu Gör</button></div>
+      </div>
+      <div class="best" id="best"></div>
+    </div>
+
+    <div class="side-main">
+      <div class="track" id="track">
+        <div class="line"></div><div class="fill" id="fill"></div>
+        <div class="rocket" id="rocket">🚀</div><div class="moon">🌙</div>
+        <div class="timer" id="timer" hidden>60</div>
+        <div class="count" id="count" hidden></div>
+      </div>
+
+      <div class="card" id="matchCard" hidden>
+        <div class="mstats">
+          <span>👆 Hamle: <b id="moves">0</b></span>
+          <span>✅ Bulunan: <b id="found">0</b> / <b id="pairs">6</b></span>
+        </div>
+        <div class="msg" id="matchMsg">Soruyu ve cevabını eşleştir! Kartları çevir 🃏</div>
+        <div class="mgrid" id="mgrid"></div>
+      </div>
+
+      <div class="card" id="gCard" hidden>
+        <div class="gq" id="gq"></div>
+        <div class="gopts" id="gopts"></div>
+        <div class="msg" id="gmsg"></div>
+      </div>
+
+      <div class="card" id="qCard">
+        <div class="mq"><span id="ma">?</span> <span class="op">×</span> <span id="mb">?</span> <span class="op">=</span> ?</div>
+        <div class="msg" id="mmsg">Doğru cevabın olduğu balonu patlat! 🎈</div>
+        <div class="balloons" id="balloons"></div>
+      </div>
+
+      <div class="actions three">
+        <button id="mSkip">⏭️ Başka Soru</button>
+        <button id="mRestart">🔄 Baştan</button>
+        <button id="mStart" class="main">▶️ Başla</button>
+      </div>
+
+      <div class="card table-card" id="tableCard" hidden>
+        <h3>📖 Çarpım Tablosu</h3>
+        <div class="table-tabs" id="tableTabs"></div>
+        <div class="tgrid" id="tgrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TOPLAMA / ÇIKARMA OYUNLARI ============ -->
+  <div id="asView" class="view" hidden>
+    <div class="card settings">
+      <div class="set" id="asFrogSet" hidden>
+        <div class="lbl">🐸 Kurbağa ayarları</div>
+        <div class="range fg">
+          <label id="fgStartL">Başlangıç sayısı<input id="fgStart" type="number" inputmode="numeric" min="0" max="999" placeholder="🎲"></label>
+          <label>Kaçar zıplasın?<input id="fgStep" type="number" inputmode="numeric" min="1" max="100" placeholder="🎲"></label>
+          <label>Kaç kere zıplasın?<input id="fgJumps" type="number" inputmode="numeric" min="1" max="20" placeholder="🎲"></label>
+        </div>
+        <div class="hint">Boş bırakırsan rastgele seçilir.</div>
+        <div class="presets"><button id="fgRandom">🎲 Rastgele</button></div>
+      </div>
+      <div class="set" id="asDivSet" hidden>
+        <div class="lbl">Hangi sayılara bölelim?</div>
+        <div class="modes">
+          <button data-dv="2,5,10" class="active">2, 5 ve 10'a</button>
+          <button data-dv="1,2,3,4,5">1'den 5'e kadar</button>
+          <button data-dv="1,2,3,4,5,6,7,8,9,10">1'den 10'a kadar</button>
+        </div>
+      </div>
+      <div class="set" id="asRangeSet">
+        <div class="lbl">Sayılar</div>
+        <div class="modes" id="asRange">
+          <button data-am="10">10'a kadar</button>
+          <button data-am="20" class="active">20'ye kadar</button>
+          <button data-am="50">50'ye kadar</button>
+          <button data-am="100">100'e kadar</button>
+        </div>
+        <div class="range" style="margin-top:6px">
+          <label>Kendin yaz (en çok)<input id="asMaxIn" type="number" inputmode="numeric" min="5" max="999" value="20"></label>
+        </div>
+      </div>
+      <div class="set">
+        <div class="lbl">Oyun</div>
+        <div class="modes">
+          <button data-ag="free" class="active">🎈 Balon Patlat</button>
+          <button data-ag="time">⏱️ 60 Saniye Yarışı</button>
+          <button data-ag="match">🃏 Hafıza Kartları</button>
+          <button data-ag="pic">🍎 Resimle Say</button>
+          <button data-ag="frog">🐸 Kurbağa Zıplat</button>
+          <button data-ag="tf">🤔 Doğru mu Yanlış mı?</button>
+          <button data-ag="miss">🔍 Kayıp Sayı</button>
+          <button data-ag="cmp">⚖️ Hangisi Büyük?</button>
+          <button data-ag="target">🎯 Hedef Sayı</button>
+          <button data-ag="catch">🌧️ Sonucu Yakala</button>
+        </div>
+      </div>
+      <div class="set" id="asSpeedSet" hidden>
+        <div class="lbl">Yağmur hızı</div>
+        <div class="modes">
+          <button data-cs="slow">🐢 Yavaş</button>
+          <button data-cs="mid">🐇 Orta</button>
+          <button data-cs="fast">🚀 Hızlı</button>
+        </div>
+      </div>
+      <div class="best" id="asBest"></div>
+    </div>
+
+    <div class="side-main">
+      <div class="track" id="asTrack">
+        <div class="line"></div><div class="fill" id="asFill"></div>
+        <div class="rocket" id="asRocket">🚀</div><div class="moon">🌙</div>
+        <div class="timer" id="asTimer" hidden>60</div>
+        <div class="count" id="asCount" hidden></div>
+      </div>
+      <div class="card">
+        <div class="gq" id="asQ"></div>
+        <div id="asOpts"></div>
+        <div class="msg" id="asMsg"></div>
+      </div>
+      <div class="actions three">
+        <button id="asSkip">⏭️ Başka Soru</button>
+        <button id="asRestart">🔄 Baştan</button>
+        <button id="asStart" class="main">▶️ Başla</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ABAKÜS ============ -->
+  <div id="abacusView" class="view">
+  <div class="card settings">
+    <div class="set">
+    <div class="lbl">İşlem</div>
+    <div class="modes">
+      <button data-mode="+" class="active">➕ Toplama</button>
+      <button data-mode="-">➖ Çıkarma</button>
+      <button data-mode="mix">🎲 Karışık</button>
+    </div>
+    </div>
+    <div class="set">
+    <div class="lbl">Sayılar</div>
+    <div class="levels modes">
+      <button data-max="20" class="active">20'ye kadar</button>
+      <button data-max="50">50'ye kadar</button>
+      <button data-max="100">100'e kadar</button>
+    </div>
+    </div>
+  </div>
+
+  <div class="side-main">
+  <div class="card" id="card">
+    <div class="problem">
+      <span id="a">0</span><span class="op" id="op">+</span><span id="b">0</span><span class="op">=</span><span class="q" id="q">?</span>
+    </div>
+    <div class="msg" id="msg">Boncukları kaydırarak cevabı abaküste göster!</div>
+    <div class="stars" id="stars"></div>
+  </div>
+
+  <div class="abacus">
+    <div class="frame" id="frame"></div>
+    <div class="labels" id="labels"></div>
+    <div class="total">Abaküsteki sayı: <b id="total">0</b></div>
+  </div>
+
+  <div class="actions">
+    <button id="hint">💡 İpucu</button>
+    <button id="reset">🔄 Sıfırla</button>
+    <button id="skip">⏭️ Yeni Soru</button>
+    <button id="check" class="main">✅ Kontrol Et</button>
+  </div>
+  </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
