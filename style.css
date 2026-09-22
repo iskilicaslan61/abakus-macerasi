@@ -288,12 +288,20 @@ body{padding:max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-r
 @media (max-width:760px){
   .settings{max-height:none;overflow:visible}
   .view .settings:not(.open){display:none}
-  .set-toggle{display:flex;align-items:center;gap:8px;width:100%;font:inherit;font-weight:800;font-size:17px;text-align:left;
-    background:var(--white);color:var(--or-d);border:3px solid var(--or);border-radius:18px;padding:10px 14px;cursor:pointer;
+  .set-toggle{display:flex;align-items:center;gap:10px;width:100%;font:inherit;text-align:left;cursor:pointer;
+    background:var(--white);color:var(--ink);border:3px solid var(--or);border-radius:18px;padding:8px 10px 8px 14px;
     box-shadow:0 5px 0 var(--or-l)}
-  .set-toggle .sum{flex:1;min-width:0;font-weight:700;font-size:15px;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .set-toggle .arr{transition:transform .2s}
+  .set-toggle .tg-l{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.2}
+  .set-toggle small{font-size:13px;font-weight:800;color:var(--or-d);text-transform:uppercase;letter-spacing:.5px}
+  .set-toggle b{font-size:19px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .set-toggle .tg-r{flex:none;display:flex;align-items:center;gap:4px;background:var(--or);color:var(--white);
+    font-weight:800;font-size:15px;border-radius:999px;padding:6px 12px}
+  .set-toggle .arr{font-style:normal;transition:transform .2s}
   .set-toggle.open .arr{transform:rotate(180deg)}
+  /* menü açıkken oyun listesi en üstte, tam genişlikte, 2 sütun */
+  .settings .set.games{order:-1;grid-column:1 / -1}
+  .settings .set.games .modes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .settings .set.games .modes button{font-size:16px;padding:8px 10px}
   .screen{min-height:max(300px,48vh)}
 }
 @media (max-width:560px){

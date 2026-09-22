@@ -71,6 +71,8 @@ const I18N = {
   "⏭️ Yeni Soru": ["⏭️ New Question", "⏭️ Neue Aufgabe", "⏭️ Nouvelle question"],
 
   "⚙️ Ayarlar": ["⚙️ Settings", "⚙️ Einstellungen", "⚙️ Réglages"],
+  "🎮 Oyunlar": ["🎮 Games", "🎮 Spiele", "🎮 Jeux"],
+  "Değiştir": ["Change", "Ändern", "Changer"],
 
   // --- abaküs ---
   "Yüzler": ["Hundreds", "Hunderter", "Centaines"],
@@ -1627,13 +1629,22 @@ document.querySelectorAll(".view > .settings").forEach(card => {
 function updToggles(){
   document.querySelectorAll(".set-toggle").forEach(b => {
     const card = b.nextElementSibling;
-    const sum = [...card.querySelectorAll("button.active")].filter(x => !x.closest("[hidden]"))
-      .map(x => x.textContent.trim()).join(" · ");
+    // sadece kart içindeki gizli bölümleri atla (sekmenin kendisi gizli olabilir)
+    const active = [...card.querySelectorAll("button.active")].filter(x => { const h = x.closest("[hidden]"); return !h || !card.contains(h); });
+    const game = active.find(x => x.dataset.g || x.dataset.ag);
+    // oyunu olan sekmede başlık "🎮 Oyunlar", altında seçili oyun; diğerlerinde ayar özeti
+    const head = game ? `${$t`🎮 Oyunlar`} · ⚙️` : $t`⚙️ Ayarlar`;
+    const main = game ? game.textContent.trim() : active.map(x => x.textContent.trim()).join(" · ");
     b.classList.toggle("open", card.classList.contains("open"));
-    b.innerHTML = `<span>${$t`⚙️ Ayarlar`}</span><span class="sum"></span><span class="arr">▾</span>`;
-    b.querySelector(".sum").textContent = sum;
+    b.innerHTML = `<span class="tg-l"><small></small><b></b></span><span class="tg-r">${$t`Değiştir`} <i class="arr">▾</i></span>`;
+    b.querySelector("small").textContent = head;
+    b.querySelector("b").textContent = main;
   });
 }
+// oyun listesini işaretle: telefonda menüde en üste gelsin
+document.querySelectorAll(".settings .set").forEach(set => {
+  if(set.querySelector("[data-g], [data-ag]")) set.classList.add("games");
+});
 // telefonda oyun seçilince menü kapanır ve oyuna kaydırılır
 document.addEventListener("click", e => {
   const btn = e.target.closest(".settings button");
@@ -1648,3 +1659,4 @@ document.addEventListener("click", e => {
   }, 0);
 });
 updToggles();
+document.querySelectorAll("[data-tab]").forEach(b => b.addEventListener("click", updToggles));
