@@ -1,6 +1,6 @@
 # 🧮 Abaküs Macerası
 
-2. sınıf çocukları için eğlenceli bir matematik oyunu: toplama, çıkarma, bölme ve çarpım tablosu.
+1.–3. sınıf çocukları için eğlenceli bir matematik oyunu: toplama, çıkarma, bölme ve çarpım tablosu.
 Beyaz–turuncu renklerde, telefon, tablet ve bilgisayarda çalışır. Kurulum gerekmez: `index.html` dosyasını tarayıcıda açmak yeterli.
 
 ## Bölümler
