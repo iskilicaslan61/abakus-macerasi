@@ -26,6 +26,16 @@
     <div class="langs" id="langs">
       <button data-lang="de">DE</button><button data-lang="en">EN</button><button data-lang="tr">TR</button><button data-lang="fr">FR</button>
     </div>
+    <!-- telefonda: tek dil düğmesi, basınca seçenekler açılır -->
+    <div class="lang-drop" id="langDrop">
+      <button class="lang-cur" id="langCur" type="button" aria-haspopup="true">🌐 <b id="langCode">DE</b> <i>▾</i></button>
+      <div class="lang-menu" id="langMenu" hidden>
+        <button data-lang="de"><b>DE</b> Deutsch</button>
+        <button data-lang="en"><b>EN</b> English</button>
+        <button data-lang="tr"><b>TR</b> Türkçe</button>
+        <button data-lang="fr"><b>FR</b> Français</button>
+      </div>
+    </div>
   </header>
 
   <div class="tabs">
@@ -36,6 +46,9 @@
     <button data-tab="asView" data-op="/">➗ Bölme</button>
     <button data-tab="mulView">✖️ Çarpım Tablosu</button>
   </div>
+
+  <!-- telefonda yıldız/ateş ve tam ekran düğmesi buraya taşınır -->
+  <div class="subbar" id="subbar"></div>
 
   <!-- ============ HIZLI SAYILAR (zihinden hesap) ============ -->
   <div id="flashView" class="view" hidden>
