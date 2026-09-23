@@ -23,10 +23,13 @@
 <link rel="preload" href="fonts/baloo2-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="at-home">
 <div class="app">
   <header>
-    <h1>Abaküs <span>Macerası</span></h1>
+    <div class="brand">
+      <button class="home-btn" id="homeBtn" type="button" aria-label="🏠">🏠</button>
+      <h1 id="logo">Abaküs <span>Macerası</span></h1>
+    </div>
     <div class="stats">
       <div class="pill">⭐ <span id="score">0</span></div>
       <div class="pill">🔥 <span id="streak">0</span></div>
@@ -45,6 +48,52 @@
       </div>
     </div>
   </header>
+
+  <!-- ============ GİRİŞ SAYFASI: her kategoriye geçiş ============ -->
+  <section class="home" id="home">
+    <div class="home-hero">
+      <h2>Matematiği oynayarak öğren!</h2>
+      <p>Bir dünya seç ve maceraya başla 👇</p>
+    </div>
+    <div class="home-grid">
+      <button class="hc" type="button" data-go="abacus" style="--c:#ff7a1a;--cb:#ffe6d2">
+        <span class="hc-ico">🧮</span>
+        <span class="hc-t">Abaküs ile Hesap</span>
+        <span class="hc-d">Boncukları kaydır, işlemi abaküste göster</span>
+        <span class="hc-f"><span class="hc-n">➕ ➖ 🎲</span><span class="hc-go">➜</span></span>
+      </button>
+      <button class="hc" type="button" data-go="flash" style="--c:#f2a900;--cb:#fff1c7">
+        <span class="hc-ico">⚡</span>
+        <span class="hc-t">Hızlı Sayılar</span>
+        <span class="hc-d">Hızla gelen sayıları aklında topla</span>
+        <span class="hc-f"><span class="hc-n">🧠 ⏱️</span><span class="hc-go">➜</span></span>
+      </button>
+      <button class="hc" type="button" data-go="add" style="--c:#2fb36b;--cb:#dcf5e7">
+        <span class="hc-ico">➕</span>
+        <span class="hc-t">Toplama</span>
+        <span class="hc-d">Balonlar, terazi, sayı doğrusu ve daha fazlası</span>
+        <span class="hc-f"><span class="hc-n" data-count="add"></span><span class="hc-go">➜</span></span>
+      </button>
+      <button class="hc" type="button" data-go="sub" style="--c:#2f8fd8;--cb:#dcecfa">
+        <span class="hc-ico">➖</span>
+        <span class="hc-t">Çıkarma</span>
+        <span class="hc-d">Sayı duvarı, hafıza kartları, yakalama oyunu</span>
+        <span class="hc-f"><span class="hc-n" data-count="sub"></span><span class="hc-go">➜</span></span>
+      </button>
+      <button class="hc" type="button" data-go="div" style="--c:#8b5cf6;--cb:#ece4fe">
+        <span class="hc-ico">➗</span>
+        <span class="hc-t">Bölme</span>
+        <span class="hc-d">Adil paylaş, teraziyi dengele, sayıları sırala</span>
+        <span class="hc-f"><span class="hc-n" data-count="div"></span><span class="hc-go">➜</span></span>
+      </button>
+      <button class="hc" type="button" data-go="mul" style="--c:#e84a3a;--cb:#fde0dc">
+        <span class="hc-ico">✖️</span>
+        <span class="hc-t">Çarpım Tablosu</span>
+        <span class="hc-d">Nokta tarlası, kurbağa, hedef sayı ve daha fazlası</span>
+        <span class="hc-f"><span class="hc-n" data-count="mul"></span><span class="hc-go">➜</span></span>
+      </button>
+    </div>
+  </section>
 
   <div class="tabs">
     <button data-tab="abacusView" class="active">🧮 Abaküs</button>
@@ -219,6 +268,12 @@
           <button data-dv="1,2,3,4,5,6,7,8,9,10">1'den 10'a kadar</button>
         </div>
       </div>
+      <div class="set" id="asDivMaxSet" hidden>
+        <div class="lbl">Bölünen sayılar</div>
+        <div class="modes">
+          <button data-dm="20">1–20</button><button data-dm="50">1–50</button><button data-dm="100" class="active">1–100</button>
+        </div>
+      </div>
       <div class="set" id="asRangeSet">
         <div class="lbl">Sayılar</div>
         <div class="modes" id="asRange">
@@ -248,6 +303,7 @@
           <button data-ag="wall">🧱 Sayı Duvarı</button>
           <button data-ag="scale">🏋️ Teraziyi Dengele</button>
           <button data-ag="line">📏 Sayı Doğrusu</button>
+          <button data-ag="share" hidden>🍬 Adil Paylaş</button>
         </div>
       </div>
       <div class="set" id="asSpeedSet" hidden>

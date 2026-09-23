@@ -248,6 +248,23 @@ const I18N = {
   "Doğrunun üstünde doğru yere dokun 👆": ["Tap the right spot on the line 👆", "Tippe auf die richtige Stelle am Strahl 👆", "Touche le bon endroit sur la droite 👆"],
   "Burası {0}. Biraz daha ileri! ➡️": ["That's {0}. A bit further! ➡️", "Das ist {0}. Noch ein Stück weiter! ➡️", "Ici c’est {0}. Un peu plus loin ! ➡️"],
   "Burası {0}. Biraz daha geri! ⬅️": ["That's {0}. A bit back! ⬅️", "Das ist {0}. Ein Stück zurück! ⬅️", "Ici c’est {0}. Un peu en arrière ! ⬅️"],
+  // giriş sayfası ve bölme ayarı
+  "Matematiği oynayarak öğren!": ["Learn maths by playing!", "Mathe spielend lernen!", "Apprends les maths en jouant !"],
+  "Bir dünya seç ve maceraya başla 👇": ["Pick a world and start the adventure 👇", "Wähle eine Welt und starte das Abenteuer 👇", "Choisis un monde et commence l’aventure 👇"],
+  "Abaküs ile Hesap": ["Abacus Maths", "Rechnen am Abakus", "Calcul au boulier"],
+  "Boncukları kaydır, işlemi abaküste göster": ["Slide the beads and show the sum on the abacus", "Schiebe die Perlen und zeige die Aufgabe am Abakus", "Fais glisser les perles et montre le calcul sur le boulier"],
+  "Hızlı Sayılar": ["Flash Numbers", "Blitzzahlen", "Nombres éclair"],
+  "Hızla gelen sayıları aklında topla": ["Add up the flashing numbers in your head", "Rechne die blitzenden Zahlen im Kopf zusammen", "Additionne de tête les nombres qui défilent"],
+  "Toplama": ["Addition", "Addition", "Addition"],
+  "Balonlar, terazi, sayı doğrusu ve daha fazlası": ["Balloons, scales, number line and more", "Ballons, Waage, Zahlenstrahl und mehr", "Ballons, balance, droite numérique et plus"],
+  "Çıkarma": ["Subtraction", "Subtraktion", "Soustraction"],
+  "Sayı duvarı, hafıza kartları, yakalama oyunu": ["Number wall, memory cards, catching game", "Zahlenmauer, Memory, Fangspiel", "Mur de nombres, memory, jeu d’attrape"],
+  "Bölme": ["Division", "Division", "Division"],
+  "Adil paylaş, teraziyi dengele, sayıları sırala": ["Share fairly, balance the scale, sort the numbers", "Gerecht teilen, Waage ausgleichen, Zahlen sortieren", "Partage équitable, équilibre la balance, range les nombres"],
+  "Çarpım Tablosu": ["Times Tables", "Einmaleins", "Tables de multiplication"],
+  "Nokta tarlası, kurbağa, hedef sayı ve daha fazlası": ["Dot field, frog, target number and more", "Punktefeld, Frosch, Zielzahl und mehr", "Champ de points, grenouille, nombre cible et plus"],
+  "🎮 {0} oyun": ["🎮 {0} games", "🎮 {0} Spiele", "🎮 {0} jeux"],
+  "Bölünen sayılar": ["Numbers to divide", "Zahlen zum Teilen", "Nombres à diviser"],
 };
 
 // Çeviri: $t`Merhaba ${ad}` → anahtar "Merhaba {0}"
@@ -1033,17 +1050,22 @@ function targetNew(){
 
 // ---------- 🍬 Adil Paylaş (bölmeye giriş) ----------
 const KIDS = ["🧒","👧","👦","🧒🏽","👧🏻","👦🏾"];
-function shareNew(){
-  stopG(); mLocked = false; if(noTables()) return;
-  const n = pickTable(), k = rnd(1, Math.min(10, Math.floor(60 / n))), total = n * k;
-  $("gq").innerHTML = `<div class="gtitle">${$t`<b>${total}</b> şekeri <b>${n}</b> çocuğa eşit paylaştır!`}</div>
+const shareHTML = (total, n) => `<div class="gtitle">${$t`<b>${total}</b> şekeri <b>${n}</b> çocuğa eşit paylaştır!`}</div>
     <div class="candies">${"🍬".repeat(total)}</div>
     <div class="kids">${Array.from({length:n}, (_, i) => KIDS[i % KIDS.length]).join("")}</div>`;
-  gMsg($t`Her çocuk kaç şeker alır? 🤔`);
+// doğru cevap + karıştırılabilecek 3 sayı
+function shareOpts(k, n, total){
   const set = new Set([k]);
   for(const w of shuffle([k+1, k-1, k+2, k-2, n, k+n])){ if(set.size >= 4) break; if(w > 0 && w !== total) set.add(w); }
   while(set.size < 4) set.add(rnd(1, 12));
-  options(shuffle([...set]).map(x => ({label:x, value:x})), k, (b, right) => {
+  return shuffle([...set]).map(x => ({label:x, value:x}));
+}
+function shareNew(){
+  stopG(); mLocked = false; if(noTables()) return;
+  const n = pickTable(), k = rnd(1, Math.min(10, Math.floor(60 / n))), total = n * k;
+  $("gq").innerHTML = shareHTML(total, n);
+  gMsg($t`Her çocuk kaç şeker alır? 🤔`);
+  options(shareOpts(k, n, total), k, (b, right) => {
     if(right){ mLocked = true; b.classList.add("yes"); gRight($t`Evet! Her çocuk ${k} şeker alır: ${total} ÷ ${n} = ${k} ✔`, shareNew, 1800); }
     else gWrong(b, $t`İpucu: ${n} × ? = ${total} 🔍`);
   });
@@ -1229,6 +1251,10 @@ function asUpdCount(){ $("asCount").innerHTML = `<span class="ok">${$t`✅ ${asC
 const SYM = o => o === "+" ? "+" : o === "/" ? "÷" : "−";
 let asDiv = [2, 5, 10];
 try{ const d = JSON.parse(localStorage.getItem("asDiv")); if(d && d.length) asDiv = d; }catch(e){}
+// bölmede bölünen sayı en fazla bu kadar olur
+let asDivMax = 100;
+try{ const v = +localStorage.getItem("asDivMax"); if([20, 50, 100].includes(v)) asDivMax = v; }catch(e){}
+const qMax = b => Math.max(1, Math.min(10, Math.floor(asDivMax / b)));
 const asLater = (fn, ms) => asTimers.push(setTimeout(fn, ms));
 function asClearT(){ asTimers.forEach(clearTimeout); asTimers = []; clearInterval(asInt); asInt = null; }
 function asStop(){ asClearT(); clearInterval(asTick); asTick = null; asRaceOn = false; $("asTimer").classList.remove("low"); }
@@ -1239,7 +1265,7 @@ function asFact(){
   let f, g = 0;
   do{
     if(asOp === "+"){ const s = rnd(2, asMax), a = rnd(1, s-1); f = {a, b:s-a, ans:s}; }
-    else if(asOp === "/"){ const b = asDiv[rnd(0, asDiv.length-1)], q = rnd(1, 10); f = {a:b*q, b, ans:q}; }
+    else if(asOp === "/"){ const b = asDiv[rnd(0, asDiv.length-1)], q = rnd(1, qMax(b)); f = {a:b*q, b, ans:q}; }
     else { const a = rnd(2, asMax), b = rnd(1, a-1); f = {a, b, ans:a-b}; }
     f.t = `${f.a} ${SYM(asOp)} ${f.b}`;
   } while(f.t === asLast && g++ < 20);
@@ -1375,7 +1401,7 @@ function asPic(){
   let pic, title;
   if(asOp === "/"){
     // resim kalabalık olmasın: en fazla 5 sepet, sepet başına en fazla 6
-    const small = asDiv.filter(x => x > 1 && x <= 5), b = small.length ? small[rnd(0, small.length-1)] : rnd(2, 4), q = rnd(1, 6);
+    const small = asDiv.filter(x => x > 1 && x <= 5), b = small.length ? small[rnd(0, small.length-1)] : rnd(2, 4), q = rnd(1, Math.min(6, qMax(b)));
     f = {a:b*q, b, ans:q, t:`${b*q} ÷ ${b}`};
     pic = `${grp(f.a)}<span class="sign">➜</span><div class="grp">${"🧺".repeat(b)}</div>`;
     title = $t`${f.a} ${e}, ${b} sepete eşit paylaştırılıyor. Her sepete kaç tane düşer?`;
@@ -1461,7 +1487,7 @@ function asTarget(){
   for(let g=0; g<30; g++){
     T = asOp === "+" ? rnd(Math.min(4, M), M) : rnd(1, Math.max(1, M-4));
     good = [];
-    if(asOp === "/"){ T = rnd(1, 10); for(let b=1; b<=10; b++) good.push([T*b, b]); break; }
+    if(asOp === "/"){ T = rnd(1, Math.max(1, Math.min(10, Math.floor(asDivMax / 3)))); for(let b=1; b<=10; b++) if(T*b <= asDivMax) good.push([T*b, b]); break; }
     if(asOp === "+") for(let a=1; a<T; a++) good.push([a, T-a]);
     else for(let a=T+1; a<=M; a++) good.push([a, a-T]);
     if(good.length >= 3) break;
@@ -1508,7 +1534,7 @@ function asCatch(){
   const rain = $("asRain");
   const goodFact = () => {
     if(asOp === "+"){ const a = rnd(1, T-1); return {t:`${a}+${T-a}`, ans:T}; }
-    if(asOp === "/"){ const b = asDiv[rnd(0, asDiv.length-1)]; return {t:`${T*b}÷${b}`, ans:T}; }
+    if(asOp === "/"){ const bs = asDiv.filter(x => T*x <= asDivMax), b = bs.length ? bs[rnd(0, bs.length-1)] : asDiv[0]; return {t:`${T*b}÷${b}`, ans:T}; }
     const a = rnd(T+1, Math.max(T+1, asMax)); return {t:`${a}−${a-T}`, ans:T};
   };
   const end = (t, cls) => { over = true; clearInterval(asInt); asInt = null; rain.querySelectorAll(".drop").forEach(d => d.remove()); asMsg(t, cls); };
@@ -1558,7 +1584,7 @@ function asFrog(){
   let s, pads, title, div = null;
   const fg = frogCfg();   // boş alanlar null → rastgele
   if(asOp === "/"){
-    const b = fg.step || asDiv[rnd(0, asDiv.length-1)], q = fg.jumps || rnd(2, 10);
+    const b = fg.step || asDiv[rnd(0, asDiv.length-1)], q = fg.jumps || rnd(2, Math.max(2, qMax(b)));
     s = b; pads = Array.from({length:q+1}, (_, i) => b*q - i*b);
     div = {a:b*q, b, q};
     title = $t`🐸 Kurbağa <b>${b*q}</b> sayısından <b>0</b>'a ${erer(b)} geri zıplıyor!`;
@@ -1760,7 +1786,22 @@ function asLine(){
   };
 }
 
-const AS_GAMES = {frog:asFrog, free:asBalloon, time:asBalloon, match:asMatch, pic:asPic, tf:asTF, miss:asMiss, cmp:asCmp, target:asTarget, catch:asCatch, sort:asSort, wall:asWall, scale:asScale, line:asLine};
+// 🍬 Adil Paylaş (bölme sekmesi): çarpım tablosundaki oyunun aynısı, bölme ayarlarıyla
+function asShare(){
+  asClearT(); asLocked = false;
+  const f = asFact(), total = f.a, n = f.b, k = f.ans;
+  $("asQ").innerHTML = shareHTML(total, n);
+  $("asOpts").className = "";
+  asMsg($t`Her çocuk kaç şeker alır? 🤔`);
+  asOptions(shareOpts(k, n, total), k, (b, right) => {
+    if(right){ asLocked = true; b.classList.add("yes"); asRight($t`Evet! Her çocuk ${k} şeker alır: ${total} ÷ ${n} = ${k} ✔`, asShare, 1800); }
+    else asWrong(b, $t`İpucu: ${n} × ? = ${total} 🔍`);
+  });
+}
+
+const AS_GAMES = {frog:asFrog, free:asBalloon, time:asBalloon, match:asMatch, pic:asPic, tf:asTF, miss:asMiss, cmp:asCmp, target:asTarget, catch:asCatch, sort:asSort, wall:asWall, scale:asScale, line:asLine, share:asShare};
+// sadece bazı işlemlerde olan oyunlar: sayı duvarı toplama/çıkarmada, adil paylaş bölmede
+const OP_ONLY = {wall:["+", "-"], share:["/"]};
 function asNew(){ AS_GAMES[asGame](); }
 function asReset(){
   asStop(); asCorrect = 0; asLocked = false;
@@ -1794,11 +1835,13 @@ document.querySelectorAll("[data-cs]").forEach(b => b.addEventListener("click", 
 document.querySelectorAll("[data-tab]").forEach(b => b.addEventListener("click", () => {
   if(tab !== "asView"){ asStop(); return; }
   asOp = b.dataset.op; asLast = "";
-  $("asDivSet").hidden = asOp !== "/"; $("asRangeSet").hidden = asOp === "/";
-  // sayı duvarı bölmede yok: bölme sekmesinde gizle, seçiliyse balona dön
-  const wallBtn = document.querySelector("[data-ag=wall]");
-  wallBtn.hidden = asOp === "/";
-  if(asOp === "/" && asGame === "wall"){ wallBtn.classList.remove("active"); document.querySelector("[data-ag=free]").classList.add("active"); asGame = "free"; }
+  $("asDivSet").hidden = $("asDivMaxSet").hidden = asOp !== "/"; $("asRangeSet").hidden = asOp === "/";
+  // bu işlemde olmayan oyunları gizle; seçili oyun gizlendiyse balona dön
+  Object.entries(OP_ONLY).forEach(([g, ops]) => {
+    const btn = document.querySelector(`[data-ag=${g}]`), off = !ops.includes(asOp);
+    btn.hidden = off;
+    if(off && asGame === g){ btn.classList.remove("active"); document.querySelector("[data-ag=free]").classList.add("active"); asGame = "free"; }
+  });
   asReset();
 }));
 function markDiv(){ document.querySelectorAll("[data-dv]").forEach(x => x.classList.toggle("active", x.dataset.dv === asDiv.join(","))); }
@@ -1808,6 +1851,13 @@ document.querySelectorAll("[data-dv]").forEach(b => b.onclick = () => {
   asReset();
 });
 markDiv();
+function markDivMax(){ document.querySelectorAll("[data-dm]").forEach(x => x.classList.toggle("active", +x.dataset.dm === asDivMax)); }
+document.querySelectorAll("[data-dm]").forEach(b => b.onclick = () => {
+  asDivMax = +b.dataset.dm; markDivMax();
+  try{ localStorage.setItem("asDivMax", asDivMax); }catch(e){}
+  asReset();
+});
+markDivMax();
 window.addEventListener("resize", asMove);
 asSetMax(asMax);
 
@@ -1862,7 +1912,8 @@ function setLang(l){
   stopFlash(); $("answerBox").hidden = true; fm.classList.remove("answering"); show($t`Hazır mısın?`, "", true); $("step").textContent = "";
   mReset(); if(tab !== "mulView"){ stopTimer(); stopG(); }
   asReset(); if(tab !== "asView") asStop();
-  updToggles();
+  updToggles(); updHome();
+  if(atHome()) showHome();
 }
 document.querySelectorAll("[data-lang]").forEach(b => b.onclick = () => setLang(b.dataset.lang));
 markLang(); applyStatic();
@@ -1895,7 +1946,7 @@ function updToggles(){
 document.querySelectorAll(".settings .set").forEach(set => {
   if(set.querySelector("[data-g], [data-ag]")) set.classList.add("games");
   // sayı seçimi (tablolar / sayı aralığı / bölen) telefonda oyunlardan önce gelsin
-  if(set.querySelector("#tables, [data-am], [data-dv]")) set.classList.add("nums");
+  if(set.querySelector("#tables, [data-am], [data-dv], [data-dm]")) set.classList.add("nums");
 });
 // telefonda oyun seçilince menü kapanır ve oyuna kaydırılır
 document.addEventListener("click", e => {
@@ -1927,3 +1978,38 @@ function placeBars(){
 }
 if(phoneMQ.addEventListener) phoneMQ.addEventListener("change", placeBars); else phoneMQ.addListener(placeBars);
 placeBars();
+
+// ---------- giriş sayfası: her kategoriye geçiş (#abacus, #add ... adres çubuğunda) ----------
+const ROUTES = {abacus:["abacusView"], flash:["flashView"], add:["asView", "+"], sub:["asView", "-"], div:["asView", "/"], mul:["mulView"]};
+const tabBtn = r => document.querySelector(`[data-tab="${ROUTES[r][0]}"]` + (ROUTES[r][1] ? `[data-op="${ROUTES[r][1]}"]` : ""));
+const atHome = () => document.body.classList.contains("at-home");
+// kategorilerdeki oyun sayısı
+function updHome(){
+  const n = {mul:document.querySelectorAll("[data-g]").length};
+  const ag = [...document.querySelectorAll("[data-ag]")].map(b => b.dataset.ag);
+  [["add", "+"], ["sub", "-"], ["div", "/"]].forEach(([k, op]) => n[k] = ag.filter(g => !OP_ONLY[g] || OP_ONLY[g].includes(op)).length);
+  document.querySelectorAll("[data-count]").forEach(el => el.textContent = $t`🎮 ${n[el.dataset.count]} oyun`);
+}
+function showHome(){
+  document.body.classList.add("at-home");
+  // arka planda oyun çalışmasın
+  stopFlash(); setFs(false); if(fsMain) setGameFs(false); stopTimer(); stopG(); asStop();
+  window.scrollTo(0, 0);
+}
+function route(){
+  const r = location.hash.slice(1);
+  if(!ROUTES[r]){ showHome(); return; }
+  document.body.classList.remove("at-home");
+  tabBtn(r).click();
+  window.scrollTo(0, 0);
+}
+document.querySelectorAll("[data-go]").forEach(c => c.onclick = () => { location.hash = c.dataset.go; });
+$("homeBtn").onclick = $("logo").onclick = () => { if(!atHome()) location.hash = ""; };
+// sekmeler arasında geçince adres de değişsin (geri tuşu giriş sayfasına döner)
+document.querySelectorAll("[data-tab]").forEach(b => b.addEventListener("click", () => {
+  const r = Object.keys(ROUTES).find(k => tabBtn(k) === b);
+  if(r && location.hash !== "#" + r) history.replaceState(null, "", "#" + r);
+}));
+window.addEventListener("hashchange", route);
+updHome();
+route();
