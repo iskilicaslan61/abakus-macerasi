@@ -18,7 +18,7 @@ body{
   background:var(--or-xl);
   background-image:radial-gradient(circle at 10% 10%,#ffe0c4 0 60px,transparent 61px),
                    radial-gradient(circle at 90% 80%,#ffe0c4 0 90px,transparent 91px);
-  min-height:100vh; padding:16px; display:flex; justify-content:center;
+  min-height:100vh; min-height:100dvh; padding:16px; display:flex; justify-content:center;
 }
 .app{width:100%;max-width:1100px;display:flex;flex-direction:column;gap:16px}
 
@@ -549,6 +549,8 @@ body.at-home #logo{cursor:default}
 }
 
 /* ---------- Impressum / Datenschutz ---------- */
+/* footer her zaman en altta: içerik kısa olsa da sayfanın dibine iner */
+.app > .legal-links{margin-top:auto}
 .legal-links{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:8px 0 4px;font-weight:700;font-size:15px;color:var(--ink)}
 .legal-links a{color:var(--or-d);text-decoration:none}
 .legal-links a:hover{text-decoration:underline}
