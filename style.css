@@ -370,10 +370,18 @@ html{scrollbar-gutter:stable}
 .flash-main.fs .answer{flex:none}
 body.noscroll{overflow:hidden}
 /* ---------- tam ekran: bütün oyunlar ---------- */
-.fs-open{font:inherit;font-weight:800;font-size:16px;border:3px solid var(--or);background:var(--white);color:var(--or-d);
-  border-radius:999px;padding:4px 14px;cursor:pointer}
-.fs-open:active{transform:scale(.95)}
-.fs-exit{display:none}
+/* oyun alanının sağ üst köşesindeki düğme; tam ekranda ✕ olarak ekranın köşesine sabitlenir */
+.side-main{position:relative}
+.side-main > .track{margin-right:58px}
+.fs-exit{position:absolute;top:10px;right:0;z-index:4;display:flex;align-items:center;justify-content:center;width:46px;height:46px;
+  border-radius:14px;border:3px solid var(--or);background:var(--white);color:var(--or-d);font:inherit;font-size:24px;font-weight:800;
+  line-height:1;cursor:pointer;box-shadow:0 4px 0 var(--or-l)}
+.fs-exit:active{transform:scale(.94)}
+#abacusView .side-main:not(.fs) > .fs-exit{top:12px;right:12px}
+@media (max-width:760px){
+  #abacusView .side-main:not(.fs) > .fs-exit{top:8px;right:8px;width:40px;height:40px;font-size:21px}
+  #abacusView .side-main:not(.fs) .problem{padding-inline:38px}
+}
 .side-main.fs{position:fixed;inset:0;z-index:50;overflow:auto;background:var(--or-xl);display:flex;flex-direction:column;
   justify-content:flex-start;justify-content:safe center;gap:14px;
   padding:calc(max(12px, env(safe-area-inset-top)) + 58px) max(12px, env(safe-area-inset-right)) max(14px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left))}
@@ -408,7 +416,6 @@ body.noscroll{overflow:hidden}
   .lang-menu button.active{background:var(--or);color:var(--white)}
   .lang-menu button.active b{color:var(--white)}
   .subbar{display:flex;align-items:center;justify-content:space-between;gap:8px}
-  .subbar .fs-open{padding:6px 14px}
 }
 
 /* ---------- telefon: daha okunaklı başlık ve sekmeler ---------- */

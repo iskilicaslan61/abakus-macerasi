@@ -1604,18 +1604,18 @@ function setGameFs(on){
   if(fsMain){ fsMain.classList.remove("fs"); fsMain = null; }
   if(on){ fsMain = document.querySelector(`#${tab} .side-main`); fsMain.classList.add("fs"); reqFs(fsMain); }
   else exitRealFs();
+  document.querySelectorAll(".fs-exit").forEach(b => b.textContent = b.parentElement === fsMain ? "✕" : "⛶");
   document.body.classList.toggle("noscroll", on);
   // boyutu değişen parçaları yeniden yerleştir (abaküs boncukları, roket)
   setTimeout(() => { render(); moveRocket(); asMove(); }, 80);
 }
-// her oyun alanına tam ekrandan çıkış düğmesi
+// her oyun alanının sağ üst köşesinde tam ekran düğmesi (tam ekranda ✕ olur)
 document.querySelectorAll(".view .side-main").forEach(m => {
   const b = document.createElement("button");
-  b.type = "button"; b.className = "fs-exit"; b.textContent = "✕"; b.setAttribute("aria-label", "✕");
-  b.onclick = () => setGameFs(false);
+  b.type = "button"; b.className = "fs-exit"; b.textContent = "⛶"; b.setAttribute("aria-label", "⛶");
+  b.onclick = () => setGameFs(!m.classList.contains("fs"));
   m.prepend(b);
 });
-$("fsOpen").onclick = () => tab === "flashView" ? setFs(true) : setGameFs(true);
 ["fullscreenchange", "webkitfullscreenchange"].forEach(ev => document.addEventListener(ev, () => {
   if(!(document.fullscreenElement || document.webkitFullscreenElement) && fsMain) setGameFs(false);
   setTimeout(() => { render(); moveRocket(); asMove(); }, 80);
@@ -1693,12 +1693,12 @@ document.querySelectorAll("[data-tab]").forEach(b => b.addEventListener("click",
 $("langCur").onclick = e => { e.stopPropagation(); $("langMenu").hidden = !$("langMenu").hidden; };
 $("langMenu").addEventListener("click", e => { if(e.target.closest("[data-lang]")) $("langMenu").hidden = true; });
 document.addEventListener("click", e => { if(!e.target.closest("#langDrop")) $("langMenu").hidden = true; });
-// telefonda yıldız/ateş ve tam ekran düğmesi sekmelerin altına, oyun menüsünün üstüne taşınır
+// telefonda yıldız/ateş sekmelerin altına, oyun menüsünün üstüne taşınır
 const phoneMQ = matchMedia("(max-width:760px)");
 function placeBars(){
-  const stats = document.querySelector(".stats"), fsb = $("fsOpen");
-  if(phoneMQ.matches) $("subbar").append(stats, fsb);
-  else { const hdr = document.querySelector("header"); hdr.insertBefore(fsb, $("langs")); hdr.insertBefore(stats, fsb); }
+  const stats = document.querySelector(".stats");
+  if(phoneMQ.matches) $("subbar").append(stats);
+  else document.querySelector("header").insertBefore(stats, $("langs"));
 }
 if(phoneMQ.addEventListener) phoneMQ.addEventListener("change", placeBars); else phoneMQ.addListener(placeBars);
 placeBars();
