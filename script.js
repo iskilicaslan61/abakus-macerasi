@@ -541,7 +541,13 @@ document.querySelectorAll("[data-set]").forEach(g => g.querySelectorAll("button"
   g.querySelectorAll("button").forEach(x=>x.classList.remove("active"));
   b.classList.add("active");
   fs[g.dataset.set] = g.dataset.set === "ops" ? b.dataset.v : +b.dataset.v;
+  if(g.dataset.set === "speed") try{ localStorage.setItem("flashSpeed", fs.speed); }catch(e){}
 }));
+// seçilen hız hatırlansın
+try{
+  const b = document.querySelector(`[data-set="speed"] [data-v="${localStorage.getItem("flashSpeed")}"]`);
+  if(b){ document.querySelectorAll('[data-set="speed"] button').forEach(x => x.classList.toggle("active", x === b)); fs.speed = +b.dataset.v; }
+}catch(e){}
 
 let seq = [], fTotal = 0, typed = "", playing = false, answered = false, scored = false, timers = [];
 const later = (ms, fn) => timers.push(setTimeout(fn, ms));
