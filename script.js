@@ -1604,17 +1604,17 @@ function setGameFs(on){
   if(fsMain){ fsMain.classList.remove("fs"); fsMain = null; }
   if(on){ fsMain = document.querySelector(`#${tab} .side-main`); fsMain.classList.add("fs"); reqFs(fsMain); }
   else exitRealFs();
-  document.querySelectorAll(".fs-exit").forEach(b => b.textContent = b.parentElement === fsMain ? "✕" : "⛶");
+  document.querySelectorAll(".fs-exit").forEach(b => b.textContent = fsMain && fsMain.contains(b) ? "✕" : "⛶");
   document.body.classList.toggle("noscroll", on);
   // boyutu değişen parçaları yeniden yerleştir (abaküs boncukları, roket)
   setTimeout(() => { render(); moveRocket(); asMove(); }, 80);
 }
-// her oyun alanının sağ üst köşesinde tam ekran düğmesi (tam ekranda ✕ olur)
-document.querySelectorAll(".view .side-main").forEach(m => {
-  const b = document.createElement("button");
+// Hızlı Sayılar'daki gibi: her oyun kartının içinde, sağ üst köşede tam ekran düğmesi (tam ekranda ✕ olur)
+document.querySelectorAll("#card, #qCard, #matchCard, #gCard, #asView .side-main > .card").forEach(c => {
+  const b = document.createElement("button"), m = c.closest(".side-main");
   b.type = "button"; b.className = "fs-exit"; b.textContent = "⛶"; b.setAttribute("aria-label", "⛶");
   b.onclick = () => setGameFs(!m.classList.contains("fs"));
-  m.prepend(b);
+  c.prepend(b);
 });
 ["fullscreenchange", "webkitfullscreenchange"].forEach(ev => document.addEventListener(ev, () => {
   if(!(document.fullscreenElement || document.webkitFullscreenElement) && fsMain) setGameFs(false);

@@ -370,17 +370,19 @@ html{scrollbar-gutter:stable}
 .flash-main.fs .answer{flex:none}
 body.noscroll{overflow:hidden}
 /* ---------- tam ekran: bütün oyunlar ---------- */
-/* oyun alanının sağ üst köşesindeki düğme; tam ekranda ✕ olarak ekranın köşesine sabitlenir */
-.side-main{position:relative}
-.side-main > .track{margin-right:58px}
-.fs-exit{position:absolute;top:10px;right:0;z-index:4;display:flex;align-items:center;justify-content:center;width:46px;height:46px;
+/* oyun kartının içinde sağ üst köşedeki düğme (Hızlı Sayılar gibi); tam ekranda ✕ olarak ekranın köşesine sabitlenir */
+.side-main .card{position:relative}
+.fs-exit{position:absolute;top:12px;right:12px;z-index:4;display:flex;align-items:center;justify-content:center;width:46px;height:46px;
   border-radius:14px;border:3px solid var(--or);background:var(--white);color:var(--or-d);font:inherit;font-size:24px;font-weight:800;
   line-height:1;cursor:pointer;box-shadow:0 4px 0 var(--or-l)}
 .fs-exit:active{transform:scale(.94)}
-#abacusView .side-main:not(.fs) > .fs-exit{top:12px;right:12px}
+/* kartın ilk satırı düğmenin altına girmesin: iki yana eşit boşluk, metin ortada kalır */
+.side-main:not(.fs) .card :is(.gtitle, .mstats, .mq, .problem){padding-inline:54px}
 @media (max-width:760px){
-  #abacusView .side-main:not(.fs) > .fs-exit{top:8px;right:8px;width:40px;height:40px;font-size:21px}
-  #abacusView .side-main:not(.fs) .problem{padding-inline:38px}
+  .side-main:not(.fs) .fs-exit{top:8px;right:8px;width:40px;height:40px;font-size:21px}
+  .side-main:not(.fs) .card :is(.gtitle, .mstats, .mq, .problem){padding-inline:42px}
+  .side-main:not(.fs) .card .mstats{flex-wrap:wrap;gap:2px 14px;font-size:18px}
+  .mstats span{white-space:nowrap}
 }
 .side-main.fs{position:fixed;inset:0;z-index:50;overflow:auto;background:var(--or-xl);display:flex;flex-direction:column;
   justify-content:flex-start;justify-content:safe center;gap:14px;
