@@ -440,6 +440,20 @@ body.noscroll{overflow:hidden}
   background:var(--or);color:var(--white);box-shadow:0 6px 0 #c2530a}
 .ro-btn:active{transform:translateY(4px);box-shadow:none}
 
+/* ---------- yeni oyunlar ---------- */
+/* 🍬 Adil Paylaş */
+.candies{display:flex;flex-wrap:wrap;justify-content:center;gap:2px;max-width:560px;font-size:clamp(20px,3.2vw,28px);line-height:1.15;
+  background:var(--or-xl);border:3px dashed var(--or-l);border-radius:16px;padding:6px 10px}
+.kids{font-size:clamp(30px,5vw,44px);letter-spacing:2px;text-align:center}
+/* 📶 Küçükten Büyüğe */
+.sortg button small{font-size:.6em;opacity:.85;margin-right:2px}
+/* 🧱 Sayı Duvarı */
+.wall{display:flex;flex-direction:column;align-items:center;gap:6px}
+.wall-row{display:flex;gap:6px}
+.brick{min-width:clamp(68px,14vw,110px);padding:6px 8px;text-align:center;font-size:clamp(28px,5vw,44px);font-weight:800;line-height:1.1;
+  background:var(--white);color:var(--ink);border:3px solid var(--or);border-radius:10px;box-shadow:0 4px 0 var(--or-l)}
+.brick.q{border-style:dashed;background:var(--or-xl);color:var(--or)}
+
 /* ---------- Impressum / Datenschutz ---------- */
 .legal-links{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:8px 0 4px;font-weight:700;font-size:15px;color:var(--ink)}
 .legal-links a{color:var(--or-d);text-decoration:none}

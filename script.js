@@ -211,6 +211,27 @@ const I18N = {
   "Gizlilik": ["Privacy", "Datenschutz", "Confidentialité"],
   "© 2026 · Tüm hakları saklıdır.": ["© 2026 · All rights reserved.", "© 2026 · Alle Rechte vorbehalten.", "© 2026 · Tous droits réservés."],
   "Hatırla: her zıplamada {0} çıkarıyoruz ➖": ["Remember: every jump takes away {0} ➖", "Denk dran: Jeder Sprung zieht {0} ab ➖", "Rappelle-toi : chaque saut enlève {0} ➖"],
+  // yeni oyunlar
+  "🍬 Adil Paylaş": ["🍬 Share Fairly", "🍬 Gerecht teilen", "🍬 Partage équitable"],
+  "🏠 Hangi Tabloda?": ["🏠 Which Table?", "🏠 Welche Reihe?", "🏠 Quelle table ?"],
+  "📶 Küçükten Büyüğe": ["📶 Smallest to Biggest", "📶 Der Größe nach", "📶 Du plus petit au plus grand"],
+  "🧱 Sayı Duvarı": ["🧱 Number Wall", "🧱 Zahlenmauer", "🧱 Mur de nombres"],
+  "<b>{0}</b> şekeri <b>{1}</b> çocuğa eşit paylaştır!": ["Share <b>{0}</b> sweets equally among <b>{1}</b> children!", "Verteile <b>{0}</b> Bonbons gerecht an <b>{1}</b> Kinder!", "Partage <b>{0}</b> bonbons équitablement entre <b>{1}</b> enfants !"],
+  "Her çocuk kaç şeker alır? 🤔": ["How many sweets does each child get? 🤔", "Wie viele Bonbons bekommt jedes Kind? 🤔", "Combien de bonbons chaque enfant reçoit-il ? 🤔"],
+  "Evet! Her çocuk {0} şeker alır: {1} ÷ {2} = {3} ✔": ["Yes! Each child gets {0}: {1} ÷ {2} = {3} ✔", "Ja! Jedes Kind bekommt {0}: {1} ÷ {2} = {3} ✔", "Oui ! Chaque enfant reçoit {0} : {1} ÷ {2} = {3} ✔"],
+  "İpucu: {0} × ? = {1} 🔍": ["Hint: {0} × ? = {1} 🔍", "Tipp: {0} × ? = {1} 🔍", "Indice : {0} × ? = {1} 🔍"],
+  "<b>{0}</b> hangi tablonun sayısı?": ["<b>{0}</b> is in which times table?", "In welcher Reihe kommt <b>{0}</b> vor?", "<b>{0}</b> est dans quelle table ?"],
+  "Sadece bir tablo doğru! 🏠": ["Only one table is right! 🏠", "Nur eine Reihe passt! 🏠", "Une seule table est correcte ! 🏠"],
+  "Evet! {0} × {1} = {2} ✔": ["Yes! {0} × {1} = {2} ✔", "Ja! {0} × {1} = {2} ✔", "Oui ! {0} × {1} = {2} ✔"],
+  "{0} tablosunda {1} yok! 🔍": ["{1} is not in the {0} times table! 🔍", "{1} kommt in der {0}er-Reihe nicht vor! 🔍", "{1} n’est pas dans la table de {0} ! 🔍"],
+  "İşlemlere en küçük sonuçtan en büyüğe doğru dokun!": ["Tap the problems from the smallest to the biggest result!", "Tippe die Aufgaben vom kleinsten zum größten Ergebnis an!", "Touche les calculs du plus petit au plus grand résultat !"],
+  "Önce en küçük sonucu bul 👆": ["First find the smallest result 👆", "Finde zuerst das kleinste Ergebnis 👆", "Trouve d’abord le plus petit résultat 👆"],
+  "Süper! Şimdi bir sonraki 👆": ["Great! Now the next one 👆", "Super! Jetzt das nächste 👆", "Super ! Maintenant le suivant 👆"],
+  "{0} = {1}. Daha küçük bir sonuç var! 🔍": ["{0} = {1}. There is a smaller result! 🔍", "{0} = {1}. Es gibt ein kleineres Ergebnis! 🔍", "{0} = {1}. Il y a un résultat plus petit ! 🔍"],
+  "Harika sıraladın! {0} ✔": ["Perfectly sorted! {0} ✔", "Super sortiert! {0} ✔", "Bien classé ! {0} ✔"],
+  "Sayı duvarı: Her taş, altındaki iki taşın toplamı!": ["Number wall: each brick is the sum of the two bricks below it!", "Zahlenmauer: Jeder Stein ist die Summe der beiden Steine darunter!", "Mur de nombres : chaque brique est la somme des deux briques en dessous !"],
+  "Hangi sayı gelmeli? 🧱": ["Which number goes here? 🧱", "Welche Zahl gehört hierhin? 🧱", "Quel nombre va ici ? 🧱"],
+  "Harika! {0} ✔": ["Great! {0} ✔", "Super! {0} ✔", "Génial ! {0} ✔"],
 };
 
 // Çeviri: $t`Merhaba ${ad}` → anahtar "Merhaba {0}"
@@ -615,6 +636,8 @@ function mNew(){
   if(mGame === "cmp") return cmpNew();
   if(mGame === "target") return targetNew();
   if(mGame === "catch") return catchNew();
+  if(mGame === "share") return shareNew();
+  if(mGame === "house") return houseNew();
   mLocked = false;
   const list = [...picked], box = $("balloons"), m = $("mmsg");
   if(!list.length){ m.textContent = $t`Soldan en az bir tablo seç! 👈`; m.className = "msg bad"; box.innerHTML = ""; return; }
@@ -765,7 +788,7 @@ function flip(el, c){
 }
 
 // ---------- yeni oyunlar için ortak yardımcılar ----------
-const G_GAMES = ["arr", "frog", "tf", "miss", "cmp", "target", "catch"];
+const G_GAMES = ["arr", "frog", "tf", "miss", "cmp", "target", "catch", "share", "house"];
 const shuffle = a => a.sort(() => Math.random() - .5);
 const pickTable = () => { const l = [...picked]; return l[rnd(0, l.length-1)]; };
 function gMsg(t, cls=""){ const m = $("gmsg"); m.textContent = t; m.className = "msg " + cls; }
@@ -988,6 +1011,40 @@ function targetNew(){
       } else gWrong(b, $t`${c.p[0]} × ${c.p[1]} = ${c.p[0]*c.p[1]}, ${T} değil!`);
     };
     $("tg").appendChild(b);
+  });
+}
+
+// ---------- 🍬 Adil Paylaş (bölmeye giriş) ----------
+const KIDS = ["🧒","👧","👦","🧒🏽","👧🏻","👦🏾"];
+function shareNew(){
+  stopG(); mLocked = false; if(noTables()) return;
+  const n = pickTable(), k = rnd(1, Math.min(10, Math.floor(60 / n))), total = n * k;
+  $("gq").innerHTML = `<div class="gtitle">${$t`<b>${total}</b> şekeri <b>${n}</b> çocuğa eşit paylaştır!`}</div>
+    <div class="candies">${"🍬".repeat(total)}</div>
+    <div class="kids">${Array.from({length:n}, (_, i) => KIDS[i % KIDS.length]).join("")}</div>`;
+  gMsg($t`Her çocuk kaç şeker alır? 🤔`);
+  const set = new Set([k]);
+  for(const w of shuffle([k+1, k-1, k+2, k-2, n, k+n])){ if(set.size >= 4) break; if(w > 0 && w !== total) set.add(w); }
+  while(set.size < 4) set.add(rnd(1, 12));
+  options(shuffle([...set]).map(x => ({label:x, value:x})), k, (b, right) => {
+    if(right){ mLocked = true; b.classList.add("yes"); gRight($t`Evet! Her çocuk ${k} şeker alır: ${total} ÷ ${n} = ${k} ✔`, shareNew, 1800); }
+    else gWrong(b, $t`İpucu: ${n} × ? = ${total} 🔍`);
+  });
+}
+
+// ---------- 🏠 Hangi Tabloda? ----------
+function houseNew(){
+  stopG(); mLocked = false; if(noTables()) return;
+  // 1'in tablosunda her sayı var, o yüzden 2–10 arası tablolar sorulur
+  const big = [...picked].filter(x => x >= 2), t = big.length ? big[rnd(0, big.length-1)] : rnd(2, 10);
+  const k = rnd(2, 10), N = t * k;
+  const inTable = x => N % x === 0 && N / x <= 10;
+  const wrongs = shuffle([2,3,4,5,6,7,8,9,10].filter(x => !inTable(x))).slice(0, 3);
+  $("gq").innerHTML = `<div class="gtitle">${$t`<b>${N}</b> hangi tablonun sayısı?`}</div><div class="target">${N}</div>`;
+  gMsg($t`Sadece bir tablo doğru! 🏠`);
+  options(shuffle([t, ...wrongs]).map(x => ({label:`${x} ×`, value:x})), t, (b, right) => {
+    if(right){ mLocked = true; b.classList.add("yes"); gRight($t`Evet! ${k} × ${t} = ${N} ✔`, houseNew, 1600); }
+    else gWrong(b, $t`${b.textContent.replace(" ×", "")} tablosunda ${N} yok! 🔍`);
   });
 }
 
@@ -1539,7 +1596,57 @@ Object.keys(FG_IDS).forEach(id => $(id).addEventListener("change", () => {
 }));
 $("fgRandom").onclick = () => { Object.keys(FG_IDS).forEach(id => $(id).value = ""); saveFrogCfg(); if(asGame === "frog") asReset(); };
 
-const AS_GAMES = {frog:asFrog, free:asBalloon, time:asBalloon, match:asMatch, pic:asPic, tf:asTF, miss:asMiss, cmp:asCmp, target:asTarget, catch:asCatch};
+// 📶 Küçükten Büyüğe
+function asSort(){
+  asClearT(); asLocked = false;
+  const facts = [], seen = new Set();
+  for(let g=0; facts.length < 4 && g < 200; g++){ const f = asFact(); if(!seen.has(f.ans)){ seen.add(f.ans); facts.push(f); } }
+  const order = [...facts].sort((x, y) => x.ans - y.ans);
+  let next = 0;
+  $("asQ").innerHTML = `<div class="gtitle">${$t`İşlemlere en küçük sonuçtan en büyüğe doğru dokun!`}</div><div class="tgrid2 sortg" id="asSortG"></div>`;
+  $("asOpts").innerHTML = ""; $("asOpts").className = "";
+  asMsg($t`Önce en küçük sonucu bul 👆`);
+  facts.forEach(f => {
+    const b = document.createElement("button"); b.textContent = f.t;
+    b.onclick = () => {
+      if(asLocked || b.classList.contains("yes")) return;
+      if(f === order[next]){
+        next++; b.classList.add("yes"); b.innerHTML = `<small>${next}.</small> ${f.t} = ${f.ans}`; beep(600 + next*120, .08, "triangle");
+        if(next === order.length){ asLocked = true; asRight($t`Harika sıraladın! ${order.map(x => x.ans).join(" < ")} ✔`, asSort, 2200); }
+        else asMsg($t`Süper! Şimdi bir sonraki 👆`, "ok");
+      } else {
+        asWrong(b, $t`${f.t} = ${f.ans}. Daha küçük bir sonuç var! 🔍`);
+        asLater(() => b.classList.remove("no"), 700);
+      }
+    };
+    $("asSortG").appendChild(b);
+  });
+}
+
+// 🧱 Sayı Duvarı (Zahlenmauer): her taş altındaki iki taşın toplamı — sadece toplama ve çıkarma
+function asWall(){
+  asClearT(); asLocked = false;
+  const T = rnd(Math.min(6, asMax), asMax);
+  const b = rnd(1, Math.max(1, Math.floor((T - 2) / 2))), r = T - 2*b, a = rnd(1, Math.max(1, r - 1)), c = r - a;
+  const v = [T, a + b, b + c, a, b, c];
+  // toplamada üst taşlar, çıkarmada alt taşlar sorulur
+  const h = asOp === "+" ? rnd(0, 2) : rnd(3, 5);
+  const M = "−", eq = [
+    [v[1], "+", v[2], T], [a, "+", b, v[1]], [b, "+", c, v[2]],
+    [v[1], M, b, a], [v[1], M, a, b], [v[2], M, b, c]][h];
+  const cell = i => `<div class="brick${i === h ? " q" : ""}">${i === h ? "?" : v[i]}</div>`;
+  $("asQ").innerHTML = `<div class="gtitle">${$t`Sayı duvarı: Her taş, altındaki iki taşın toplamı!`}</div>
+    <div class="wall"><div class="wall-row">${cell(0)}</div><div class="wall-row">${cell(1)}${cell(2)}</div><div class="wall-row">${cell(3)}${cell(4)}${cell(5)}</div></div>`;
+  asMsg($t`Hangi sayı gelmeli? 🧱`);
+  asOptions(numOpts(near({a:eq[0], b:eq[2]}, v[h])), v[h], (btn, right) => {
+    if(right){
+      asLocked = true; btn.classList.add("yes"); $("asQ").querySelector(".brick.q").textContent = v[h];
+      asRight($t`Harika! ${eq.slice(0, 3).join(" ") + " = " + eq[3]} ✔`, asWall, 1600);
+    } else asWrong(btn, $t`Olmadı, tekrar dene! 💪`);
+  });
+}
+
+const AS_GAMES = {frog:asFrog, free:asBalloon, time:asBalloon, match:asMatch, pic:asPic, tf:asTF, miss:asMiss, cmp:asCmp, target:asTarget, catch:asCatch, sort:asSort, wall:asWall};
 function asNew(){ AS_GAMES[asGame](); }
 function asReset(){
   asStop(); asCorrect = 0; asLocked = false;
@@ -1574,6 +1681,10 @@ document.querySelectorAll("[data-tab]").forEach(b => b.addEventListener("click",
   if(tab !== "asView"){ asStop(); return; }
   asOp = b.dataset.op; asLast = "";
   $("asDivSet").hidden = asOp !== "/"; $("asRangeSet").hidden = asOp === "/";
+  // sayı duvarı bölmede yok: bölme sekmesinde gizle, seçiliyse balona dön
+  const wallBtn = document.querySelector("[data-ag=wall]");
+  wallBtn.hidden = asOp === "/";
+  if(asOp === "/" && asGame === "wall"){ wallBtn.classList.remove("active"); document.querySelector("[data-ag=free]").classList.add("active"); asGame = "free"; }
   asReset();
 }));
 function markDiv(){ document.querySelectorAll("[data-dv]").forEach(x => x.classList.toggle("active", x.dataset.dv === asDiv.join(","))); }
