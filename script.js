@@ -18,6 +18,7 @@ const I18N = {
   "✖️ Çarpım Tablosu": ["✖️ Times Tables", "✖️ Einmaleins", "✖️ Tables de multiplication"],
   "Kaç sayı?": ["How many numbers?", "Wie viele Zahlen?", "Combien de nombres ?"],
   "Hız": ["Speed", "Tempo", "Vitesse"],
+  "🐌 Çok Yavaş": ["🐌 Very slow", "🐌 Sehr langsam", "🐌 Très lent"],
   "🐢 Yavaş": ["🐢 Slow", "🐢 Langsam", "🐢 Lent"],
   "🐇 Orta": ["🐇 Medium", "🐇 Mittel", "🐇 Moyen"],
   "🚀 Hızlı": ["🚀 Fast", "🚀 Schnell", "🚀 Rapide"],
