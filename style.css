@@ -454,6 +454,43 @@ body.noscroll{overflow:hidden}
   background:var(--white);color:var(--ink);border:3px solid var(--or);border-radius:10px;box-shadow:0 4px 0 var(--or-l)}
 .brick.q{border-style:dashed;background:var(--or-xl);color:var(--or)}
 
+/* 🟠 Nokta Tarlası (Punktefeld): 5'lik gruplar arasında boşluk */
+.dots{display:grid;grid-template-columns:repeat(5,minmax(0,1fr)) 2px repeat(5,minmax(0,1fr));gap:4px;width:min(100%,420px);touch-action:manipulation}
+.dot{aspect-ratio:1;border-radius:50%;border:2px solid var(--or-l);background:var(--white);padding:0;cursor:pointer;min-width:0}
+.dot[data-c="5"]{grid-column-start:7} .dot[data-r="4"]{margin-bottom:6px}
+.dot.on{background:var(--or);border-color:var(--or-d)}
+.dots.done .dot.on{background:var(--ok);border-color:var(--ok)}
+.dots-lbl{font-size:clamp(26px,5vw,40px);font-weight:800;color:var(--or-d);min-height:1.2em}
+/* 🏋️ Terazi: kefeler kiriş yatınca da düz kalır */
+.scale{--a:0deg;position:relative;width:min(100%,480px);height:240px;margin:6px auto 0}
+.stand{position:absolute;left:50%;top:62px;bottom:0;width:12px;transform:translateX(-50%);background:var(--ink);border-radius:6px}
+.stand::after{content:"";position:absolute;bottom:0;left:50%;width:110px;height:12px;transform:translateX(-50%);background:var(--ink);border-radius:6px}
+.beam{position:absolute;top:56px;left:4%;right:4%;height:10px;background:var(--ink);border-radius:5px;transform:rotate(var(--a));transition:transform .45s cubic-bezier(.3,1.4,.5,1)}
+.pan{position:absolute;top:10px;width:42%;min-height:74px;display:flex;flex-wrap:wrap;align-items:flex-end;align-content:flex-end;justify-content:center;gap:3px;
+  padding:6px;background:var(--or-xl);border:3px solid var(--or);border-top:none;border-radius:0 0 44px 44px;
+  transform:rotate(calc(var(--a) * -1));transform-origin:top center;transition:transform .45s cubic-bezier(.3,1.4,.5,1)}
+.pan.L{left:-6%} .pan.R{right:-6%}
+.load{font-size:clamp(24px,4.5vw,36px);font-weight:800;color:var(--ink);align-self:center}
+.scale.done .pan{border-color:var(--ok);background:#e3f7ec}
+.psum{font-weight:800;font-size:clamp(18px,3vw,24px);color:var(--or-d);min-height:1.3em}
+.weights{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.wt{font:inherit;font-weight:800;color:var(--white);background:var(--ink);border:none;cursor:pointer;border-radius:12px 12px 8px 8px;
+  min-width:52px;height:52px;font-size:24px;box-shadow:0 4px 0 #3a1d07}
+.wt:active{transform:translateY(3px);box-shadow:none}
+.wt.w2{background:#7a4a1f} .wt.w5{background:var(--or-d)} .wt.w10{background:#c2530a} .wt.w20{background:#8e3a06}
+.pan .wt{min-width:30px;height:30px;font-size:15px;border-radius:8px 8px 5px 5px;box-shadow:none;padding:0 4px}
+/* 📏 Sayı Doğrusu */
+.nline{position:relative;align-self:stretch;height:96px;margin:6px 22px 0;cursor:pointer;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.nl-bar{position:absolute;left:-10px;right:-10px;top:52px;height:6px;background:var(--ink);border-radius:3px}
+.nl-t{position:absolute;top:46px;width:2px;height:18px;background:var(--ink);transform:translateX(-50%)}
+.nl-t.m{top:40px;height:30px;width:3px}
+.nl-t span{position:absolute;top:34px;left:50%;transform:translateX(-50%);font-weight:800;font-size:clamp(14px,2.6vw,20px);color:var(--ink)}
+.nl-mark{position:absolute;top:0;transform:translateX(-50%);background:var(--or);color:var(--white);font-weight:800;font-size:clamp(18px,3vw,24px);
+  border-radius:10px;padding:0 8px;pointer-events:none;transition:left .15s}
+.nl-mark::after{content:"";position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);border:8px solid transparent;border-bottom:none;border-top-color:inherit;border-top-color:var(--or)}
+.nl-mark.ok{background:var(--ok)} .nl-mark.ok::after{border-top-color:var(--ok)}
+.nl-mark.ghost{opacity:.4;transition:none}
+
 /* ---------- Impressum / Datenschutz ---------- */
 .legal-links{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:8px 0 4px;font-weight:700;font-size:15px;color:var(--ink)}
 .legal-links a{color:var(--or-d);text-decoration:none}
