@@ -4,114 +4,407 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ff7a1a">
-<title>Datenschutzerklärung – Abakus-Abenteuer</title>
+<title>Datenschutzerklärung – myabacus.de</title>
 <link rel="preload" href="fonts/baloo2-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="app legal">
-  <a class="back" href="./">← Zurück zum Spiel</a>
-  <h1>Datenschutzerklärung</h1>
-
-  <div class="card">
-    <p class="muted"><b>Stand: September 2026</b></p>
-
-    <h2>1. Verantwortlicher</h2>
-    <p>Verantwortlich für diese Website ist:</p>
-    <p>
-      <b>Ismail Kilicaslan</b><br>
-      E-Mail: <a href="mailto:iskilicaslan61@gmail.com">iskilicaslan61@gmail.com</a>
-    </p>
-
-    <h2>2. Keine Registrierung und kein Tracking</h2>
-    <p>
-      myabacus.de ist ein kostenloses, werbefreies Lernspiel. Das Spiel funktioniert grundsätzlich direkt im Browser.
-    </p>
-    <p>Wir verwenden:</p>
-    <ul>
-      <li>keine Nutzerkonten,</li>
-      <li>keine Registrierung,</li>
-      <li>keine Kontaktformulare,</li>
-      <li>keine Cookies,</li>
-      <li>keine Analyse- oder Trackingdienste,</li>
-      <li>keine personalisierte Werbung.</li>
-    </ul>
-    <p>
-      Über die technisch notwendigen Zugriffsdaten beim Aufruf der Website (Abschnitt 3) hinaus erheben und speichern wir
-      keine personenbezogenen Daten der spielenden Kinder. Eine automatisierte Entscheidungsfindung einschließlich
-      Profiling (Art. 22 DSGVO) findet nicht statt.
-    </p>
-
-    <h2>3. Hosting</h2>
-    <p>
-      Die Website wird über <b>Amazon Web Services (AWS)</b> und <b>Amazon CloudFront</b> bereitgestellt.
-      Anbieter ist die Amazon Web Services EMEA SARL, 38 Avenue John F. Kennedy, L-1855 Luxemburg; die Website wird
-      in der AWS-Region <b>Frankfurt am Main (eu-central-1)</b> gehostet.
-    </p>
-    <p>
-      Beim Aufruf der Website können technisch notwendige Zugriffsdaten verarbeitet werden, insbesondere IP-Adresse,
-      Datum und Uhrzeit des Zugriffs, aufgerufene Datei sowie technische Angaben zum Browser und Betriebssystem.
-    </p>
-    <p>
-      Die Verarbeitung dient der sicheren und zuverlässigen Bereitstellung der Website und erfolgt auf Grundlage von
-      <b>Art. 6 Abs. 1 lit. f DSGVO</b>.
-    </p>
-    <p>
-      Die Bereitstellung dieser Daten ist technisch erforderlich; ohne sie kann die Website nicht angezeigt werden.
-      Die Zugriffsprotokolle werden gelöscht, sobald sie für diese Zwecke nicht mehr erforderlich sind.
-    </p>
-    <p>
-      AWS wird als technischer Dienstleister im Rahmen der geltenden Datenschutzvorgaben eingesetzt; mit AWS besteht ein
-      Vertrag über die Auftragsverarbeitung nach Art. 28 DSGVO (AWS GDPR Data Processing Addendum). Weitere Informationen
-      zur Datenverarbeitung durch AWS finden Sie in den Datenschutzinformationen von Amazon Web Services.
-    </p>
-    <p>
-      Da CloudFront die Website über ein weltweites Servernetz ausliefert, kann eine Verarbeitung außerhalb der EU,
-      insbesondere in den USA, nicht vollständig ausgeschlossen werden; Amazon ist hierfür nach dem EU-US Data Privacy
-      Framework zertifiziert, zusätzlich gelten die Standardvertragsklauseln der EU-Kommission.
-    </p>
-
-    <h2>4. Speicherung im Browser (localStorage)</h2>
-    <p>
-      Das Spiel speichert bestimmte Einstellungen und Spielstände ausschließlich im lokalen Speicher Ihres Browsers
-      (localStorage), zum Beispiel Spieleinstellungen und persönliche Bestwerte.
-    </p>
-    <p>Diese Daten werden nicht an uns übertragen und nicht auf unserem Server gespeichert.</p>
-    <p>
-      Die Speicherung ist für die gewünschte Spielfunktion erforderlich und erfolgt auf Grundlage von
-      <b>§ 25 Abs. 2 Nr. 2 TDDDG</b>.
-    </p>
-    <p>Die Daten bleiben gespeichert, bis Sie sie löschen. Das ist jederzeit über die Einstellungen Ihres Browsers möglich.</p>
-
-    <h2>5. Schriftarten</h2>
-    <p>
-      Die auf der Website verwendete Schriftart wird direkt von unserem Server geladen. Es werden keine externen
-      Schriftarten-Dienste wie Google Fonts eingebunden.
-    </p>
-
-    <h2>6. Kinder</h2>
-    <p>
-      Das Angebot richtet sich insbesondere an Kinder. Über die technisch notwendigen Zugriffsdaten (Abschnitt 3) hinaus
-      werden bewusst keine personenbezogenen Daten von Kindern erhoben.
-      Insbesondere gibt es keine Anmeldung, Namenseingabe oder Kommunikationsfunktion.
-    </p>
-
-    <h2>7. Ihre Rechte</h2>
-    <p>
-      Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit sowie
-      <b>Widerspruch nach Art. 21 DSGVO</b> gegen die Verarbeitung nach Abschnitt 3. Wenden Sie sich dazu an die oben
-      genannte E-Mail-Adresse. Zudem können Sie sich bei einer Datenschutzaufsichtsbehörde beschweren (Art. 77 DSGVO).
-    </p>
-
-    <h2>8. Änderungen</h2>
-    <p>
-      Diese Datenschutzerklärung kann angepasst werden, wenn sich die Website oder die rechtlichen Anforderungen ändern.
-    </p>
+  <div class="legal-top">
+    <a class="back" href="./" data-nav="./" data-t="back">← Zurück zum Spiel</a>
+    <div class="legal-langs">
+      <button data-set="de">DE</button><button data-set="en">EN</button><button data-set="tr">TR</button><button data-set="fr">FR</button>
+    </div>
   </div>
 
+  <!-- ===== Deutsch ===== -->
+  <section data-l="de">
+    <h1>Datenschutzerklärung</h1>
+    <div class="card">
+      <p class="muted"><b>Stand: September 2026</b></p>
+
+      <h2>1. Verantwortlicher</h2>
+      <p>Verantwortlich für diese Website ist:</p>
+      <p>
+        <b>Ismail Kilicaslan</b><br>
+        E-Mail: <a href="mailto:iskilicaslan61@gmail.com">iskilicaslan61@gmail.com</a>
+      </p>
+
+      <h2>2. Keine Registrierung und kein Tracking</h2>
+      <p>myabacus.de ist ein kostenloses, werbefreies Lernspiel. Das Spiel funktioniert grundsätzlich direkt im Browser.</p>
+      <p>Wir verwenden:</p>
+      <ul>
+        <li>keine Nutzerkonten,</li>
+        <li>keine Registrierung,</li>
+        <li>keine Kontaktformulare,</li>
+        <li>keine Cookies,</li>
+        <li>keine Analyse- oder Trackingdienste,</li>
+        <li>keine personalisierte Werbung.</li>
+      </ul>
+      <p>
+        Über die technisch notwendigen Zugriffsdaten beim Aufruf der Website (Abschnitt 3) hinaus erheben und speichern wir
+        keine personenbezogenen Daten der spielenden Kinder. Eine automatisierte Entscheidungsfindung einschließlich
+        Profiling (Art. 22 DSGVO) findet nicht statt.
+      </p>
+
+      <h2>3. Hosting</h2>
+      <p>
+        Die Website wird über <b>Amazon Web Services (AWS)</b> und <b>Amazon CloudFront</b> bereitgestellt.
+        Anbieter ist die Amazon Web Services EMEA SARL, 38 Avenue John F. Kennedy, L-1855 Luxemburg; die Website wird
+        in der AWS-Region <b>Frankfurt am Main (eu-central-1)</b> gehostet.
+      </p>
+      <p>
+        Beim Aufruf der Website können technisch notwendige Zugriffsdaten verarbeitet werden, insbesondere IP-Adresse,
+        Datum und Uhrzeit des Zugriffs, aufgerufene Datei sowie technische Angaben zum Browser und Betriebssystem.
+      </p>
+      <p>
+        Die Verarbeitung dient der sicheren und zuverlässigen Bereitstellung der Website und erfolgt auf Grundlage von
+        <b>Art. 6 Abs. 1 lit. f DSGVO</b>.
+      </p>
+      <p>
+        Die Bereitstellung dieser Daten ist technisch erforderlich; ohne sie kann die Website nicht angezeigt werden.
+        Die Zugriffsprotokolle werden gelöscht, sobald sie für diese Zwecke nicht mehr erforderlich sind.
+      </p>
+      <p>
+        AWS wird als technischer Dienstleister im Rahmen der geltenden Datenschutzvorgaben eingesetzt; mit AWS besteht ein
+        Vertrag über die Auftragsverarbeitung nach Art. 28 DSGVO (AWS GDPR Data Processing Addendum). Weitere Informationen
+        zur Datenverarbeitung durch AWS finden Sie in den Datenschutzinformationen von Amazon Web Services.
+      </p>
+      <p>
+        Da CloudFront die Website über ein weltweites Servernetz ausliefert, kann eine Verarbeitung außerhalb der EU,
+        insbesondere in den USA, nicht vollständig ausgeschlossen werden; Amazon ist hierfür nach dem EU-US Data Privacy
+        Framework zertifiziert, zusätzlich gelten die Standardvertragsklauseln der EU-Kommission.
+      </p>
+
+      <h2>4. Speicherung im Browser (localStorage)</h2>
+      <p>
+        Das Spiel speichert bestimmte Einstellungen und Spielstände ausschließlich im lokalen Speicher Ihres Browsers
+        (localStorage), zum Beispiel Spieleinstellungen und persönliche Bestwerte.
+      </p>
+      <p>Diese Daten werden nicht an uns übertragen und nicht auf unserem Server gespeichert.</p>
+      <p>
+        Die Speicherung ist für die gewünschte Spielfunktion erforderlich und erfolgt auf Grundlage von
+        <b>§ 25 Abs. 2 Nr. 2 TDDDG</b>.
+      </p>
+      <p>Die Daten bleiben gespeichert, bis Sie sie löschen. Das ist jederzeit über die Einstellungen Ihres Browsers möglich.</p>
+
+      <h2>5. Schriftarten</h2>
+      <p>
+        Die auf der Website verwendete Schriftart wird direkt von unserem Server geladen. Es werden keine externen
+        Schriftarten-Dienste wie Google Fonts eingebunden.
+      </p>
+
+      <h2>6. Kinder</h2>
+      <p>
+        Das Angebot richtet sich insbesondere an Kinder. Über die technisch notwendigen Zugriffsdaten (Abschnitt 3) hinaus
+        werden bewusst keine personenbezogenen Daten von Kindern erhoben.
+        Insbesondere gibt es keine Anmeldung, Namenseingabe oder Kommunikationsfunktion.
+      </p>
+
+      <h2>7. Ihre Rechte</h2>
+      <p>
+        Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit sowie
+        <b>Widerspruch nach Art. 21 DSGVO</b> gegen die Verarbeitung nach Abschnitt 3. Wenden Sie sich dazu an die oben
+        genannte E-Mail-Adresse. Zudem können Sie sich bei einer Datenschutzaufsichtsbehörde beschweren (Art. 77 DSGVO).
+      </p>
+
+      <h2>8. Änderungen</h2>
+      <p>Diese Datenschutzerklärung kann angepasst werden, wenn sich die Website oder die rechtlichen Anforderungen ändern.</p>
+    </div>
+  </section>
+
+  <!-- ===== English ===== -->
+  <section data-l="en" hidden>
+    <h1>Privacy policy</h1>
+    <div class="card">
+      <p class="muted"><b>Last updated: September 2026</b></p>
+      <p class="muted">This is a translation; in case of doubt, the German version applies.</p>
+
+      <h2>1. Controller</h2>
+      <p>The person responsible for this website is:</p>
+      <p>
+        <b>Ismail Kilicaslan</b><br>
+        Email: <a href="mailto:iskilicaslan61@gmail.com">iskilicaslan61@gmail.com</a>
+      </p>
+
+      <h2>2. No registration and no tracking</h2>
+      <p>myabacus.de is a free, ad-free learning game. The game runs directly in the browser.</p>
+      <p>We use:</p>
+      <ul>
+        <li>no user accounts,</li>
+        <li>no registration,</li>
+        <li>no contact forms,</li>
+        <li>no cookies,</li>
+        <li>no analytics or tracking services,</li>
+        <li>no personalised advertising.</li>
+      </ul>
+      <p>
+        Beyond the technically necessary access data when the website is loaded (section 3), we do not collect or store any
+        personal data of the children playing. There is no automated decision-making, including profiling (Art. 22 GDPR).
+      </p>
+
+      <h2>3. Hosting</h2>
+      <p>
+        The website is provided via <b>Amazon Web Services (AWS)</b> and <b>Amazon CloudFront</b>.
+        The provider is Amazon Web Services EMEA SARL, 38 Avenue John F. Kennedy, L-1855 Luxembourg; the website is hosted
+        in the AWS region <b>Frankfurt am Main (eu-central-1)</b>.
+      </p>
+      <p>
+        When the website is accessed, technically necessary access data may be processed, in particular the IP address,
+        date and time of access, the requested file and technical information about the browser and operating system.
+      </p>
+      <p>
+        This processing serves the secure and reliable provision of the website and is based on
+        <b>Art. 6(1)(f) GDPR</b>.
+      </p>
+      <p>
+        Providing this data is technically required; without it the website cannot be displayed.
+        Access logs are deleted as soon as they are no longer needed for these purposes.
+      </p>
+      <p>
+        AWS is used as a technical service provider in accordance with applicable data protection rules; a data processing
+        agreement pursuant to Art. 28 GDPR (AWS GDPR Data Processing Addendum) is in place with AWS. Further information on
+        data processing by AWS can be found in the Amazon Web Services privacy information.
+      </p>
+      <p>
+        Because CloudFront delivers the website via a worldwide server network, processing outside the EU, in particular in
+        the USA, cannot be completely ruled out; Amazon is certified under the EU-US Data Privacy Framework for this, and the
+        European Commission's Standard Contractual Clauses also apply.
+      </p>
+
+      <h2>4. Storage in the browser (localStorage)</h2>
+      <p>
+        The game stores certain settings and progress exclusively in your browser's local storage (localStorage), for
+        example game settings and personal best scores.
+      </p>
+      <p>This data is not transmitted to us and is not stored on our server.</p>
+      <p>
+        This storage is necessary for the requested game functions and is based on <b>§ 25(2) No. 2 TDDDG</b>.
+      </p>
+      <p>The data remains stored until you delete it, which you can do at any time in your browser settings.</p>
+
+      <h2>5. Fonts</h2>
+      <p>
+        The font used on this website is loaded directly from our own server. No external font services such as Google Fonts
+        are used.
+      </p>
+
+      <h2>6. Children</h2>
+      <p>
+        This website is aimed in particular at children. Beyond the technically necessary access data (section 3), no personal
+        data of children is knowingly collected. In particular, there is no login, name entry or communication feature.
+      </p>
+
+      <h2>7. Your rights</h2>
+      <p>
+        You have the right to access, rectification, erasure, restriction of processing, data portability and to
+        <b>object under Art. 21 GDPR</b> to the processing described in section 3. To exercise these rights, please use the
+        email address above. You also have the right to lodge a complaint with a data protection supervisory authority
+        (Art. 77 GDPR).
+      </p>
+
+      <h2>8. Changes</h2>
+      <p>This privacy policy may be updated if the website or the legal requirements change.</p>
+    </div>
+  </section>
+
+  <!-- ===== Türkçe ===== -->
+  <section data-l="tr" hidden>
+    <h1>Gizlilik Politikası</h1>
+    <div class="card">
+      <p class="muted"><b>Güncelleme: Eylül 2026</b></p>
+      <p class="muted">Bu bir çeviridir; şüphe durumunda Almanca metin geçerlidir.</p>
+
+      <h2>1. Sorumlu kişi</h2>
+      <p>Bu web sitesinden sorumlu kişi:</p>
+      <p>
+        <b>Ismail Kilicaslan</b><br>
+        E-posta: <a href="mailto:iskilicaslan61@gmail.com">iskilicaslan61@gmail.com</a>
+      </p>
+
+      <h2>2. Kayıt yok, takip yok</h2>
+      <p>myabacus.de ücretsiz ve reklamsız bir eğitim oyunudur. Oyun doğrudan tarayıcıda çalışır.</p>
+      <p>Kullanmadıklarımız:</p>
+      <ul>
+        <li>kullanıcı hesabı yok,</li>
+        <li>kayıt yok,</li>
+        <li>iletişim formu yok,</li>
+        <li>çerez (cookie) yok,</li>
+        <li>analiz veya takip hizmeti yok,</li>
+        <li>kişiselleştirilmiş reklam yok.</li>
+      </ul>
+      <p>
+        Web sitesi açılırken teknik olarak gerekli erişim verileri (bölüm 3) dışında, oyunu oynayan çocuklara ait hiçbir
+        kişisel veri toplamıyor ve saklamıyoruz. Profil oluşturma dahil otomatik karar verme (GVKT/DSGVO md. 22) yapılmaz.
+      </p>
+
+      <h2>3. Barındırma (Hosting)</h2>
+      <p>
+        Web sitesi <b>Amazon Web Services (AWS)</b> ve <b>Amazon CloudFront</b> üzerinden sunulmaktadır.
+        Sağlayıcı Amazon Web Services EMEA SARL, 38 Avenue John F. Kennedy, L-1855 Lüksemburg'dur; web sitesi
+        <b>Frankfurt am Main (eu-central-1)</b> AWS bölgesinde barındırılır.
+      </p>
+      <p>
+        Web sitesi açıldığında teknik olarak gerekli erişim verileri işlenebilir; özellikle IP adresi, erişim tarihi ve saati,
+        istenen dosya ile tarayıcı ve işletim sistemine ilişkin teknik bilgiler.
+      </p>
+      <p>
+        Bu işleme, web sitesinin güvenli ve güvenilir şekilde sunulmasını amaçlar ve <b>GVKT (DSGVO) md. 6/1 f</b>
+        hükmüne dayanır.
+      </p>
+      <p>
+        Bu verilerin sağlanması teknik olarak zorunludur; bunlar olmadan web sitesi görüntülenemez.
+        Erişim kayıtları bu amaçlar için artık gerekli olmadığında silinir.
+      </p>
+      <p>
+        AWS, geçerli veri koruma kuralları çerçevesinde teknik hizmet sağlayıcı olarak kullanılmaktadır; AWS ile
+        GVKT md. 28 uyarınca bir veri işleme sözleşmesi (AWS GDPR Data Processing Addendum) mevcuttur. AWS'nin veri işleme
+        süreçleri hakkında daha fazla bilgiyi Amazon Web Services gizlilik bilgilerinde bulabilirsiniz.
+      </p>
+      <p>
+        CloudFront web sitesini dünya çapındaki bir sunucu ağı üzerinden sunduğu için AB dışında, özellikle ABD'de veri
+        işlenmesi tamamen hariç tutulamaz; Amazon bu konuda EU-US Data Privacy Framework kapsamında sertifikalıdır, ayrıca
+        AB Komisyonu'nun standart sözleşme maddeleri de geçerlidir.
+      </p>
+
+      <h2>4. Tarayıcıda saklama (localStorage)</h2>
+      <p>
+        Oyun, bazı ayarları ve oyun durumlarını yalnızca tarayıcınızın yerel belleğinde (localStorage) saklar; örneğin oyun
+        ayarları ve kişisel rekorlar.
+      </p>
+      <p>Bu veriler bize iletilmez ve sunucumuzda saklanmaz.</p>
+      <p>
+        Bu saklama, istenen oyun işlevi için gereklidir ve <b>§ 25 Abs. 2 Nr. 2 TDDDG</b> hükmüne dayanır.
+      </p>
+      <p>Veriler siz silene kadar saklanır. Bunu tarayıcı ayarlarınızdan istediğiniz zaman yapabilirsiniz.</p>
+
+      <h2>5. Yazı tipleri</h2>
+      <p>
+        Web sitesinde kullanılan yazı tipi doğrudan kendi sunucumuzdan yüklenir. Google Fonts gibi harici yazı tipi
+        hizmetleri kullanılmaz.
+      </p>
+
+      <h2>6. Çocuklar</h2>
+      <p>
+        Bu site özellikle çocuklara yöneliktir. Teknik olarak gerekli erişim verileri (bölüm 3) dışında çocuklara ait
+        kişisel veriler bilinçli olarak toplanmaz. Özellikle giriş, isim girme veya iletişim işlevi bulunmaz.
+      </p>
+
+      <h2>7. Haklarınız</h2>
+      <p>
+        Bilgi alma, düzeltme, silme, işlemeyi kısıtlama, veri taşınabilirliği ve bölüm 3'teki işlemeye karşı
+        <b>GVKT md. 21 uyarınca itiraz</b> haklarına sahipsiniz. Bunun için yukarıdaki e-posta adresine başvurabilirsiniz.
+        Ayrıca bir veri koruma denetim makamına şikâyette bulunabilirsiniz (GVKT md. 77).
+      </p>
+
+      <h2>8. Değişiklikler</h2>
+      <p>Bu gizlilik politikası, web sitesi veya yasal gereklilikler değiştiğinde güncellenebilir.</p>
+    </div>
+  </section>
+
+  <!-- ===== Français ===== -->
+  <section data-l="fr" hidden>
+    <h1>Politique de confidentialité</h1>
+    <div class="card">
+      <p class="muted"><b>Mise à jour : septembre 2026</b></p>
+      <p class="muted">Ceci est une traduction ; en cas de doute, la version allemande fait foi.</p>
+
+      <h2>1. Responsable du traitement</h2>
+      <p>Le responsable de ce site est :</p>
+      <p>
+        <b>Ismail Kilicaslan</b><br>
+        E-mail : <a href="mailto:iskilicaslan61@gmail.com">iskilicaslan61@gmail.com</a>
+      </p>
+
+      <h2>2. Ni inscription ni suivi</h2>
+      <p>myabacus.de est un jeu éducatif gratuit et sans publicité. Le jeu fonctionne directement dans le navigateur.</p>
+      <p>Nous n’utilisons :</p>
+      <ul>
+        <li>aucun compte utilisateur,</li>
+        <li>aucune inscription,</li>
+        <li>aucun formulaire de contact,</li>
+        <li>aucun cookie,</li>
+        <li>aucun service d’analyse ou de suivi,</li>
+        <li>aucune publicité personnalisée.</li>
+      </ul>
+      <p>
+        En dehors des données d’accès techniquement nécessaires lors de l’ouverture du site (section 3), nous ne collectons
+        ni ne conservons aucune donnée personnelle des enfants qui jouent. Aucune prise de décision automatisée, y compris
+        le profilage (art. 22 RGPD), n’a lieu.
+      </p>
+
+      <h2>3. Hébergement</h2>
+      <p>
+        Le site est fourni via <b>Amazon Web Services (AWS)</b> et <b>Amazon CloudFront</b>.
+        Le prestataire est Amazon Web Services EMEA SARL, 38 Avenue John F. Kennedy, L-1855 Luxembourg ; le site est hébergé
+        dans la région AWS <b>Francfort-sur-le-Main (eu-central-1)</b>.
+      </p>
+      <p>
+        Lors de la consultation du site, des données d’accès techniquement nécessaires peuvent être traitées, notamment
+        l’adresse IP, la date et l’heure de l’accès, le fichier demandé ainsi que des informations techniques sur le
+        navigateur et le système d’exploitation.
+      </p>
+      <p>
+        Ce traitement sert à fournir le site de manière sûre et fiable et repose sur l’<b>art. 6, par. 1, point f du RGPD</b>.
+      </p>
+      <p>
+        La fourniture de ces données est techniquement nécessaire ; sans elles, le site ne peut pas s’afficher.
+        Les journaux d’accès sont supprimés dès qu’ils ne sont plus nécessaires à ces fins.
+      </p>
+      <p>
+        AWS est utilisé comme prestataire technique dans le respect des règles de protection des données applicables ; un
+        contrat de sous-traitance au sens de l’art. 28 RGPD (AWS GDPR Data Processing Addendum) a été conclu avec AWS. Vous
+        trouverez plus d’informations sur le traitement des données par AWS dans les informations de confidentialité
+        d’Amazon Web Services.
+      </p>
+      <p>
+        CloudFront diffusant le site via un réseau mondial de serveurs, un traitement en dehors de l’UE, notamment aux
+        États-Unis, ne peut être totalement exclu ; Amazon est certifié à cet égard dans le cadre du EU-US Data Privacy
+        Framework, et les clauses contractuelles types de la Commission européenne s’appliquent également.
+      </p>
+
+      <h2>4. Stockage dans le navigateur (localStorage)</h2>
+      <p>
+        Le jeu enregistre certains paramètres et progrès uniquement dans la mémoire locale de votre navigateur
+        (localStorage), par exemple les réglages du jeu et les meilleurs scores personnels.
+      </p>
+      <p>Ces données ne nous sont pas transmises et ne sont pas stockées sur notre serveur.</p>
+      <p>
+        Ce stockage est nécessaire au fonctionnement du jeu souhaité et repose sur le <b>§ 25, al. 2, n° 2 TDDDG</b>.
+      </p>
+      <p>Les données restent enregistrées jusqu’à ce que vous les supprimiez, ce que vous pouvez faire à tout moment dans les paramètres de votre navigateur.</p>
+
+      <h2>5. Polices de caractères</h2>
+      <p>
+        La police utilisée sur ce site est chargée directement depuis notre propre serveur. Aucun service de polices externe
+        tel que Google Fonts n’est utilisé.
+      </p>
+
+      <h2>6. Enfants</h2>
+      <p>
+        Ce site s’adresse en particulier aux enfants. En dehors des données d’accès techniquement nécessaires (section 3),
+        aucune donnée personnelle d’enfants n’est sciemment collectée. Il n’y a notamment ni connexion, ni saisie de nom,
+        ni fonction de communication.
+      </p>
+
+      <h2>7. Vos droits</h2>
+      <p>
+        Vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation du traitement, de portabilité des
+        données ainsi que d’un <b>droit d’opposition selon l’art. 21 RGPD</b> au traitement décrit à la section 3. Pour cela,
+        utilisez l’adresse e-mail indiquée ci-dessus. Vous pouvez également introduire une réclamation auprès d’une autorité
+        de contrôle de la protection des données (art. 77 RGPD).
+      </p>
+
+      <h2>8. Modifications</h2>
+      <p>Cette politique de confidentialité peut être adaptée si le site ou les exigences légales changent.</p>
+    </div>
+  </section>
+
   <footer class="legal-links">
-    <a href="./">Spiel</a><span>·</span><a href="impressum.html">Impressum</a><span>·</span><a href="datenschutz.html">Datenschutz</a>
+    <a href="./" data-nav="./" data-t="game">Spiel</a><span>·</span><a href="impressum.html" data-nav="impressum.html" data-t="imprint">Impressum</a><span>·</span><a href="datenschutz.html" data-nav="datenschutz.html" data-t="privacy">Datenschutz</a>
+    <p class="copy" data-t="rights">© 2026 Ismail Kilicaslan · Alle Rechte vorbehalten.</p>
   </footer>
 </div>
+<script src="legal.js"></script>
 </body>
 </html>

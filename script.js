@@ -1,6 +1,8 @@
 // ---------- dil / language / Sprache ----------
 // sayfa her açılışta Almanca başlar
 let lang = "de";
+// Impressum / Datenschutz'dan dönünce dili koru (?lang=xx)
+{ const q = new URLSearchParams(location.search).get("lang"); if(["de","en","tr","fr"].includes(q)) lang = q; }
 
 // Türkçe metin anahtardır → [English, Deutsch, Français]. ${...} değerleri {0}, {1} ... olarak yazılır.
 const I18N = {
@@ -205,6 +207,9 @@ const I18N = {
   "Zıplamaları tek tek say! 🐸": ["Count the jumps one by one! 🐸", "Zähle die Sprünge einzeln! 🐸", "Compte les sauts un par un ! 🐸"],
   "{0} {1} {2} = ? Kurbağa nereye zıplamalı? 🤔": ["{0} {1} {2} = ? Where should the frog jump? 🤔", "{0} {1} {2} = ? Wohin soll der Frosch springen? 🤔", "{0} {1} {2} = ? Où la grenouille doit-elle sauter ? 🤔"],
   "Hatırla: her zıplamada {0} ekliyoruz ➕": ["Remember: every jump adds {0} ➕", "Denk dran: Jeder Sprung addiert {0} ➕", "Rappelle-toi : chaque saut ajoute {0} ➕"],
+  "Künye": ["Legal notice", "Impressum", "Mentions légales"],
+  "Gizlilik": ["Privacy", "Datenschutz", "Confidentialité"],
+  "© 2026 Ismail Kilicaslan · Tüm hakları saklıdır.": ["© 2026 Ismail Kilicaslan · All rights reserved.", "© 2026 Ismail Kilicaslan · Alle Rechte vorbehalten.", "© 2026 Ismail Kilicaslan · Tous droits réservés."],
   "Hatırla: her zıplamada {0} çıkarıyoruz ➖": ["Remember: every jump takes away {0} ➖", "Denk dran: Jeder Sprung zieht {0} ab ➖", "Rappelle-toi : chaque saut enlève {0} ➖"],
 };
 
@@ -1620,6 +1625,7 @@ $("fsOpen").onclick = () => tab === "flashView" ? setFs(true) : setGameFs(true);
 function markLang(){
   document.querySelectorAll("[data-lang]").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
   $("langCode").textContent = lang.toUpperCase();
+  document.querySelectorAll(".legal-links a[data-nav]").forEach(a => a.href = a.dataset.nav + "?lang=" + lang);
 }
 function setLang(l){
   lang = l;
