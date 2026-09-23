@@ -265,6 +265,30 @@ const I18N = {
   "Nokta tarlası, kurbağa, hedef sayı ve daha fazlası": ["Dot field, frog, target number and more", "Punktefeld, Frosch, Zielzahl und mehr", "Champ de points, grenouille, nombre cible et plus"],
   "🎮 {0} oyun": ["🎮 {0} games", "🎮 {0} Spiele", "🎮 {0} jeux"],
   "Bölünen sayılar": ["Numbers to divide", "Zahlen zum Teilen", "Nombres à diviser"],
+  // her sekmede aynı oyunlar
+  "🍬 Şeker Kutusu": ["🍬 Candy Box", "🍬 Bonbondose", "🍬 Boîte à bonbons"],
+  "🏠 Sayı Evi": ["🏠 Number House", "🏠 Zahlenhaus", "🏠 Maison des nombres"],
+  "🏠 Hangi Sayıya Bölünür?": ["🏠 Divisible by?", "🏠 Teilbar durch?", "🏠 Divisible par ?"],
+  "Çarpım duvarı: Her taş, altındaki iki taşın çarpımı!": ["Times wall: each brick is the product of the two bricks below it!", "Malmauer: Jeder Stein ist das Produkt der beiden Steine darunter!", "Mur de multiplication : chaque brique est le produit des deux briques en dessous !"],
+  "Kutuda <b>{0}</b> şeker var, <b>{1}</b> şeker daha geliyor. Kaç şeker oldu?": ["There are <b>{0}</b> sweets in the box and <b>{1}</b> more are added. How many are there now?", "In der Dose sind <b>{0}</b> Bonbons, <b>{1}</b> kommen dazu. Wie viele sind es jetzt?", "Il y a <b>{0}</b> bonbons dans la boîte, on en ajoute <b>{1}</b>. Combien y en a-t-il ?"],
+  "Kutuda <b>{0}</b> şeker vardı, <b>{1}</b> tanesi yendi. Kaç şeker kaldı?": ["There were <b>{0}</b> sweets in the box and <b>{1}</b> were eaten. How many are left?", "In der Dose waren <b>{0}</b> Bonbons, <b>{1}</b> wurden gegessen. Wie viele sind übrig?", "Il y avait <b>{0}</b> bonbons dans la boîte, <b>{1}</b> ont été mangés. Combien en reste-t-il ?"],
+  "Şekerleri say ya da hesapla 🍬": ["Count the sweets or work it out 🍬", "Zähle die Bonbons oder rechne 🍬", "Compte les bonbons ou calcule 🍬"],
+  "Sayı evi: Her katta iki sayının toplamı <b>{0}</b>!": ["Number house: on every floor the two numbers add up to <b>{0}</b>!", "Zahlenhaus: In jedem Stockwerk ergeben die beiden Zahlen zusammen <b>{0}</b>!", "Maison des nombres : à chaque étage, les deux nombres font <b>{0}</b> ensemble !"],
+  "Sayı evi: Çatıdaki <b>{0}</b> sayısından soldaki sayıyı çıkar!": ["Number house: take the left number away from <b>{0}</b> on the roof!", "Zahlenhaus: Ziehe die linke Zahl von <b>{0}</b> auf dem Dach ab!", "Maison des nombres : enlève le nombre de gauche à <b>{0}</b> sur le toit !"],
+  "{0} ve kaç {1} eder? 🏠": ["{0} and what make {1}? 🏠", "{0} und wie viel ergeben {1}? 🏠", "{0} et combien font {1} ? 🏠"],
+  "Evin bütün katları doldu! 🏠 {0}": ["The whole house is full! 🏠 {0}", "Das ganze Haus ist voll! 🏠 {0}", "Toute la maison est remplie ! 🏠 {0}"],
+  "<b>{0}</b> hangi sayıya tam bölünür?": ["<b>{0}</b> can be divided exactly by which number?", "Durch welche Zahl ist <b>{0}</b> ohne Rest teilbar?", "<b>{0}</b> est divisible par quel nombre ?"],
+  "Sadece bir cevap doğru! 🏠": ["Only one answer is right! 🏠", "Nur eine Antwort stimmt! 🏠", "Une seule réponse est correcte ! 🏠"],
+  "Evet! {0} ÷ {1} = {2} ✔": ["Yes! {0} ÷ {1} = {2} ✔", "Ja! {0} ÷ {1} = {2} ✔", "Oui ! {0} ÷ {1} = {2} ✔"],
+  "{0} sayısı {1} ile tam bölünmez! 🔍": ["{0} can't be divided exactly by {1}! 🔍", "{0} ist nicht ohne Rest durch {1} teilbar! 🔍", "{0} n’est pas divisible par {1} ! 🔍"],
+  "Nokta tarlasında <b>{0}</b> sonucunu göster!": ["Show the result of <b>{0}</b> on the dot field!", "Zeige das Ergebnis von <b>{0}</b> im Punktefeld!", "Montre le résultat de <b>{0}</b> sur le champ de points !"],
+  "{0} nokta hazır. {1} tane daha ekle: son noktaya dokun 👆": ["{0} dots are ready. Add {1} more: tap the last dot 👆", "{0} Punkte sind schon da. Nimm {1} dazu: tippe auf den letzten Punkt 👆", "{0} points sont prêts. Ajoutes-en {1} : touche le dernier point 👆"],
+  "{0} noktadan {1} tanesini çıkar: kalan son noktaya dokun 👆": ["Take {1} away from {0} dots: tap the last dot that is left 👆", "Nimm {1} von {0} Punkten weg: tippe auf den letzten übrigen Punkt 👆", "Enlève {1} des {0} points : touche le dernier point qui reste 👆"],
+  "Bu {0} nokta. Tekrar say! 🔍": ["That is {0} dots. Count again! 🔍", "Das sind {0} Punkte. Zähl nochmal! 🔍", "Ça fait {0} points. Recompte ! 🔍"],
+  "<b>{0}</b> noktayı <b>{1}</b> sıraya eşit diz!": ["Arrange <b>{0}</b> dots in <b>{1}</b> equal rows!", "Lege <b>{0}</b> Punkte in <b>{1}</b> gleiche Reihen!", "Range <b>{0}</b> points en <b>{1}</b> rangées égales !"],
+  "Her sırada kaç nokta olur? Son noktaya dokun 👆": ["How many dots in each row? Tap the last dot 👆", "Wie viele Punkte hat jede Reihe? Tippe auf den letzten Punkt 👆", "Combien de points par rangée ? Touche le dernier point 👆"],
+  "{0} sıra olmalı, sen {1} sıra seçtin 🔍": ["You need {0} rows, you chose {1} 🔍", "Es sollen {0} Reihen sein, du hast {1} gewählt 🔍", "Il faut {0} rangées, tu en as choisi {1} 🔍"],
+  "{0} × {1} = {2}, {3} değil! 🔍": ["{0} × {1} = {2}, not {3}! 🔍", "{0} × {1} = {2}, nicht {3}! 🔍", "{0} × {1} = {2}, pas {3} ! 🔍"],
 };
 
 // Çeviri: $t`Merhaba ${ad}` → anahtar "Merhaba {0}"
@@ -671,7 +695,11 @@ function mNew(){
   if(mGame === "catch") return catchNew();
   if(mGame === "share") return shareNew();
   if(mGame === "house") return houseNew();
-  if(mGame === "dots") return dotsNew();
+  if(mGame === "dots") return dotsGame(MUL_CTX);
+  if(mGame === "sort") return sortGame(MUL_CTX);
+  if(mGame === "wall") return wallGame(MUL_CTX);
+  if(mGame === "scale") return scaleGame(MUL_CTX);
+  if(mGame === "line") return lineGame(MUL_CTX);
   mLocked = false;
   const list = [...picked], box = $("balloons"), m = $("mmsg");
   if(!list.length){ m.textContent = $t`Soldan en az bir tablo seç! 👈`; m.className = "msg bad"; box.innerHTML = ""; return; }
@@ -822,7 +850,7 @@ function flip(el, c){
 }
 
 // ---------- yeni oyunlar için ortak yardımcılar ----------
-const G_GAMES = ["arr", "frog", "tf", "miss", "cmp", "target", "catch", "share", "house", "dots"];
+const G_GAMES = ["arr", "frog", "tf", "miss", "cmp", "target", "catch", "sort", "wall", "scale", "line", "share", "house", "dots"];
 const shuffle = a => a.sort(() => Math.random() - .5);
 const pickTable = () => { const l = [...picked]; return l[rnd(0, l.length-1)]; };
 function gMsg(t, cls=""){ const m = $("gmsg"); m.textContent = t; m.className = "msg " + cls; }
@@ -1085,38 +1113,6 @@ function houseNew(){
     if(right){ mLocked = true; b.classList.add("yes"); gRight($t`Evet! ${k} × ${t} = ${N} ✔`, houseNew, 1600); }
     else gWrong(b, $t`${b.textContent.replace(" ×", "")} tablosunda ${N} yok! 🔍`);
   });
-}
-
-// ---------- 🟠 Nokta Tarlası (Punktefeld): son noktaya dokun, dikdörtgen boyansın ----------
-function dotsNew(){
-  stopG(); mLocked = false; if(noTables()) return;
-  let a = pickTable(), b = rnd(1, 10);
-  if(Math.random() < .5) [a, b] = [b, a];
-  $("gq").innerHTML = `<div class="gtitle">${$t`Nokta tarlasında <b>${a} × ${b}</b> göster!`}</div>
-    <div class="dots" id="dots"></div><div class="dots-lbl" id="dotsLbl">&nbsp;</div>`;
-  $("gopts").innerHTML = "";
-  gMsg($t`${a} sıra, her sırada ${b} nokta: son noktaya dokun 👆`);
-  const box = $("dots"), lbl = $("dotsLbl");
-  let sel = [0, 0];
-  const paint = (r, c) => {
-    box.querySelectorAll(".dot").forEach(d => d.classList.toggle("on", +d.dataset.r < r && +d.dataset.c < c));
-    lbl.innerHTML = r ? `${r} × ${c} = ${r * c}` : "&nbsp;";
-  };
-  for(let r = 0; r < 10; r++) for(let c = 0; c < 10; c++){
-    const d = document.createElement("button");
-    d.type = "button"; d.className = "dot"; d.dataset.r = r; d.dataset.c = c;
-    d.setAttribute("aria-label", `${r + 1} × ${c + 1}`);
-    // farede önizleme: üstüne gelince boyanır
-    d.onpointerenter = e => { if(e.pointerType === "mouse" && !mLocked) paint(r + 1, c + 1); };
-    d.onclick = () => {
-      if(mLocked) return;
-      sel = [r + 1, c + 1]; paint(...sel); beep(500 + (r + 1) * (c + 1) * 4, .06, "triangle");
-      if(sel[0] === a && sel[1] === b){ mLocked = true; box.classList.add("done"); gRight($t`Evet! ${a} × ${b} = ${a * b} ✔`, dotsNew, 1700); }
-      else gWrong(null, $t`Bu ${sel[0]} × ${sel[1]}. ${a} sıra ve her sırada ${b} nokta olmalı!`);
-    };
-    box.appendChild(d);
-  }
-  box.onpointerleave = () => { if(!mLocked) paint(...sel); };
 }
 
 // ---------- 🌧️ Katları Yakala ----------
@@ -1671,121 +1667,6 @@ Object.keys(FG_IDS).forEach(id => $(id).addEventListener("change", () => {
 }));
 $("fgRandom").onclick = () => { Object.keys(FG_IDS).forEach(id => $(id).value = ""); saveFrogCfg(); if(asGame === "frog") asReset(); };
 
-// 📶 Küçükten Büyüğe
-function asSort(){
-  asClearT(); asLocked = false;
-  const facts = [], seen = new Set();
-  for(let g=0; facts.length < 4 && g < 200; g++){ const f = asFact(); if(!seen.has(f.ans)){ seen.add(f.ans); facts.push(f); } }
-  const order = [...facts].sort((x, y) => x.ans - y.ans);
-  let next = 0;
-  $("asQ").innerHTML = `<div class="gtitle">${$t`İşlemlere en küçük sonuçtan en büyüğe doğru dokun!`}</div><div class="tgrid2 sortg" id="asSortG"></div>`;
-  $("asOpts").innerHTML = ""; $("asOpts").className = "";
-  asMsg($t`Önce en küçük sonucu bul 👆`);
-  facts.forEach(f => {
-    const b = document.createElement("button"); b.textContent = f.t;
-    b.onclick = () => {
-      if(asLocked || b.classList.contains("yes")) return;
-      if(f === order[next]){
-        next++; b.classList.add("yes"); b.innerHTML = `<small>${next}.</small> ${f.t} = ${f.ans}`; beep(600 + next*120, .08, "triangle");
-        if(next === order.length){ asLocked = true; asRight($t`Harika sıraladın! ${order.map(x => x.ans).join(" < ")} ✔`, asSort, 2200); }
-        else asMsg($t`Süper! Şimdi bir sonraki 👆`, "ok");
-      } else {
-        asWrong(b, $t`${f.t} = ${f.ans}. Daha küçük bir sonuç var! 🔍`);
-        asLater(() => b.classList.remove("no"), 700);
-      }
-    };
-    $("asSortG").appendChild(b);
-  });
-}
-
-// 🧱 Sayı Duvarı (Zahlenmauer): her taş altındaki iki taşın toplamı — sadece toplama ve çıkarma
-function asWall(){
-  asClearT(); asLocked = false;
-  const T = rnd(Math.min(6, asMax), asMax);
-  const b = rnd(1, Math.max(1, Math.floor((T - 2) / 2))), r = T - 2*b, a = rnd(1, Math.max(1, r - 1)), c = r - a;
-  const v = [T, a + b, b + c, a, b, c];
-  // toplamada üst taşlar, çıkarmada alt taşlar sorulur
-  const h = asOp === "+" ? rnd(0, 2) : rnd(3, 5);
-  const M = "−", eq = [
-    [v[1], "+", v[2], T], [a, "+", b, v[1]], [b, "+", c, v[2]],
-    [v[1], M, b, a], [v[1], M, a, b], [v[2], M, b, c]][h];
-  const cell = i => `<div class="brick${i === h ? " q" : ""}">${i === h ? "?" : v[i]}</div>`;
-  $("asQ").innerHTML = `<div class="gtitle">${$t`Sayı duvarı: Her taş, altındaki iki taşın toplamı!`}</div>
-    <div class="wall"><div class="wall-row">${cell(0)}</div><div class="wall-row">${cell(1)}${cell(2)}</div><div class="wall-row">${cell(3)}${cell(4)}${cell(5)}</div></div>`;
-  asMsg($t`Hangi sayı gelmeli? 🧱`);
-  asOptions(numOpts(near({a:eq[0], b:eq[2]}, v[h])), v[h], (btn, right) => {
-    if(right){
-      asLocked = true; btn.classList.add("yes"); $("asQ").querySelector(".brick.q").textContent = v[h];
-      asRight($t`Harika! ${eq.slice(0, 3).join(" ") + " = " + eq[3]} ✔`, asWall, 1600);
-    } else asWrong(btn, $t`Olmadı, tekrar dene! 💪`);
-  });
-}
-
-// 🏋️ Teraziyi Dengele: soldaki işlemin sonucu kadar ağırlığı sağ kefeye koy
-function asScale(){
-  asClearT(); asLocked = false;
-  const f = asFact(), T = f.ans, W = T > 30 ? [1, 2, 5, 10, 20] : [1, 2, 5, 10];
-  const put = [];
-  $("asQ").innerHTML = `<div class="gtitle">${$t`Teraziyi dengele! Sağ kefeye ağırlık koy ⚖️`}</div>
-    <div class="scale" id="scale"><div class="stand"></div><div class="beam">
-      <div class="pan L"><span class="load">${f.t}</span></div><div class="pan R" id="panR"></div>
-    </div></div><div class="psum" id="psum"></div><div class="weights" id="wts"></div>`;
-  $("asOpts").innerHTML = ""; $("asOpts").className = "";
-  asMsg($t`Ağırlığa dokun: kefeye koyar. Kefedekine dokun: geri alır.`);
-  const draw = () => {
-    const sum = put.reduce((s, x) => s + x, 0);
-    // sol ağırsa sola, sağ ağırsa sağa yatar
-    const d = Math.max(-1, Math.min(1, (sum - T) / Math.max(4, T / 2)));
-    $("scale").style.setProperty("--a", (d * 14) + "deg");
-    $("panR").innerHTML = put.map((w, i) => `<button type="button" class="wt w${w}" data-i="${i}">${w}</button>`).join("");
-    $("panR").querySelectorAll("button").forEach(b => b.onclick = () => {
-      if(asLocked) return; put.splice(+b.dataset.i, 1); beep(300, .05, "triangle"); draw();
-    });
-    $("psum").textContent = put.length ? put.join(" + ") + " = " + sum : "";
-    if(sum === T && put.length){ asLocked = true; $("scale").classList.add("done"); asRight($t`Dengede! ${f.t} = ${T} ✔`, asScale, 1800); }
-    else if(sum > T) asMsg($t`Çok ağır! Bir ağırlığı geri al 🔙`, "bad");
-    else if(put.length) asMsg($t`Biraz daha ağırlık lazım ➕`);
-  };
-  W.forEach(w => {
-    const b = document.createElement("button");
-    b.type = "button"; b.className = "wt w" + w; b.textContent = w;
-    b.onclick = () => { if(asLocked || put.length >= 14) return; put.push(w); beep(420 + w * 20, .06, "triangle"); draw(); };
-    $("wts").appendChild(b);
-  });
-  draw();
-}
-
-// 📏 Sayı Doğrusu: sonucun yerine dokun
-function asLine(){
-  asClearT(); asLocked = false;
-  const f = asFact(), T = f.ans, top = asOp === "/" ? 10 : asMax;
-  // en çok 20 aralıklık bir parça göster; küçük aralıklarda baştan sona
-  let lo = 0, hi = Math.max(10, top);
-  if(hi > 20){ lo = Math.max(0, Math.floor((T - rnd(2, 15)) / 5) * 5); hi = lo + 20; }
-  const pos = v => (v - lo) / (hi - lo) * 100;
-  let ticks = "";
-  for(let v = lo; v <= hi; v++){
-    const big = v % 5 === 0 || v === lo || v === hi;
-    ticks += `<div class="nl-t${big ? " m" : ""}" style="left:${pos(v)}%">${big ? `<span>${v}</span>` : ""}</div>`;
-  }
-  $("asQ").innerHTML = `<div class="mq">${f.a} <span class="op">${SYM(asOp)}</span> ${f.b} <span class="op">=</span> ?</div>
-    <div class="gtitle">${$t`Sonucu sayı doğrusunda göster! 👇`}</div>
-    <div class="nline" id="nl"><div class="nl-bar"></div>${ticks}<div class="nl-mark ghost" id="nlg" hidden></div><div class="nl-mark" id="nlm" hidden></div></div>`;
-  $("asOpts").innerHTML = ""; $("asOpts").className = "";
-  asMsg($t`Doğrunun üstünde doğru yere dokun 👆`);
-  const nl = $("nl");
-  const at = e => { const r = nl.getBoundingClientRect(); return Math.max(lo, Math.min(hi, Math.round(lo + (e.clientX - r.left) / r.width * (hi - lo)))); };
-  const mark = (el, v) => { el.hidden = false; el.style.left = pos(v) + "%"; el.textContent = v; };
-  nl.onpointermove = e => { if(e.pointerType === "mouse" && !asLocked) mark($("nlg"), at(e)); };
-  nl.onpointerleave = () => { $("nlg").hidden = true; };
-  nl.onclick = e => {
-    if(asLocked) return;
-    const v = at(e); mark($("nlm"), v); $("nlg").hidden = true;
-    if(v === T){ asLocked = true; $("nlm").classList.add("ok"); beep(900, .08, "triangle"); asRight($t`Harika! ${f.t} = ${T} ✔`, asLine, 1600); }
-    else { $("nlm").classList.remove("ok"); asWrong(null, v < T ? $t`Burası ${v}. Biraz daha ileri! ➡️` : $t`Burası ${v}. Biraz daha geri! ⬅️`); }
-  };
-}
-
 // 🍬 Adil Paylaş (bölme sekmesi): çarpım tablosundaki oyunun aynısı, bölme ayarlarıyla
 function asShare(){
   asClearT(); asLocked = false;
@@ -1799,9 +1680,292 @@ function asShare(){
   });
 }
 
-const AS_GAMES = {frog:asFrog, free:asBalloon, time:asBalloon, match:asMatch, pic:asPic, tf:asTF, miss:asMiss, cmp:asCmp, target:asTarget, catch:asCatch, sort:asSort, wall:asWall, scale:asScale, line:asLine, share:asShare};
-// sadece bazı işlemlerde olan oyunlar: sayı duvarı toplama/çıkarmada, adil paylaş bölmede
-const OP_ONLY = {wall:["+", "-"], share:["/"]};
+// ================= ORTAK OYUNLAR: aynı oyun çarpım tablosunda ve toplama/çıkarma/bölmede =================
+// her sekme kendi "bağlamını" verir: soru üretici, kutular, doğru/yanlış tepkileri
+let mLastF = "";
+function mulFact(){
+  let f, g = 0;
+  do{
+    let a = pickTable(), b = rnd(1, 10);
+    if(Math.random() < .5) [a, b] = [b, a];
+    f = {a, b, ans:a * b, t:`${a} × ${b}`};
+  } while(f.t === mLastF && g++ < 20);
+  mLastF = f.t; return f;
+}
+// çarpmada karıştırılabilecek yanlış cevaplar: bir satır fazla/eksik, ±1, ±10
+function mulNear(f, ans){
+  const set = new Set([ans]);
+  for(const c of shuffle([ans + f.a, ans - f.a, ans + f.b, ans - f.b, ans + 1, ans - 1, ans + 10, ans - 10, f.a + f.b])){
+    if(set.size >= 4) break; if(c > 0) set.add(c);
+  }
+  while(set.size < 4) set.add(rnd(1, 100));
+  return shuffle([...set]);
+}
+const MUL_CTX = {
+  op:"x", fact:mulFact, near:mulNear, top:() => 100, ready:() => !noTables(),
+  q:() => $("gq"), o:() => $("gopts"), msg:gMsg, right:gRight, wrong:gWrong, options,
+  locked:() => mLocked, lock:v => { mLocked = v; }, later:later2, clear:stopG,
+};
+const AS_CTX = {
+  get op(){ return asOp; }, fact:() => asFact(), near:(f, ans) => near(f, ans), top:() => asOp === "/" ? 10 : asMax, ready:() => true,
+  q:() => $("asQ"), o:() => $("asOpts"), msg:asMsg, right:asRight, wrong:asWrong, options:asOptions,
+  locked:() => asLocked, lock:v => { asLocked = v; }, later:asLater, clear:asClearT,
+};
+const SIGN = {"+":"+", "-":"−", "/":"÷", x:"×"};
+function begin(c){ c.clear(); c.lock(false); if(!c.ready()) return false; c.o().innerHTML = ""; c.o().className = ""; return true; }
+
+// 📶 Küçükten Büyüğe: işlemlere en küçük sonuçtan en büyüğe doğru dokun
+function sortGame(c){
+  if(!begin(c)) return;
+  const facts = [], seen = new Set();
+  for(let g=0; facts.length < 4 && g < 200; g++){ const f = c.fact(); if(!seen.has(f.ans)){ seen.add(f.ans); facts.push(f); } }
+  const order = [...facts].sort((x, y) => x.ans - y.ans);
+  let next = 0;
+  c.q().innerHTML = `<div class="gtitle">${$t`İşlemlere en küçük sonuçtan en büyüğe doğru dokun!`}</div><div class="tgrid2 sortg"></div>`;
+  c.msg($t`Önce en küçük sonucu bul 👆`);
+  const grid = c.q().querySelector(".sortg");
+  facts.forEach(f => {
+    const b = document.createElement("button"); b.textContent = f.t;
+    b.onclick = () => {
+      if(c.locked() || b.classList.contains("yes")) return;
+      if(f === order[next]){
+        next++; b.classList.add("yes"); b.innerHTML = `<small>${next}.</small> ${f.t} = ${f.ans}`; beep(600 + next*120, .08, "triangle");
+        if(next === order.length){ c.lock(true); c.right($t`Harika sıraladın! ${order.map(x => x.ans).join(" < ")} ✔`, () => sortGame(c), 2200); }
+        else c.msg($t`Süper! Şimdi bir sonraki 👆`, "ok");
+      } else {
+        c.wrong(b, $t`${f.t} = ${f.ans}. Daha küçük bir sonuç var! 🔍`);
+        c.later(() => b.classList.remove("no"), 700);
+      }
+    };
+    grid.appendChild(b);
+  });
+}
+
+// 🧱 Sayı Duvarı: toplama/çıkarmada toplam duvarı, çarpma/bölmede çarpım duvarı (Malmauer)
+//    toplama ve çarpmada üstteki taşlar, çıkarma ve bölmede alttaki taşlar sorulur
+function wallGame(c){
+  if(!begin(c)) return;
+  const op = c.op, times = op === "x" || op === "/";
+  let a, b, cc;
+  if(times){
+    // ortadaki taşlar çarpım tablosunda kalsın (en çok 10)
+    let g = 0;
+    do{ b = Math.random() < .2 ? 1 : rnd(2, 5); a = rnd(1, Math.floor(10 / b)); cc = rnd(1, Math.floor(10 / b)); } while(a * b * b * cc < 4 && g++ < 50);
+  } else {
+    const T = rnd(Math.min(6, asMax), asMax);
+    b = rnd(1, Math.max(1, Math.floor((T - 2) / 2)));
+    const r = T - 2*b; a = rnd(1, Math.max(1, r - 1)); cc = r - a;
+  }
+  const m1 = times ? a * b : a + b, m2 = times ? b * cc : b + cc, T = times ? m1 * m2 : m1 + m2;
+  const v = [T, m1, m2, a, b, cc];
+  const h = op === "+" || op === "x" ? rnd(0, 2) : rnd(3, 5);
+  const P = times ? "×" : "+", M = times ? "÷" : "−";
+  const eq = [[m1, P, m2, T], [a, P, b, m1], [b, P, cc, m2], [m1, M, b, a], [m1, M, a, b], [m2, M, b, cc]][h];
+  const cell = i => `<div class="brick${i === h ? " q" : ""}">${i === h ? "?" : v[i]}</div>`;
+  const title = times ? $t`Çarpım duvarı: Her taş, altındaki iki taşın çarpımı!` : $t`Sayı duvarı: Her taş, altındaki iki taşın toplamı!`;
+  c.q().innerHTML = `<div class="gtitle">${title}</div>
+    <div class="wall"><div class="wall-row">${cell(0)}</div><div class="wall-row">${cell(1)}${cell(2)}</div><div class="wall-row">${cell(3)}${cell(4)}${cell(5)}</div></div>`;
+  c.msg($t`Hangi sayı gelmeli? 🧱`);
+  c.options(c.near({a:eq[0], b:eq[2]}, v[h]).map(x => ({label:x, value:x})), v[h], (btn, right) => {
+    if(right){
+      c.lock(true); btn.classList.add("yes"); c.q().querySelector(".brick.q").textContent = v[h];
+      c.right($t`Harika! ${eq.slice(0, 3).join(" ") + " = " + eq[3]} ✔`, () => wallGame(c), 1600);
+    } else c.wrong(btn, $t`Olmadı, tekrar dene! 💪`);
+  });
+}
+
+// 🏋️ Teraziyi Dengele: soldaki işlemin sonucu kadar ağırlığı sağ kefeye koy
+function scaleGame(c){
+  if(!begin(c)) return;
+  const f = c.fact(), T = f.ans, W = T > 30 ? [1, 2, 5, 10, 20] : [1, 2, 5, 10];
+  const put = [];
+  c.q().innerHTML = `<div class="gtitle">${$t`Teraziyi dengele! Sağ kefeye ağırlık koy ⚖️`}</div>
+    <div class="scale"><div class="stand"></div><div class="beam">
+      <div class="pan L"><span class="load">${f.t}</span></div><div class="pan R"></div>
+    </div></div><div class="psum"></div><div class="weights"></div>`;
+  c.msg($t`Ağırlığa dokun: kefeye koyar. Kefedekine dokun: geri alır.`);
+  const root = c.q(), scale = root.querySelector(".scale"), panR = root.querySelector(".pan.R"), psum = root.querySelector(".psum");
+  const draw = () => {
+    const sum = put.reduce((s, x) => s + x, 0);
+    // sol ağırsa sola, sağ ağırsa sağa yatar
+    const d = Math.max(-1, Math.min(1, (sum - T) / Math.max(4, T / 2)));
+    scale.style.setProperty("--a", (d * 14) + "deg");
+    panR.innerHTML = put.map((w, i) => `<button type="button" class="wt w${w}" data-i="${i}">${w}</button>`).join("");
+    panR.querySelectorAll("button").forEach(b => b.onclick = () => {
+      if(c.locked()) return; put.splice(+b.dataset.i, 1); beep(300, .05, "triangle"); draw();
+    });
+    psum.textContent = put.length ? put.join(" + ") + " = " + sum : "";
+    if(sum === T && put.length){ c.lock(true); scale.classList.add("done"); c.right($t`Dengede! ${f.t} = ${T} ✔`, () => scaleGame(c), 1800); }
+    else if(sum > T) c.msg($t`Çok ağır! Bir ağırlığı geri al 🔙`, "bad");
+    else if(put.length) c.msg($t`Biraz daha ağırlık lazım ➕`);
+  };
+  W.forEach(w => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "wt w" + w; b.textContent = w;
+    b.onclick = () => { if(c.locked() || put.length >= 14) return; put.push(w); beep(420 + w * 20, .06, "triangle"); draw(); };
+    root.querySelector(".weights").appendChild(b);
+  });
+  draw();
+}
+
+// 📏 Sayı Doğrusu: sonucun yerine dokun
+function lineGame(c){
+  if(!begin(c)) return;
+  const f = c.fact(), T = f.ans, top = c.top();
+  // en çok 20 aralıklık bir parça göster; küçük aralıklarda baştan sona
+  let lo = 0, hi = Math.max(10, top);
+  if(hi > 20){ lo = Math.max(0, Math.floor((T - rnd(2, 15)) / 5) * 5); hi = lo + 20; }
+  const pos = v => (v - lo) / (hi - lo) * 100;
+  let ticks = "";
+  for(let v = lo; v <= hi; v++){
+    const big = v % 5 === 0 || v === lo || v === hi;
+    ticks += `<div class="nl-t${big ? " m" : ""}" style="left:${pos(v)}%">${big ? `<span>${v}</span>` : ""}</div>`;
+  }
+  c.q().innerHTML = `<div class="mq">${f.a} <span class="op">${SIGN[c.op]}</span> ${f.b} <span class="op">=</span> ?</div>
+    <div class="gtitle">${$t`Sonucu sayı doğrusunda göster! 👇`}</div>
+    <div class="nline"><div class="nl-bar"></div>${ticks}<div class="nl-mark ghost" hidden></div><div class="nl-mark pick" hidden></div></div>`;
+  c.msg($t`Doğrunun üstünde doğru yere dokun 👆`);
+  const nl = c.q().querySelector(".nline"), ghost = nl.querySelector(".ghost"), mk = nl.querySelector(".pick");
+  const at = e => { const r = nl.getBoundingClientRect(); return Math.max(lo, Math.min(hi, Math.round(lo + (e.clientX - r.left) / r.width * (hi - lo)))); };
+  const mark = (el, v) => { el.hidden = false; el.style.left = pos(v) + "%"; el.textContent = v; };
+  nl.onpointermove = e => { if(e.pointerType === "mouse" && !c.locked()) mark(ghost, at(e)); };
+  nl.onpointerleave = () => { ghost.hidden = true; };
+  nl.onclick = e => {
+    if(c.locked()) return;
+    const v = at(e); mark(mk, v); ghost.hidden = true;
+    if(v === T){ c.lock(true); mk.classList.add("ok"); beep(900, .08, "triangle"); c.right($t`Harika! ${f.t} = ${T} ✔`, () => lineGame(c), 1600); }
+    else { mk.classList.remove("ok"); c.wrong(null, v < T ? $t`Burası ${v}. Biraz daha ileri! ➡️` : $t`Burası ${v}. Biraz daha geri! ⬅️`); }
+  };
+}
+
+// 🟠 Nokta Tarlası (10×10 Punktefeld)
+//   çarpma / bölme: son noktaya dokun → dikdörtgen boyanır (sıra × sütun)
+//   toplama / çıkarma: noktalar sırayla dolar, sonucun olduğu noktaya dokun
+function dotsGame(c){
+  if(!begin(c)) return;
+  const op = c.op, rect = op === "x" || op === "/";
+  let f;
+  if(op === "+" || op === "-"){ const keep = asMax; asMax = Math.min(asMax, 100); f = c.fact(); asMax = keep; }
+  else f = c.fact();
+  let title, hint;
+  if(op === "x"){ title = $t`Nokta tarlasında <b>${f.a} × ${f.b}</b> göster!`; hint = $t`${f.a} sıra, her sırada ${f.b} nokta: son noktaya dokun 👆`; }
+  else if(op === "/"){ title = $t`<b>${f.a}</b> noktayı <b>${f.b}</b> sıraya eşit diz!`; hint = $t`Her sırada kaç nokta olur? Son noktaya dokun 👆`; }
+  else { title = $t`Nokta tarlasında <b>${f.t}</b> sonucunu göster!`; hint = op === "+" ? $t`${f.a} nokta hazır. ${f.b} tane daha ekle: son noktaya dokun 👆` : $t`${f.a} noktadan ${f.b} tanesini çıkar: kalan son noktaya dokun 👆`; }
+  c.q().innerHTML = `<div class="gtitle">${title}</div><div class="dots"></div><div class="dots-lbl">&nbsp;</div>`;
+  c.msg(hint);
+  const box = c.q().querySelector(".dots"), lbl = c.q().querySelector(".dots-lbl");
+  // toplama/çıkarmada başlangıç sayısı açık renkte hazır durur
+  const base = rect ? 0 : f.a;
+  let sel = null;
+  const paint = (r, cl) => {
+    const n = r * 10 + cl + 1;   // toplama/çıkarma: sıra sıra sayılan nokta sayısı
+    box.querySelectorAll(".dot").forEach(d => {
+      const R = +d.dataset.r, C = +d.dataset.c, i = R * 10 + C;
+      const on = r < 0 ? false : rect ? R <= r && C <= cl : i < n;
+      d.classList.toggle("on", on);
+      d.classList.toggle("base", !rect && i < base && !on);
+      d.classList.toggle("gone", op === "-" && r >= 0 && i >= n && i < base);
+    });
+    lbl.innerHTML = r < 0 ? "&nbsp;" : rect ? `${r + 1} × ${cl + 1} = ${(r + 1) * (cl + 1)}` : `${n}`;
+  };
+  const check = (r, cl) => {
+    if(op === "x"){
+      if(r + 1 === f.a && cl + 1 === f.b) return [true, $t`Evet! ${f.a} × ${f.b} = ${f.ans} ✔`];
+      return [false, $t`Bu ${r + 1} × ${cl + 1}. ${f.a} sıra ve her sırada ${f.b} nokta olmalı!`];
+    }
+    if(op === "/"){
+      if(r + 1 === f.b && cl + 1 === f.ans) return [true, $t`Evet! ${f.a} ÷ ${f.b} = ${f.ans} ✔`];
+      if(r + 1 !== f.b) return [false, $t`${f.b} sıra olmalı, sen ${r + 1} sıra seçtin 🔍`];
+      return [false, $t`${r + 1} × ${cl + 1} = ${(r + 1) * (cl + 1)}, ${f.a} değil! 🔍`];
+    }
+    const n = r * 10 + cl + 1;
+    return n === f.ans ? [true, $t`Harika! ${f.t} = ${f.ans} ✔`] : [false, $t`Bu ${n} nokta. Tekrar say! 🔍`];
+  };
+  for(let r = 0; r < 10; r++) for(let cl = 0; cl < 10; cl++){
+    const d = document.createElement("button");
+    d.type = "button"; d.className = "dot"; d.dataset.r = r; d.dataset.c = cl;
+    d.setAttribute("aria-label", rect ? `${r + 1} × ${cl + 1}` : `${r * 10 + cl + 1}`);
+    // farede önizleme: üstüne gelince boyanır
+    d.onpointerenter = e => { if(e.pointerType === "mouse" && !c.locked()) paint(r, cl); };
+    d.onclick = () => {
+      if(c.locked()) return;
+      sel = [r, cl]; paint(r, cl); beep(500 + (r * 10 + cl) * 4, .06, "triangle");
+      const [ok, text] = check(r, cl);
+      if(ok){ c.lock(true); box.classList.add("done"); c.right(text, () => dotsGame(c), 1700); }
+      else c.wrong(null, text);
+    };
+    box.appendChild(d);
+  }
+  box.onpointerleave = () => { if(!c.locked()) sel ? paint(...sel) : paint(-1, 0); };
+  paint(-1, 0);
+}
+
+// 🍬 Şeker Kutusu (toplama / çıkarma): şekerler gelir ya da yenir
+function asCandy(){
+  asClearT(); asLocked = false;
+  const keep = asMax; asMax = Math.min(asMax, 40); const f = asFact(); asMax = keep;
+  const add = asOp === "+";
+  const box = add
+    ? `<div class="candies">${"🍬".repeat(f.a)}</div><span class="sign">+</span><div class="candies">${"🍬".repeat(f.b)}</div>`
+    : `<div class="candies">${"🍬".repeat(f.ans)}${'<span class="gone"><i>🍬</i></span>'.repeat(f.b)}</div>`;
+  const title = add ? $t`Kutuda <b>${f.a}</b> şeker var, <b>${f.b}</b> şeker daha geliyor. Kaç şeker oldu?`
+                    : $t`Kutuda <b>${f.a}</b> şeker vardı, <b>${f.b}</b> tanesi yendi. Kaç şeker kaldı?`;
+  $("asQ").innerHTML = `<div class="gtitle">${title}</div><div class="pic">${box}</div>`;
+  asMsg($t`Şekerleri say ya da hesapla 🍬`);
+  asOptions(numOpts(near(f)), f.ans, (b, right) => {
+    if(right){ asLocked = true; b.classList.add("yes"); asRight(`${f.t} = ${f.ans} ✔`, asCandy, 1500); }
+    else asWrong(b, $t`Olmadı, tekrar dene! 💪`);
+  });
+}
+
+// 🏠 Sayı Evi (Zahlenhaus, toplama / çıkarma): çatıdaki sayıyı her katta ikiye ayır
+function asHouse(){
+  asClearT(); asLocked = false;
+  const R = rnd(Math.min(5, asMax), Math.min(asMax, 100));
+  const lefts = shuffle(Array.from({length:R - 1}, (_, i) => i + 1)).slice(0, Math.min(4, R - 1)).sort((x, y) => x - y);
+  let cur = 0;
+  const title = asOp === "+" ? $t`Sayı evi: Her katta iki sayının toplamı <b>${R}</b>!` : $t`Sayı evi: Çatıdaki <b>${R}</b> sayısından soldaki sayıyı çıkar!`;
+  $("asQ").innerHTML = `<div class="gtitle">${title}</div>
+    <div class="nhouse"><div class="roof"><span>${R}</span></div>${lefts.map((x, i) =>
+      `<div class="floor" data-i="${i}"><span>${x}</span><span class="qbox">?</span></div>`).join("")}</div>`;
+  const ask = () => {
+    const x = lefts[cur];
+    $("asQ").querySelectorAll(".floor").forEach((fl, i) => fl.classList.toggle("cur", i === cur));
+    asMsg(asOp === "+" ? $t`${x} ve kaç ${R} eder? 🏠` : `${R} − ${x} = ? 🏠`);
+    asOptions(numOpts(near({a:R, b:x}, R - x)), R - x, (b, right) => {
+      if(!right){ asWrong(b, $t`Olmadı, tekrar dene! 💪`); return; }
+      const fl = $("asQ").querySelector(`.floor[data-i="${cur}"]`);
+      fl.querySelector(".qbox").textContent = R - x; fl.classList.remove("cur"); fl.classList.add("done");
+      beep(700 + cur * 100, .08, "triangle"); cur++;
+      if(cur < lefts.length){ asLocked = true; asLater(() => { asLocked = false; ask(); }, 500); return; }
+      asLocked = true;
+      asRight($t`Evin bütün katları doldu! 🏠 ${lefts.map(x => asOp === "+" ? `${x} + ${R - x}` : `${R} − ${x} = ${R - x}`).join(" · ")}`, asHouse, 2400);
+    });
+  };
+  ask();
+}
+
+// 🏠 Hangi Sayıya Bölünür? (bölme): sayı hangi bölene tam bölünür
+function asHouseDiv(){
+  asClearT(); asLocked = false;
+  let f = asFact();
+  for(let g = 0; f.b < 2 && g < 30; g++) f = asFact();
+  const N = f.a, t = Math.max(2, f.b);
+  // yanlış seçenekler gerçekten tam bölmeyen sayılar olmalı (ör. 30 için 2 de doğru olurdu)
+  const wrongs = shuffle([2,3,4,5,6,7,8,9,10].filter(x => N % x !== 0)).slice(0, 3);
+  $("asQ").innerHTML = `<div class="gtitle">${$t`<b>${N}</b> hangi sayıya tam bölünür?`}</div><div class="target">${N}</div>`;
+  asMsg($t`Sadece bir cevap doğru! 🏠`);
+  asOptions(shuffle([t, ...wrongs]).map(x => ({label:`÷ ${x}`, value:x})), t, (b, right) => {
+    if(right){ asLocked = true; b.classList.add("yes"); asRight($t`Evet! ${N} ÷ ${t} = ${N / t} ✔`, asHouseDiv, 1600); }
+    else asWrong(b, $t`${N} sayısı ${b.textContent.replace("÷ ", "")} ile tam bölünmez! 🔍`);
+  });
+}
+
+const AS_GAMES = {frog:asFrog, free:asBalloon, time:asBalloon, match:asMatch, pic:asPic, tf:asTF, miss:asMiss, cmp:asCmp, target:asTarget, catch:asCatch,
+  sort:() => sortGame(AS_CTX), wall:() => wallGame(AS_CTX), scale:() => scaleGame(AS_CTX), line:() => lineGame(AS_CTX), dots:() => dotsGame(AS_CTX),
+  candy:asCandy, share:asShare, house:asHouse, houseDiv:asHouseDiv};
+// aynı yerdeki oyunun işleme göre iki hâli: şeker kutusu / adil paylaş, sayı evi / hangi sayıya bölünür
+const OP_ONLY = {candy:["+", "-"], share:["/"], house:["+", "-"], houseDiv:["/"]};
 function asNew(){ AS_GAMES[asGame](); }
 function asReset(){
   asStop(); asCorrect = 0; asLocked = false;
