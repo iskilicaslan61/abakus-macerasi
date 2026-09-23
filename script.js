@@ -234,6 +234,37 @@ const I18N = {
   "Hangi sayı gelmeli? 🧱": ["Which number goes here? 🧱", "Welche Zahl gehört hierhin? 🧱", "Quel nombre va ici ? 🧱"],
   "Harika! {0} ✔": ["Great! {0} ✔", "Super! {0} ✔", "Génial ! {0} ✔"],
   // etkileşimli oyunlar
+  "🔗 Eşleştir": ["🔗 Match Up", "🔗 Paare verbinden", "🔗 Relie les paires"],
+  "⌨️ Kendin Yaz": ["⌨️ Type It", "⌨️ Selbst eintippen", "⌨️ Écris-le toi-même"],
+  "🔎 Hangisi Farklı?": ["🔎 Odd One Out", "🔎 Was passt nicht?", "🔎 Trouve l'intrus"],
+  "🐛 İşlem Zinciri": ["🐛 Number Chain", "🐛 Rechenkette", "🐛 Chaîne de calcul"],
+  "Her işlemi sonucuyla eşleştir!": ["Match each problem with its answer!", "Verbinde jede Aufgabe mit ihrem Ergebnis!", "Relie chaque calcul à son résultat !"],
+  "Bir işleme, sonra sonucuna dokun 👆": ["Tap a problem, then its answer 👆", "Tippe eine Aufgabe an, dann ihr Ergebnis 👆", "Touche un calcul, puis son résultat 👆"],
+  "Süper! {0} = {1} ✔": ["Great! {0} = {1} ✔", "Super! {0} = {1} ✔", "Super ! {0} = {1} ✔"],
+  "{0} ≠ {1}. Tekrar dene! 🔍": ["{0} ≠ {1}. Try again! 🔍", "{0} ≠ {1}. Versuch es nochmal! 🔍", "{0} ≠ {1}. Réessaie ! 🔍"],
+  "Hepsini eşleştirdin! 🔗": ["You matched them all! 🔗", "Alle Paare verbunden! 🔗", "Tout est relié ! 🔗"],
+  "Cevabı tuşlarla yaz, sonra ✅ tuşuna bas": ["Type the answer, then press ✅", "Tippe das Ergebnis ein und drücke ✅", "Écris le résultat, puis appuie sur ✅"],
+  "{0} değil. Tekrar dene! 💪": ["Not {0}. Try again! 💪", "Nicht {0}. Versuch es nochmal! 💪", "Ce n'est pas {0}. Réessaie ! 💪"],
+  "Hangi işlemin sonucu farklı?": ["Which problem has a different answer?", "Welche Aufgabe hat ein anderes Ergebnis?", "Quel calcul a un résultat différent ?"],
+  "Diğerlerinin hepsi aynı sonucu veriyor 🔎": ["All the others have the same answer 🔎", "Alle anderen haben dasselbe Ergebnis 🔎", "Tous les autres ont le même résultat 🔎"],
+  "Evet! Diğerleri {0}, bu {1} ✔": ["Yes! The others make {0}, this one makes {1} ✔", "Ja! Die anderen ergeben {0}, diese {1} ✔", "Oui ! Les autres font {0}, celui-ci {1} ✔"],
+  "{0} = {1}. Bu diğerleriyle aynı! 🔍": ["{0} = {1}. That matches the others! 🔍", "{0} = {1}. Das passt zu den anderen! 🔍", "{0} = {1}. Comme les autres ! 🔍"],
+  "Zinciri adım adım hesapla! 🐛": ["Work through the chain step by step! 🐛", "Rechne die Kette Schritt für Schritt! 🐛", "Calcule la chaîne pas à pas ! 🐛"],
+  "Zincir tamam! {0}": ["Chain complete! {0}", "Kette geschafft! {0}", "Chaîne terminée ! {0}"],
+  "🟰 İşareti Bul": ["🟰 Find the Sign", "🟰 Rechenzeichen finden", "🟰 Trouve le signe"],
+  "✅ Hepsini Bul": ["✅ Find Them All", "✅ Alle finden", "✅ Trouve-les tous"],
+  "🔺 Hesap Üçgeni": ["🔺 Number Triangle", "🔺 Rechendreieck", "🔺 Triangle de calcul"],
+  "🐟 Balık Tut": ["🐟 Go Fishing", "🐟 Fische angeln", "🐟 Pêche le poisson"],
+  "Hangi işaret gelmeli?": ["Which sign is missing?", "Welches Rechenzeichen fehlt?", "Quel signe manque ?"],
+  "İşarete dokun 👇": ["Tap a sign 👇", "Tippe auf ein Rechenzeichen 👇", "Touche un signe 👇"],
+  "Sonucu <b>{0}</b> olan bütün işlemleri bul!": ["Find all the problems that make <b>{0}</b>!", "Finde alle Aufgaben mit dem Ergebnis <b>{0}</b>!", "Trouve tous les calculs qui font <b>{0}</b> !"],
+  "{0} tane var. Bulunan: {1} 🔍": ["There are {0}. Found: {1} 🔍", "Es gibt {0}. Gefunden: {1} 🔍", "Il y en a {0}. Trouvés : {1} 🔍"],
+  "Hepsini buldun! ✅ {0} = {1}": ["You found them all! ✅ {0} = {1}", "Alle gefunden! ✅ {0} = {1}", "Tu les as tous trouvés ! ✅ {0} = {1}"],
+  "{0} = {1}, {2} değil! 🔍": ["{0} = {1}, not {2}! 🔍", "{0} = {1}, nicht {2}! 🔍", "{0} = {1}, pas {2} ! 🔍"],
+  "Hesap üçgeni: Kenardaki sayı, yanındaki iki sayının toplamı!": ["Number triangle: each outside number is the sum of the two inside numbers next to it!", "Rechendreieck: Die Zahl außen ist die Summe der beiden Zahlen innen daneben!", "Triangle de calcul : le nombre à l'extérieur est la somme des deux nombres à côté !"],
+  "Hesap üçgeni: Kenardaki sayı, yanındaki iki sayının çarpımı!": ["Number triangle: each outside number is the product of the two inside numbers next to it!", "Maldreieck: Die Zahl außen ist das Produkt der beiden Zahlen innen daneben!", "Triangle de calcul : le nombre à l'extérieur est le produit des deux nombres à côté !"],
+  "Doğru sonucu taşıyan balığı yakala! 🎣": ["Catch the fish with the right answer! 🎣", "Angle den Fisch mit dem richtigen Ergebnis! 🎣", "Attrape le poisson avec le bon résultat ! 🎣"],
+  "Balığa dokun 👆": ["Tap a fish 👆", "Tippe auf einen Fisch 👆", "Touche un poisson 👆"],
   "🟠 Nokta Tarlası": ["🟠 Dot Field", "🟠 Punktefeld", "🟠 Champ de points"],
   "🏋️ Teraziyi Dengele": ["🏋️ Balance the Scale", "🏋️ Waage ausgleichen", "🏋️ Équilibre la balance"],
   "📏 Sayı Doğrusu": ["📏 Number Line", "📏 Zahlenstrahl", "📏 Droite numérique"],
@@ -707,6 +738,14 @@ function mNew(){
   if(mGame === "wall") return wallGame(MUL_CTX);
   if(mGame === "scale") return scaleGame(MUL_CTX);
   if(mGame === "line") return lineGame(MUL_CTX);
+  if(mGame === "pairs") return pairsGame(MUL_CTX);
+  if(mGame === "type") return typeGame(MUL_CTX);
+  if(mGame === "odd") return oddGame(MUL_CTX);
+  if(mGame === "chain") return chainGame(MUL_CTX);
+  if(mGame === "sign") return signGame(MUL_CTX);
+  if(mGame === "find") return findGame(MUL_CTX);
+  if(mGame === "tri") return triGame(MUL_CTX);
+  if(mGame === "fish") return fishGame(MUL_CTX);
   mLocked = false;
   const list = [...picked], box = $("balloons"), m = $("mmsg");
   if(!list.length){ m.textContent = $t`Soldan en az bir tablo seç! 👈`; m.className = "msg bad"; box.innerHTML = ""; return; }
@@ -857,7 +896,7 @@ function flip(el, c){
 }
 
 // ---------- yeni oyunlar için ortak yardımcılar ----------
-const G_GAMES = ["arr", "frog", "tf", "miss", "cmp", "target", "catch", "sort", "wall", "scale", "line", "share", "house", "dots"];
+const G_GAMES = ["arr", "frog", "tf", "miss", "cmp", "target", "catch", "sort", "wall", "scale", "line", "share", "house", "dots", "pairs", "type", "odd", "chain", "sign", "find", "tri", "fish"];
 const shuffle = a => a.sort(() => Math.random() - .5);
 const pickTable = () => { const l = [...picked]; return l[rnd(0, l.length-1)]; };
 function gMsg(t, cls=""){ const m = $("gmsg"); m.textContent = t; m.className = "msg " + cls; }
@@ -1724,8 +1763,7 @@ function begin(c){ c.clear(); c.lock(false); if(!c.ready()) return false; c.o().
 // 📶 Küçükten Büyüğe: işlemlere en küçük sonuçtan en büyüğe doğru dokun
 function sortGame(c){
   if(!begin(c)) return;
-  const facts = [], seen = new Set();
-  for(let g=0; facts.length < 4 && g < 200; g++){ const f = c.fact(); if(!seen.has(f.ans)){ seen.add(f.ans); facts.push(f); } }
+  const facts = uniqFacts(c, 4);
   const order = [...facts].sort((x, y) => x.ans - y.ans);
   let next = 0;
   c.q().innerHTML = `<div class="gtitle">${$t`İşlemlere en küçük sonuçtan en büyüğe doğru dokun!`}</div><div class="tgrid2 sortg"></div>`;
@@ -1907,6 +1945,312 @@ function dotsGame(c){
   paint(-1, 0);
 }
 
+// sonuçları birbirinden farklı n işlem
+function uniqFacts(c, n){
+  const facts = [], seen = new Set();
+  for(let g = 0; facts.length < n && g < 200; g++){ const f = c.fact(); if(!seen.has(f.ans)){ seen.add(f.ans); facts.push(f); } }
+  return facts;
+}
+
+// 🔗 Eşleştir: soldaki işlemi sağdaki sonucuyla eşleştir (önce hangi taraf seçilirse)
+function pairsGame(c){
+  if(!begin(c)) return;
+  const facts = uniqFacts(c, 4), sel = {L:null, R:null};
+  let done = 0;
+  c.q().innerHTML = `<div class="gtitle">${$t`Her işlemi sonucuyla eşleştir!`}</div><div class="pairs"><div class="pcol"></div><div class="pcol"></div></div>`;
+  c.msg($t`Bir işleme, sonra sonucuna dokun 👆`);
+  const [colL, colR] = c.q().querySelectorAll(".pcol");
+  const tryPair = () => {
+    const l = sel.L, r = sel.R;
+    if(!l || !r) return;
+    sel.L = sel.R = null; l.classList.remove("sel"); r.classList.remove("sel");
+    if(l.f.ans === r.v){
+      done++; [l, r].forEach(b => { b.classList.add("yes"); b.dataset.p = done; });
+      beep(600 + done * 120, .08, "triangle");
+      if(done === facts.length){ c.lock(true); c.right($t`Hepsini eşleştirdin! 🔗`, () => pairsGame(c), 1800); }
+      else c.msg($t`Süper! ${l.f.t} = ${r.v} ✔`, "ok");
+    } else {
+      c.wrong(null, $t`${l.f.t} ≠ ${r.v}. Tekrar dene! 🔍`);
+      [l, r].forEach(b => { b.classList.add("no"); c.later(() => b.classList.remove("no"), 700); });
+    }
+  };
+  const add = (col, side, text, setup) => {
+    const b = document.createElement("button"); b.type = "button"; b.textContent = text; setup(b);
+    b.onclick = () => {
+      if(c.locked() || b.classList.contains("yes")) return;
+      if(sel[side]) sel[side].classList.remove("sel");
+      sel[side] = sel[side] === b ? null : b;
+      if(sel[side]) b.classList.add("sel");
+      beep(420, .04, "triangle"); tryPair();
+    };
+    col.appendChild(b);
+  };
+  shuffle([...facts]).forEach(f => add(colL, "L", f.t, b => { b.f = f; }));
+  shuffle(facts.map(f => f.ans)).forEach(v => add(colR, "R", v, b => { b.v = v; }));
+}
+
+// ⌨️ Kendin Yaz: seçenek yok, cevabı tuşlarla yaz
+function typeGame(c){
+  if(!begin(c)) return;
+  const f = c.fact();
+  let v = "";
+  c.q().innerHTML = `<div class="mq">${f.a} <span class="op">${SIGN[c.op]}</span> ${f.b} <span class="op">=</span> <span class="tval">?</span></div>`;
+  c.msg($t`Cevabı tuşlarla yaz, sonra ✅ tuşuna bas`);
+  const out = c.q().querySelector(".tval"), pad = c.o();
+  pad.className = "tpad";
+  const tap = k => {
+    if(c.locked()) return;
+    if(k === "✅"){
+      if(!v) return;
+      if(+v === f.ans){ c.lock(true); out.classList.add("ok"); c.right(`${f.t} = ${f.ans} ✔`, () => typeGame(c), 1400); }
+      else { c.wrong(null, $t`${v} değil. Tekrar dene! 💪`); v = ""; out.textContent = "?"; }
+      return;
+    }
+    v = k === "⌫" ? v.slice(0, -1) : v.length < 3 ? (v === "0" ? "" : v) + k : v;
+    out.textContent = v || "?"; beep(500, .04, "triangle");
+  };
+  ["1","2","3","4","5","6","7","8","9","⌫","0","✅"].forEach(k => {
+    const b = document.createElement("button"); b.type = "button"; b.textContent = k; b.dataset.k = k;
+    if(k === "✅") b.className = "go";
+    b.onclick = () => tap(k); pad.appendChild(b);
+  });
+}
+// klavyeden de yazılabilsin: rakamlar, ⌫, Enter
+document.addEventListener("keydown", e => {
+  if(e.target.tagName === "INPUT" || atHome()) return;
+  const pad = document.querySelector(`#${tab} .tpad`);
+  if(!pad || pad.closest("[hidden]")) return;
+  const k = /^[0-9]$/.test(e.key) ? e.key : e.key === "Backspace" ? "⌫" : e.key === "Enter" ? "✅" : null;
+  const b = k && pad.querySelector(`[data-k="${k}"]`);
+  if(b){ e.preventDefault(); b.click(); }
+});
+
+// 🔎 Hangisi Farklı?: sonuçları aynı olan işlemlerin arasında farklı olanı bul
+// çok sayıda işlem üret, sonuca göre grupla: {sonuç → {işlem metni → işlem}}
+function factGroups(c){
+  const by = new Map(), all = [];
+  for(let g = 0; g < 300; g++){
+    const f = c.fact(); all.push(f);
+    if(!by.has(f.ans)) by.set(f.ans, new Map());
+    by.get(f.ans).set(f.t, f);
+  }
+  return {by, all};
+}
+function oddGame(c){
+  if(!begin(c)) return;
+  const {by, all} = factGroups(c);
+  const groups = [...by.values()].filter(m => m.size >= 2);
+  if(!groups.length) return pairsGame(c);
+  const big = groups.filter(m => m.size >= 3), pool = big.length ? big : groups;
+  const same = shuffle([...pool[rnd(0, pool.length - 1)].values()]).slice(0, 3), S = same[0].ans;
+  // farklı olanın sonucu yakın olsun ki hemen belli olmasın
+  const others = all.filter(f => f.ans !== S).sort((x, y) => Math.abs(x.ans - S) - Math.abs(y.ans - S));
+  const odd = others[rnd(0, Math.min(4, others.length - 1))];
+  if(!odd) return pairsGame(c);
+  const items = shuffle([...same, odd]);
+  c.q().innerHTML = `<div class="gtitle">${$t`Hangi işlemin sonucu farklı?`}</div><div class="tgrid2 oddg"></div>`;
+  c.msg($t`Diğerlerinin hepsi aynı sonucu veriyor 🔎`);
+  const grid = c.q().querySelector(".oddg");
+  items.forEach(f => {
+    const b = document.createElement("button"); b.type = "button"; b.textContent = f.t;
+    b.onclick = () => {
+      if(c.locked()) return;
+      if(f === odd){
+        c.lock(true); b.classList.add("yes");
+        grid.querySelectorAll("button").forEach((x, i) => { x.textContent = `${items[i].t} = ${items[i].ans}`; });
+        c.right($t`Evet! Diğerleri ${S}, bu ${odd.ans} ✔`, () => oddGame(c), 2000);
+      } else {
+        c.wrong(b, $t`${f.t} = ${S}. Bu diğerleriyle aynı! 🔍`);
+        c.later(() => b.classList.remove("no"), 700);
+      }
+    };
+    grid.appendChild(b);
+  });
+}
+
+// 🐛 İşlem Zinciri: bir sayıdan başla, üç adımı sırayla hesapla
+const CALC = {"+":(x, n) => x + n, "−":(x, n) => x - n, "×":(x, n) => x * n, "÷":(x, n) => x / n};
+function chainGame(c){
+  if(!begin(c)) return;
+  const op = c.op, steps = [];
+  let s;
+  if(op === "x"){
+    // t, t × b, sonra bir sıra ekle / çıkar
+    const t = pickTable(), b = rnd(1, 8);
+    s = t; steps.push(["×", b], ["+", t], [Math.random() < .5 ? "+" : "−", t]);
+  } else if(op === "/"){
+    const b = asDiv[rnd(0, asDiv.length - 1)], q = rnd(1, qMax(b)), k = asDiv[rnd(0, asDiv.length - 1)];
+    s = b * q; steps.push(["÷", b], ["×", k], ["÷", q]);
+  } else {
+    const top = Math.max(6, Math.min(asMax, 100)), cap = top > 20 ? 20 : 9;
+    let v = op === "+" ? rnd(0, Math.floor(top / 4)) : top - rnd(0, Math.floor(top / 4));
+    s = v;
+    for(let i = 0; i < 3; i++){
+      const room = op === "+" ? top - v : v;
+      const d = rnd(1, Math.max(1, Math.min(cap, Math.floor(room / (3 - i)))));
+      steps.push([op === "+" ? "+" : "−", d]); v = CALC[steps[i][0]](v, d);
+    }
+  }
+  const vals = [s];
+  steps.forEach(([o, n]) => vals.push(CALC[o](vals.at(-1), n)));
+  let cur = 0;
+  c.q().innerHTML = `<div class="gtitle">${$t`Zinciri adım adım hesapla! 🐛`}</div>
+    <div class="chain"><div class="ch-n start">${s}</div>${steps.map(([o, n], i) =>
+      `<div class="ch-op">${o} ${n}</div><div class="ch-n" data-i="${i}">?</div>`).join("")}</div>`;
+  const ask = () => {
+    const [o, n] = steps[cur], ans = vals[cur + 1];
+    c.q().querySelectorAll(".ch-n[data-i]").forEach(el => el.classList.toggle("cur", +el.dataset.i === cur));
+    c.msg(`${vals[cur]} ${o} ${n} = ? 🐛`);
+    const set = new Set([ans]);
+    for(const x of shuffle([ans + 1, ans - 1, ans + 2, ans - 2, ans + 10, ans - 10, CALC[o === "+" ? "−" : "+"](vals[cur], n)])){
+      if(set.size >= 4) break; if(x >= 0 && x !== vals[cur]) set.add(x);
+    }
+    while(set.size < 4) set.add(ans + set.size + 2);
+    c.options(shuffle([...set]).map(x => ({label:x, value:x})), ans, (btn, right) => {
+      if(!right){ c.wrong(btn, $t`Olmadı, tekrar dene! 💪`); return; }
+      const el = c.q().querySelector(`.ch-n[data-i="${cur}"]`);
+      el.textContent = ans; el.classList.remove("cur"); el.classList.add("done"); btn.classList.add("yes");
+      beep(650 + cur * 120, .08, "triangle"); cur++;
+      c.lock(true);
+      if(cur < steps.length){ c.later(() => { c.lock(false); ask(); }, 550); return; }
+      c.right($t`Zincir tamam! ${vals.join(" → ")}`, () => chainGame(c), 2200);
+    });
+  };
+  ask();
+}
+
+// 🟰 İşareti Bul: 12 ? 3 = 4 → hangi işaret? (birden fazla işaret doğruysa hepsi kabul)
+//    her sekmede dört işlem karışık gelir: torbadan çekilir, her 4 soruda her işaret bir kez
+let signBag = [];
+function signFact(c, op){
+  if(op === c.op) return c.fact();   // sekmenin kendi işlemi kendi ayarlarıyla
+  // diğer işlemler sekmedeki sayı sınırına uysun (toplama/çıkarmada ayar, diğerlerinde 100)
+  const L = c.op === "+" || c.op === "-" ? Math.max(10, Math.min(asMax, 100)) : 100;
+  const small = () => rnd(2, Math.min(10, Math.max(2, Math.floor(L / 2))));
+  let a, b;
+  if(op === "+"){ const s = rnd(2, L); a = rnd(1, s - 1); b = s - a; return {a, b, ans:s}; }
+  if(op === "-"){ a = rnd(2, L); b = rnd(1, a - 1); return {a, b, ans:a - b}; }
+  if(op === "x"){ a = small(); b = rnd(1, Math.min(10, Math.floor(L / a))); return Math.random() < .5 ? {a, b, ans:a * b} : {a:b, b:a, ans:a * b}; }
+  b = small(); const q = rnd(1, Math.min(10, Math.floor(L / b)));
+  return {a:b * q, b, ans:q};
+}
+function signGame(c){
+  if(!begin(c)) return;
+  if(!signBag.length) signBag = shuffle(["+", "-", "x", "/"]);
+  const f = signFact(c, signBag.pop());
+  c.q().innerHTML = `<div class="gtitle">${$t`Hangi işaret gelmeli?`}</div>
+    <div class="mq">${f.a} <span class="sq">?</span> ${f.b} <span class="op">=</span> ${f.ans}</div>`;
+  c.msg($t`İşarete dokun 👇`);
+  c.options(["+", "−", "×", "÷"].map(s => ({label:s, value:s})), null, btn => {
+    const s = btn.textContent, eq = `${f.a} ${s} ${f.b}`;
+    if(CALC[s](f.a, f.b) === f.ans){
+      c.lock(true); btn.classList.add("yes");
+      const sq = c.q().querySelector(".sq"); sq.textContent = s; sq.classList.add("ok");
+      c.right(`${eq} = ${f.ans} ✔`, () => signGame(c), 1500);
+    } else c.wrong(btn, $t`${eq} ≠ ${f.ans}. Tekrar dene! 🔍`);
+  }, "signs");
+}
+
+// ✅ Hepsini Bul: 3×3 tabloda sonucu hedef sayı olan bütün işlemlere dokun
+function findGame(c){
+  if(!begin(c)) return;
+  const {by, all} = factGroups(c);
+  const groups = [...by.values()].filter(m => m.size >= 2), big = groups.filter(m => m.size >= 3);
+  const pool = big.length ? big : groups.length ? groups : [...by.values()];
+  const hits = shuffle([...pool[rnd(0, pool.length - 1)].values()]).slice(0, 3), T = hits[0].ans;
+  const rest = new Map();
+  for(const f of shuffle(all)) if(f.ans !== T && !rest.has(f.t)) rest.set(f.t, f);
+  const items = shuffle([...hits, ...[...rest.values()].slice(0, 9 - hits.length)]);
+  let found = 0;
+  c.q().innerHTML = `<div class="gtitle">${$t`Sonucu <b>${T}</b> olan bütün işlemleri bul!`}</div><div class="tgrid2 findg"></div>`;
+  c.msg($t`${hits.length} tane var. Bulunan: ${0} 🔍`);
+  const grid = c.q().querySelector(".findg");
+  items.forEach(f => {
+    const b = document.createElement("button"); b.type = "button"; b.textContent = f.t;
+    b.onclick = () => {
+      if(c.locked() || b.classList.contains("yes")) return;
+      if(f.ans === T){
+        found++; b.classList.add("yes"); beep(600 + found * 120, .08, "triangle");
+        if(found === hits.length){ c.lock(true); c.right($t`Hepsini buldun! ✅ ${hits.map(x => x.t).join(" = ")} = ${T}`, () => findGame(c), 2200); }
+        else c.msg($t`${hits.length} tane var. Bulunan: ${found} 🔍`, "ok");
+      } else {
+        c.wrong(b, $t`${f.t} = ${f.ans}, ${T} değil! 🔍`);
+        c.later(() => b.classList.remove("no"), 700);
+      }
+    };
+    grid.appendChild(b);
+  });
+}
+
+// 🔺 Hesap Üçgeni (Rechendreieck): içteki iki sayının toplamı / çarpımı yanlarındaki kenara yazılır
+//    toplama ve çarpmada kenardaki sayı, çıkarma ve bölmede içteki sayı sorulur
+function triGame(c){
+  if(!begin(c)) return;
+  const op = c.op, times = op === "x" || op === "/";
+  let v;
+  if(times){
+    const t = op === "x" ? pickTable() : asDiv[rnd(0, asDiv.length - 1)];
+    v = shuffle([t, rnd(1, 10), rnd(2, 10)]);
+  } else {
+    const h = Math.max(3, Math.floor(Math.min(asMax, 100) / 2));
+    v = [rnd(1, h), rnd(1, h), rnd(1, h)];
+  }
+  // iç: 0 üst, 1 sol alt, 2 sağ alt · kenar: 3 sol (0+1), 4 sağ (0+2), 5 alt (1+2)
+  const P = times ? "×" : "+", M = times ? "÷" : "−", calc = (x, y) => times ? x * y : x + y;
+  const sides = [[0, 1], [0, 2], [1, 2]];
+  v.push(...sides.map(([x, y]) => calc(v[x], v[y])));
+  let h, eq;
+  if(op === "+" || op === "x"){
+    h = rnd(3, 5); const [x, y] = sides[h - 3]; eq = [v[x], P, v[y]];
+  } else {
+    // sorulan içteki sayı: yanındaki kenardan diğer içteki sayıyı çıkar / böl
+    h = rnd(0, 2); const s = rnd(0, 1), k = sides.findIndex(p => p.includes(h) && p.includes([0, 1, 2].filter(i => i !== h)[s]));
+    const other = sides[k].find(i => i !== h); eq = [v[k + 3], M, v[other]];
+  }
+  const cell = (i, cls) => `<div class="tri-${cls}${i === h ? " q" : ""}" data-i="${i}">${i === h ? "?" : v[i]}</div>`;
+  const title = times ? $t`Hesap üçgeni: Kenardaki sayı, yanındaki iki sayının çarpımı!` : $t`Hesap üçgeni: Kenardaki sayı, yanındaki iki sayının toplamı!`;
+  c.q().innerHTML = `<div class="gtitle">${title}</div>
+    <div class="tri"><svg viewBox="0 0 100 90" aria-hidden="true"><polygon points="50,4 4,86 96,86"/><polyline points="27,45 50,86 73,45 27,45"/></svg>
+      ${cell(0, "in t0")}${cell(1, "in t1")}${cell(2, "in t2")}${cell(3, "out s0")}${cell(4, "out s1")}${cell(5, "out s2")}</div>`;
+  c.msg(`${eq.join(" ")} = ? 🔺`);
+  c.options(c.near({a:eq[0], b:eq[2]}, v[h]).map(x => ({label:x, value:x})), v[h], (btn, right) => {
+    if(right){
+      c.lock(true); btn.classList.add("yes");
+      const q = c.q().querySelector(".tri .q"); q.textContent = v[h]; q.classList.add("ok");
+      c.right($t`Harika! ${eq.join(" ") + " = " + v[h]} ✔`, () => triGame(c), 1700);
+    } else c.wrong(btn, $t`Olmadı, tekrar dene! 💪`);
+  });
+}
+
+// 🐟 Balık Tut: gölde yüzen balıklardan doğru sonucu taşıyanı yakala
+function fishGame(c){
+  if(!begin(c)) return;
+  const f = c.fact(), nums = c.near(f, f.ans);
+  c.q().innerHTML = `<div class="gtitle">${$t`Doğru sonucu taşıyan balığı yakala! 🎣`}</div>
+    <div class="mq">${f.a} <span class="op">${SIGN[c.op]}</span> ${f.b} <span class="op">=</span> ?</div><div class="pond"></div>`;
+  c.msg($t`Balığa dokun 👆`);
+  const pond = c.q().querySelector(".pond");
+  const fish = ["🐟", "🐡", "🐟", "🐡"];
+  shuffle(nums).forEach((n, i) => {
+    const b = document.createElement("button"); b.type = "button"; b.className = "fish";
+    // her balık kendi hızında ve kendi yerinden başlasın
+    const dur = 7 + Math.random() * 5;
+    b.style.cssText = `top:${3 + i * 22}%;animation-duration:${dur}s;animation-delay:${-Math.random() * dur}s`;
+    b.innerHTML = `<span class="fe" style="animation-duration:${dur}s;animation-delay:inherit">${fish[i]}</span><b>${n}</b>`;
+    b.onclick = () => {
+      if(c.locked()) return;
+      if(n === f.ans){
+        c.lock(true); b.classList.add("yes"); pond.classList.add("done");
+        c.right($t`Harika! ${f.t} = ${f.ans} ✔`, () => fishGame(c), 1700);
+      } else {
+        c.wrong(b, $t`${n} değil. Tekrar dene! 💪`);
+        c.later(() => b.classList.remove("no"), 700);
+      }
+    };
+    pond.appendChild(b);
+  });
+}
+
 // 🍬 Şeker Kutusu (toplama / çıkarma): şekerler gelir ya da yenir
 function asCandy(){
   asClearT(); asLocked = false;
@@ -1970,6 +2314,8 @@ function asHouseDiv(){
 
 const AS_GAMES = {frog:asFrog, free:asBalloon, time:asBalloon, match:asMatch, pic:asPic, tf:asTF, miss:asMiss, cmp:asCmp, target:asTarget, catch:asCatch,
   sort:() => sortGame(AS_CTX), wall:() => wallGame(AS_CTX), scale:() => scaleGame(AS_CTX), line:() => lineGame(AS_CTX), dots:() => dotsGame(AS_CTX),
+  pairs:() => pairsGame(AS_CTX), type:() => typeGame(AS_CTX), odd:() => oddGame(AS_CTX), chain:() => chainGame(AS_CTX),
+  sign:() => signGame(AS_CTX), find:() => findGame(AS_CTX), tri:() => triGame(AS_CTX), fish:() => fishGame(AS_CTX),
   candy:asCandy, share:asShare, house:asHouse, houseDiv:asHouseDiv};
 // aynı yerdeki oyunun işleme göre iki hâli: şeker kutusu / adil paylaş, sayı evi / hangi sayıya bölünür
 const OP_ONLY = {candy:["+", "-"], share:["/"], house:["+", "-"], houseDiv:["/"]};

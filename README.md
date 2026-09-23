@@ -9,8 +9,7 @@ Beyaz–turuncu renklerde, telefon, tablet ve bilgisayarda çalışır. Kurulum 
 |---|---|
 | 🧮 **Abaküs** | Boncukları kaydırarak toplama/çıkarma sorularını abaküste çöz, ipucu al |
 | ⚡ **Hızlı Sayılar** | Sayılar ekranda tek tek belirir, çocuk aklından hesaplar (sayı adedi, hız ve aralık ayarlanabilir, tam ekran) |
-| ➕ **Toplama** · ➖ **Çıkarma** · ➗ **Bölme** | 10 oyun: Balon Patlat, 60 Saniye Yarışı, Hafıza Kartları, Resimle Say, Kurbağa Zıplat, Doğru mu Yanlış mı?, Kayıp Sayı, Hangisi Büyük?, Hedef Sayı, Sonucu Yakala |
-| ✖️ **Çarpım Tablosu** | 10 oyun: Balon Patlat, 60 Saniye Yarışı, Hafıza Kartları, Grupları Say, Kurbağa Zıplat, Doğru mu Yanlış mı?, Kayıp Sayı, Hangisi Büyük?, Hedef Sayı, Katları Yakala + tabloyu görme |
+| ➕ **Toplama** · ➖ **Çıkarma** · ➗ **Bölme** · ✖️ **Çarpım Tablosu** | Her birinde 25 oyun: Balon Patlat, 60 Saniye Yarışı, Hafıza Kartları, Kurbağa Zıplat, Doğru mu Yanlış mı?, Kayıp Sayı, Hangisi Büyük?, Hedef Sayı, Sonucu Yakala, Küçükten Büyüğe, Sayı Duvarı, Teraziyi Dengele, Sayı Doğrusu, Nokta Tarlası, Eşleştir, Kendin Yaz, Hangisi Farklı?, İşlem Zinciri, İşareti Bul, Hepsini Bul, Hesap Üçgeni, Balık Tut ve her işleme özel oyunlar (Şeker Kutusu, Adil Paylaş, Sayı Evi …) |
 
 ## Özellikler
 
