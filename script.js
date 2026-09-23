@@ -209,7 +209,7 @@ const I18N = {
   "Hatırla: her zıplamada {0} ekliyoruz ➕": ["Remember: every jump adds {0} ➕", "Denk dran: Jeder Sprung addiert {0} ➕", "Rappelle-toi : chaque saut ajoute {0} ➕"],
   "Künye": ["Legal notice", "Impressum", "Mentions légales"],
   "Gizlilik": ["Privacy", "Datenschutz", "Confidentialité"],
-  "© 2026 Ismail Kilicaslan · Tüm hakları saklıdır.": ["© 2026 Ismail Kilicaslan · All rights reserved.", "© 2026 Ismail Kilicaslan · Alle Rechte vorbehalten.", "© 2026 Ismail Kilicaslan · Tous droits réservés."],
+  "© 2026 · Tüm hakları saklıdır.": ["© 2026 · All rights reserved.", "© 2026 · Alle Rechte vorbehalten.", "© 2026 · Tous droits réservés."],
   "Hatırla: her zıplamada {0} çıkarıyoruz ➖": ["Remember: every jump takes away {0} ➖", "Denk dran: Jeder Sprung zieht {0} ab ➖", "Rappelle-toi : chaque saut enlève {0} ➖"],
 };
 

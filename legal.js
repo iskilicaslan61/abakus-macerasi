@@ -6,8 +6,8 @@
     game:    {de:"Spiel", en:"Game", tr:"Oyun", fr:"Jeu"},
     imprint: {de:"Impressum", en:"Legal notice", tr:"Künye", fr:"Mentions légales"},
     privacy: {de:"Datenschutz", en:"Privacy", tr:"Gizlilik", fr:"Confidentialité"},
-    rights:  {de:"© 2026 Ismail Kilicaslan · Alle Rechte vorbehalten.", en:"© 2026 Ismail Kilicaslan · All rights reserved.",
-              tr:"© 2026 Ismail Kilicaslan · Tüm hakları saklıdır.", fr:"© 2026 Ismail Kilicaslan · Tous droits réservés."},
+    rights:  {de:"© 2026 · Alle Rechte vorbehalten.", en:"© 2026 · All rights reserved.",
+              tr:"© 2026 · Tüm hakları saklıdır.", fr:"© 2026 · Tous droits réservés."},
   };
   const q = new URLSearchParams(location.search).get("lang");
 
