@@ -546,7 +546,10 @@ body.noscroll{overflow:hidden}
 
 /* 🔺 Hesap Üçgeni */
 /* 3D üçgen tahta (Blender, 3d/tri-board.webp): SVG ile aynı koordinatlar (viewBox 100×90) → kutu konumları değişmedi */
-.tri{position:relative;width:min(100%,420px);aspect-ratio:10/9;margin:4px auto 34px;background:url(3d/tri-board.webp) center/100% 100% no-repeat}
+/* alttaki toplam kutusu (s2) üçgenin %106'sında, dışarı taşar → alt boşluk = yüksekliğin %6'sı + kutunun yarısı (0.9em) + gölge/aralık.
+   font-size kutularla aynı → em değerleri tutar; % margin üst kutuya göre hesaplandığı için genişlikten hesaplanır */
+.tri{position:relative;width:min(100%,420px);aspect-ratio:10/9;font-size:clamp(20px,4.5vw,34px);
+  margin:0 auto calc(min(100%,420px) * .9 * .06 + .9em + 22px);background:url(3d/tri-board.webp) center/100% 100% no-repeat}
 .tri svg{display:none}
 .tri > div{box-sizing:border-box;position:absolute;transform:translate(-50%,-50%);font-weight:800;font-size:clamp(20px,4.5vw,34px);
   min-width:2em;height:1.8em;padding:0 .25em;display:flex;align-items:center;justify-content:center;border-radius:999px}
