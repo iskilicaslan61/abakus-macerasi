@@ -2547,7 +2547,12 @@ function showHome(){
 }
 function route(){
   const r = location.hash.slice(1);
-  if(!ROUTES[r]){ showHome(); return; }
+  // yalnız kendi rotalarımız ("#constructor" gibi nesne özellikleri geçerli sayılmasın)
+  if(!Object.prototype.hasOwnProperty.call(ROUTES, r)){
+    // tanınmayan #… adres çubuğundan silinir (sayfa yenilenmez, geçmişe yeni kayıt eklenmez)
+    if(r) history.replaceState(null, "", location.pathname + location.search);
+    showHome(); return;
+  }
   document.body.classList.remove("at-home");
   tabBtn(r).click();
   window.scrollTo(0, 0);
