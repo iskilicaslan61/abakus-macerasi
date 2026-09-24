@@ -28,13 +28,8 @@
   <header>
     <div class="brand">
       <button class="home-btn" id="homeBtn" type="button" aria-label="🏠">🏠</button>
-      <!-- logo: Blender'da yapılan 3D abaküs (model-viewer yerel dosyadan, sayfa yüklendikten sonra gelir; o zamana kadar poster) -->
-      <div class="logo-3d" id="logo3d" aria-hidden="true">
-        <model-viewer id="abacus3d" src="3d/abakus.glb" alt="" disable-zoom disable-pan disable-tap interaction-prompt="none"
-          camera-orbit="18deg 82deg auto" field-of-view="24deg" environment-image="neutral" tone-mapping="neutral" exposure="1.05">
-          <img slot="poster" src="3d/abakus-poster.webp" alt="" width="560" height="498" decoding="async">
-        </model-viewer>
-      </div>
+      <!-- logo: Blender'da yapılan 3D abaküs; sallanma hareketi 16 karelik tek görselden (3d/logo-abakus.webp) CSS ile oynar -->
+      <div class="logo-3d" id="logo3d" aria-hidden="true"></div>
       <h1 id="logo">Abaküs <span>Macerası</span></h1>
     </div>
     <div class="stats">

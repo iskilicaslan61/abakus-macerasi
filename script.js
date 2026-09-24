@@ -12,10 +12,6 @@ const I18N = {
     "An anime child counts the beads on an abacus one by one: 1, 2, 3 … 10.",
     "Ein Anime-Kind zählt die Perlen am Abakus einzeln: 1, 2, 3 … 10.",
     "Un enfant manga compte les perles du boulier une à une : 1, 2, 3 … 10."],
-  "Mavi çerçeveli 3D abaküs: turuncu ve beyaz boncuklar 1'den 10'a kadar sayıları gösteriyor. Döndürmek için sürükle.": [
-    "3D abacus with a blue frame: orange and white beads show the numbers 1 to 10. Drag to turn it.",
-    "3D-Abakus mit blauem Rahmen: orange und weiße Perlen zeigen die Zahlen 1 bis 10. Zum Drehen ziehen.",
-    "Boulier 3D au cadre bleu : les perles orange et blanches montrent les nombres de 1 à 10. Fais-le tourner en le faisant glisser."],
   "Abaküs": ["Abacus", "Abakus", "L'aventure"],
   "Macerası": ["Adventure", "Abenteuer", "du boulier"],
   "🧮 Abaküs": ["🧮 Abacus", "🧮 Abakus", "🧮 Boulier"],
@@ -353,8 +349,7 @@ function applyStatic(){
   document.title = tKey("Abaküs Macerası");
   document.documentElement.lang = lang;
   const kid = document.getElementById("kid");
-  if(kid) kid.setAttribute("aria-label", tKey("Anime bir çocuk abaküsteki boncukları birer birer sayıyor: 1, 2, 3 … 10."));  const mv = document.getElementById("abacus3d");
-  if(mv) mv.setAttribute("alt", tKey("Mavi çerçeveli 3D abaküs: turuncu ve beyaz boncuklar 1'den 10'a kadar sayıları gösteriyor. Döndürmek için sürükle."));
+  if(kid) kid.setAttribute("aria-label", tKey("Anime bir çocuk abaküsteki boncukları birer birer sayıyor: 1, 2, 3 … 10."));
 }
 
 const ROD_NAMES = () => [$t`Yüzler`, $t`Onlar`, $t`Birler`];
@@ -1139,8 +1134,15 @@ function targetNew(){
 
 // ---------- 🍬 Adil Paylaş (bölmeye giriş) ----------
 const KIDS = ["🧒","👧","👦","🧒🏽","👧🏻","👦🏾"];
+// 3D şekerler (Blender, 3d/candy-*.webp): sırayla 4 renk; gone = yenen/çıkarılan (soluk + ✖)
+function candyHtml(n, start = 0, gone = false){
+  return Array.from({length:n}, (_, i) => {
+    const c = `<i class="cdy c${(start + i) % 4}"></i>`;
+    return gone ? `<span class="gone">${c}</span>` : c;
+  }).join("");
+}
 const shareHTML = (total, n) => `<div class="gtitle">${$t`<b>${total}</b> şekeri <b>${n}</b> çocuğa eşit paylaştır!`}</div>
-    <div class="candies">${"🍬".repeat(total)}</div>
+    <div class="candies">${candyHtml(total)}</div>
     <div class="kids">${Array.from({length:n}, (_, i) => KIDS[i % KIDS.length]).join("")}</div>`;
 // doğru cevap + karıştırılabilecek 3 sayı
 function shareOpts(k, n, total){
@@ -1672,7 +1674,7 @@ function asFrog(){
   const draw = () => {
     $("asQ").innerHTML = `<div class="gtitle">${title}</div><div class="pads">${pads.map((v, i) => {
       const cls = "lp" + (miss.has(i) ? " miss" : "") + (i === st.ask ? " ask" : "") + (i < st.pos ? " past" : "");
-      return `<div class="${cls}">${miss.has(i) ? "?" : v}${i === st.pos ? '<span class="frog">🐸</span>' : ""}</div>`;
+      return `<div class="${cls}">${miss.has(i) ? "?" : v}${i === st.pos ? '<span class="frog" aria-hidden="true"></span>' : ""}</div>`;
     }).join("")}</div>`;
   };
   const finish = () => {
@@ -2272,8 +2274,8 @@ function asCandy(){
   const keep = asMax; asMax = Math.min(asMax, 40); const f = asFact(); asMax = keep;
   const add = asOp === "+";
   const box = add
-    ? `<div class="candies">${"🍬".repeat(f.a)}</div><span class="sign">+</span><div class="candies">${"🍬".repeat(f.b)}</div>`
-    : `<div class="candies">${"🍬".repeat(f.ans)}${'<span class="gone"><i>🍬</i></span>'.repeat(f.b)}</div>`;
+    ? `<div class="candies">${candyHtml(f.a)}</div><span class="sign">+</span><div class="candies">${candyHtml(f.b, f.a)}</div>`
+    : `<div class="candies">${candyHtml(f.ans)}${candyHtml(f.b, f.ans, true)}</div>`;
   const title = add ? $t`Kutuda <b>${f.a}</b> şeker var, <b>${f.b}</b> şeker daha geliyor. Kaç şeker oldu?`
                     : $t`Kutuda <b>${f.a}</b> şeker vardı, <b>${f.b}</b> tanesi yendi. Kaç şeker kaldı?`;
   $("asQ").innerHTML = `<div class="gtitle">${title}</div><div class="pic">${box}</div>`;
@@ -2545,32 +2547,6 @@ document.querySelectorAll("[data-tab]").forEach(b => b.addEventListener("click",
 window.addEventListener("hashchange", route);
 updHome();
 route();
-
-// ---------- giriş sayfası: 3D abaküs ----------
-// model-viewer (~1 MB) sayfa açıldıktan sonra, boşta yüklenir; o ana kadar poster görünür.
-// Hareket azaltma açıksa kendi kendine dönmez.
-(function load3D(){
-  const mv = $("abacus3d");
-  if(!mv || !("customElements" in window)) return;
-  // logo: tam tur yerine önden bakarken ±28° sallanır (yandan ince çizgiye dönüşmesin)
-  if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
-    customElements.whenDefined("model-viewer").then(() => {
-      let last = 0;
-      const wobble = t => {
-        if(t - last > 33){ last = t; mv.cameraOrbit = `${(Math.sin(t / 1400) * 28).toFixed(2)}deg 82deg auto`; }   // ~30 fps yeter
-        requestAnimationFrame(wobble);
-      };
-      requestAnimationFrame(wobble);
-    });
-  }
-  const go = () => {
-    const s = document.createElement("script");
-    s.type = "module"; s.src = "vendor/model-viewer/model-viewer.min.js";
-    document.head.appendChild(s);
-  };
-  const idle = () => ("requestIdleCallback" in window) ? requestIdleCallback(go, {timeout: 2500}) : setTimeout(go, 600);
-  if(document.readyState === "complete") idle(); else window.addEventListener("load", idle, {once: true});
-})();
 
 // ---------- giriş sayfası: abaküsle sayan anime çocuk ----------
 // Görseller Blender'da render edildi; üst sıradaki 10 boncuk burada canlandırılır.

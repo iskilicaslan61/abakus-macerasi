@@ -197,16 +197,15 @@ h1 span{color:var(--ink)}
 .mc{position:relative;aspect-ratio:1.15;border:none;background:none;cursor:pointer;font:inherit;padding:0}
 .mc .in{position:absolute;inset:0;transition:transform .45s;transform-style:preserve-3d}
 .mc.open .in, .mc.done .in{transform:rotateY(180deg)}
-.mc .f, .mc .b{position:absolute;inset:0;border-radius:18px;display:flex;align-items:center;justify-content:center;
-  backface-visibility:hidden;font-weight:800}
-.mc .b{background:repeating-linear-gradient(45deg,var(--or) 0 14px,#ff8b35 14px 28px);color:var(--white);
-  font-size:clamp(34px,6vw,54px);box-shadow:0 5px 0 #c2530a}
-.mc .f{transform:rotateY(180deg);background:var(--white);border:4px solid var(--or);color:var(--ink);
-  font-size:clamp(26px,4.5vw,44px);box-shadow:0 5px 0 var(--or-l)}
-.mc .f.ans{color:var(--or-d);background:var(--or-xl)}
-.mc.done .f{border-color:var(--ok);background:#e6f8ee;color:var(--ok)}
+/* 3D hafıza kartları (Blender, 3d/card-*.webp): mavi arka yüz (yıldızlar + "?"), ön yüz 4 hal; CSS ile 3D döner */
+.mc .f, .mc .b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-bottom:4%;
+  backface-visibility:hidden;font-weight:800;background:center/100% 100% no-repeat}
+.mc .b{background-image:url(3d/card-back.webp);color:transparent;font-size:0}    /* "?" görselde */
+.mc .f{transform:rotateY(180deg);background-image:url(3d/card-front.webp);color:var(--ink);font-size:clamp(26px,4.5vw,44px)}
+.mc .f.ans{color:var(--or-d);background-image:url(3d/card-front-ans.webp)}
+.mc.done .f{background-image:url(3d/card-front-done.webp);color:#1f8a50}
 .mc.done{animation:pop .5s;cursor:default}
-.mc.wrong .f{border-color:var(--bad);animation:shake .45s}
+.mc.wrong .f{background-image:url(3d/card-front-wrong.webp);color:var(--bad);animation:shake .45s}
 @media (max-width:560px){ .mgrid{grid-template-columns:repeat(3,1fr);gap:8px} }
 
 /* yeni oyunlar (ortak kart) */
@@ -229,12 +228,15 @@ h1 span{color:var(--ink)}
 .tfq{font-size:clamp(60px,12vw,120px);font-weight:800;line-height:1.1}
 .tfq .op{color:var(--or)}
 
-.pads{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 10px;padding-top:34px}
-.lp{position:relative;width:clamp(52px,7vw,70px);aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-weight:800;font-size:clamp(20px,3vw,28px);background:var(--white);border:4px solid var(--or);color:var(--ink)}
-.lp.miss{border-style:dashed;background:var(--or-xl);color:var(--or)}
-.lp.miss.ask{animation:pop .8s infinite;border-color:var(--or-d)}
-.lp.past{background:var(--or);color:var(--white)}
+/* 🐸 3D nilüfer yaprakları (Blender, 3d/pad*.webp) bir su şeridinde; boş taş = su halkası */
+.pads{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 8px;padding:48px 10px 14px;border-radius:24px;
+  background:linear-gradient(#cfeeff,#7cc8f2);box-shadow:inset 0 4px 0 rgba(255,255,255,.55)}
+.lp{position:relative;box-sizing:border-box;width:clamp(56px,8vw,76px);aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:clamp(20px,3vw,28px);color:var(--white);text-shadow:0 2px 3px rgba(0,60,20,.5);
+  background:url(3d/pad.webp) center/contain no-repeat}
+.lp.miss{background-image:url(3d/pad-ripple.webp);color:#10306e;text-shadow:0 1px 0 rgba(255,255,255,.7)}
+.lp.miss.ask{animation:pop .8s infinite;filter:drop-shadow(0 0 8px rgba(255,216,74,.95))}
+.lp.past{background-image:url(3d/pad-flower.webp);padding-right:calc(clamp(56px,8vw,76px) * .26)}   /* rakam çiçeğin solunda (% değil: üst kutuya göre hesaplanırdı) */
 /* kurbağa: Blender'da render edilen 3 poz; zıplarken çömel → havada → in → otur */
 .lp .frog{position:absolute;top:-46px;left:50%;width:56px;height:56px;margin-left:-28px;pointer-events:none;
   background:url(3d/frog-sit.webp) center/contain no-repeat;animation:hop .4s,frogPose .4s step-end}   /* step-end: pozlar karışmadan değişir */
@@ -487,6 +489,9 @@ body.noscroll{overflow:hidden}
 .candies{display:flex;flex-wrap:wrap;justify-content:center;gap:2px;max-width:560px;font-size:clamp(20px,3.2vw,28px);line-height:1.15;
   background:var(--or-xl);border:3px dashed var(--or-l);border-radius:16px;padding:6px 10px}
 .kids{font-size:clamp(30px,5vw,44px);letter-spacing:2px;text-align:center}
+/* 3D şeker (Blender, 3d/candy-*.webp) – yazı boyutuna bağlı */
+.cdy{display:inline-block;width:1.5em;height:1em;background:url(3d/candy-orange.webp) center/contain no-repeat;vertical-align:middle}
+.cdy.c1{background-image:url(3d/candy-blue.webp)} .cdy.c2{background-image:url(3d/candy-pink.webp)} .cdy.c3{background-image:url(3d/candy-yellow.webp)}
 /* 📶 Küçükten Büyüğe */
 .sortg button small{font-size:.6em;opacity:.85;margin-right:2px}
 
@@ -517,12 +522,16 @@ body.noscroll{overflow:hidden}
 
 /* 🐛 İşlem Zinciri */
 .chain{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 6px;margin:10px 0 4px}
-.ch-n{font-weight:800;font-size:clamp(24px,4.5vw,38px);min-width:2.1em;height:2.1em;padding:0 .3em;border-radius:999px;
-  display:flex;align-items:center;justify-content:center;background:var(--white);border:4px solid var(--or-l);color:var(--or-d)}
-.ch-n.start{background:var(--or);border-color:var(--or);color:var(--white)}
-.ch-n.cur{border-color:var(--or);border-style:dashed;animation:pop .5s}
-.ch-n.done{background:var(--ok);border-color:var(--ok);color:var(--white);animation:pop .5s}
-.ch-op{font-weight:800;font-size:clamp(16px,2.6vw,22px);color:var(--ink);background:var(--or-xl);border-radius:999px;padding:0 10px;position:relative}
+/* tırtılın boğumları: 3D kapsül/top (Blender, 3d/pill-*.webp; 9-slice → kısa sayıda top, uzun sayıda kapsül) */
+.ch-n{box-sizing:border-box;font-weight:800;font-size:clamp(24px,4.5vw,38px);min-width:2.1em;height:2.1em;padding:0;
+  display:flex;align-items:center;justify-content:center;color:var(--or-d);
+  border-style:solid;border-width:0 .55em;border-color:transparent;border-image:url(3d/pill-white.webp) 0 108 fill / 0 1.05em / 0 stretch;
+  filter:drop-shadow(0 3px 2px rgba(90,46,12,.2))}
+.ch-n.start{border-image-source:url(3d/pill-orange.webp);color:var(--white);text-shadow:0 2px 3px rgba(0,0,0,.3)}
+.ch-n.cur{border-image-source:url(3d/pill-sky.webp);color:#10306e;animation:pop .5s}
+.ch-n.done{border-image-source:url(3d/pill-green.webp);color:var(--white);text-shadow:0 2px 3px rgba(0,0,0,.3);animation:pop .5s}
+.ch-op{font-weight:800;font-size:clamp(16px,2.6vw,22px);color:var(--ink);border-radius:999px;padding:0 10px;position:relative;
+  background:linear-gradient(#fff6ec,#ffe2c8);box-shadow:inset 0 2px 0 #fff,0 3px 0 var(--or-l)}
 .ch-op::after{content:"➜";margin-left:4px;color:var(--or)}
 
 /* 🟰 İşareti Bul */
@@ -536,18 +545,23 @@ body.noscroll{overflow:hidden}
 .findg button{font-size:clamp(18px,3vw,28px);padding:12px 4px}
 
 /* 🔺 Hesap Üçgeni */
-.tri{position:relative;width:min(100%,420px);aspect-ratio:10/9;margin:4px auto 34px}
-.tri svg{position:absolute;inset:0;width:100%;height:100%}
-.tri polygon{fill:var(--or-xl);stroke:var(--or);stroke-width:1.6;stroke-linejoin:round}
-.tri polyline{fill:none;stroke:var(--or-l);stroke-width:1.2;stroke-linejoin:round}
-.tri > div{position:absolute;transform:translate(-50%,-50%);font-weight:800;font-size:clamp(20px,4.5vw,34px);
+/* 3D üçgen tahta (Blender, 3d/tri-board.webp): SVG ile aynı koordinatlar (viewBox 100×90) → kutu konumları değişmedi */
+.tri{position:relative;width:min(100%,420px);aspect-ratio:10/9;margin:4px auto 34px;background:url(3d/tri-board.webp) center/100% 100% no-repeat}
+.tri svg{display:none}
+.tri > div{box-sizing:border-box;position:absolute;transform:translate(-50%,-50%);font-weight:800;font-size:clamp(20px,4.5vw,34px);
   min-width:2em;height:1.8em;padding:0 .25em;display:flex;align-items:center;justify-content:center;border-radius:999px}
-.tri-in{background:var(--or);color:var(--white)}
-.tri-out{background:var(--white);color:var(--or-d);border:4px solid var(--or);border-radius:14px !important}
+/* içteki sayılar: 3D kapsül (9-slice; uçlar = yüksekliğin yarısı) */
+.tri-in{color:var(--white);text-shadow:0 2px 3px rgba(0,0,0,.3);padding:0;border-style:solid;border-width:0 .45em;border-color:transparent;
+  border-image:url(3d/pill-orange.webp) 0 108 fill / 0 .9em / 0 stretch;filter:drop-shadow(0 3px 2px rgba(90,46,12,.25))}
+.tri-in.q{border-image-source:url(3d/pill-sky.webp);color:#10306e;text-shadow:0 1px 0 rgba(255,255,255,.6)}
+.tri-in.q.ok{border-image-source:url(3d/pill-green.webp);color:var(--white);text-shadow:0 2px 3px rgba(0,0,0,.3);animation:pop .5s}
+/* dıştaki toplamlar: kabarık blok */
+.tri-out{color:var(--or-d);border:3px solid var(--or);border-radius:14px !important;background:linear-gradient(#fff,#fff1e2);
+  box-shadow:inset 0 2px 0 #fff,0 5px 0 var(--or-d)}
+.tri-out.q{border-style:dashed;background:linear-gradient(#eef7ff,#d6ecff);color:#10306e;border-color:#1d6fe0;box-shadow:0 5px 0 #143f96}
+.tri-out.q.ok{border-style:solid;border-color:#1f8a50;background:linear-gradient(#4fd48a,#2fb36b);color:var(--white);box-shadow:0 5px 0 #1f8a50;animation:pop .5s}
 .tri .t0{left:50%;top:30%}.tri .t1{left:30%;top:72%}.tri .t2{left:70%;top:72%}
 .tri .s0{left:15%;top:40%}.tri .s1{left:85%;top:40%}.tri .s2{left:50%;top:106%}
-.tri .q{background:var(--white);color:var(--or-d);border:4px dashed var(--or)}
-.tri .q.ok{background:var(--ok);border:4px solid var(--ok);color:var(--white);animation:pop .5s}
 
 /* 🐟 Balık Tut */
 /* akvaryum: Blender arka planı (su, kum, yosun, kayalar, sandık) + mavi cam çerçeve + CSS ışık huzmeleri ve kabarcıklar */
@@ -584,11 +598,17 @@ body.noscroll{overflow:hidden}
 @keyframes face{0%,49.9%{transform:scaleX(-1)}50%,100%{transform:none}}
 @media (prefers-reduced-motion:reduce){ .fish, .fish .fe{animation-duration:40s !important} }
 /* 🧱 Sayı Duvarı */
-.wall{display:flex;flex-direction:column;align-items:center;gap:6px}
-.wall-row{display:flex;gap:6px}
-.brick{min-width:clamp(68px,14vw,110px);padding:6px 8px;text-align:center;font-size:clamp(28px,5vw,44px);font-weight:800;line-height:1.1;
-  background:var(--white);color:var(--ink);border:3px solid var(--or);border-radius:10px;box-shadow:0 4px 0 var(--or-l)}
-.brick.q{border-style:dashed;background:var(--or-xl);color:var(--or)}
+/* 3D oyuncak tuğlalar (Blender, 3d/brick-*.webp); renk sıraya göre: tepede sarı → turuncu → mavi → yeşil.
+   Görselde ön yüzün merkezi %64.7'de → rakam için üstte boşluk (tuğla genişliğinin %17.3'ü) */
+.wall{--bw:clamp(72px,15vw,116px);display:flex;flex-direction:column;align-items:center;gap:1px}
+.wall-row{display:flex;gap:4px}
+.brick{box-sizing:border-box;width:var(--bw);aspect-ratio:340/200;padding-top:calc(var(--bw) * .173);
+  display:flex;align-items:center;justify-content:center;font-size:calc(var(--bw) * .34);font-weight:800;line-height:1;
+  color:var(--white);text-shadow:0 2px 3px rgba(0,0,0,.35);background:url(3d/brick-orange.webp) center/100% 100% no-repeat}
+.wall-row:nth-child(4n+1) .brick{background-image:url(3d/brick-yellow.webp);color:var(--ink);text-shadow:none}
+.wall-row:nth-child(4n+3) .brick{background-image:url(3d/brick-blue.webp)}
+.wall-row:nth-child(4n+4) .brick{background-image:url(3d/brick-green.webp)}
+.wall-row .brick.q{background-image:url(3d/brick-q.webp);color:#10306e;text-shadow:0 1px 0 rgba(255,255,255,.7)}
 
 /* 🟠 Nokta Tarlası (Punktefeld): 5'lik gruplar arasında boşluk */
 /* 3D nokta tarlası (Blender): yıldızlı mavi oyuncak çerçeve, 4 renkli çeyrek (mavi/sarı/yeşil/pembe), ortada turuncu çıtalar + yuvalar + pullar.
@@ -646,14 +666,19 @@ body.noscroll{overflow:hidden}
 .pan .wt{width:clamp(24px,5.2vw,32px);height:clamp(24px,5.2vw,32px);font-size:clamp(10px,2.2vw,13px);filter:none}
 /* 📏 Sayı Doğrusu */
 .nline{position:relative;align-self:stretch;height:96px;margin:6px 22px 0;cursor:pointer;touch-action:manipulation;-webkit-user-select:none;user-select:none}
-.nl-bar{position:absolute;left:-10px;right:-10px;top:52px;height:6px;background:var(--ink);border-radius:3px}
-.nl-t{position:absolute;top:46px;width:2px;height:18px;background:var(--ink);transform:translateX(-50%)}
-.nl-t.m{top:40px;height:30px;width:3px}
+/* 3D cetvel: kalın mavi şerit (üstte parlak kenar, altta kalınlık + gölge), çentikler beyaz */
+.nl-bar{position:absolute;left:-14px;right:-14px;top:44px;height:20px;border-radius:10px;
+  background:linear-gradient(#7cc0ff,#2f7bf0 60%,#1d5fd8);box-shadow:inset 0 3px 0 rgba(255,255,255,.55),0 5px 0 #143f96,0 9px 12px rgba(20,60,110,.25)}
+.nl-t{position:absolute;top:48px;width:2px;height:12px;background:rgba(255,255,255,.9);border-radius:1px;transform:translateX(-50%)}
+.nl-t.m{top:42px;height:24px;width:4px;background:#fff;box-shadow:0 0 0 1px rgba(20,63,150,.6)}
 .nl-t span{position:absolute;top:34px;left:50%;transform:translateX(-50%);font-weight:800;font-size:clamp(14px,2.6vw,20px);color:var(--ink)}
-.nl-mark{position:absolute;top:0;transform:translateX(-50%);background:var(--or);color:var(--white);font-weight:800;font-size:clamp(18px,3vw,24px);
-  border-radius:10px;padding:0 8px;pointer-events:none;transition:left .15s}
-.nl-mark::after{content:"";position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);border:8px solid transparent;border-bottom:none;border-top-color:inherit;border-top-color:var(--or)}
-.nl-mark.ok{background:var(--ok)} .nl-mark.ok::after{border-top-color:var(--ok)}
+/* işaretçi: 3D turuncu kapsül + ok (doğruda yeşil) */
+.nl-mark{box-sizing:border-box;position:absolute;top:0;transform:translateX(-50%);color:var(--white);font-weight:800;font-size:clamp(18px,3vw,24px);
+  min-width:1.9em;height:1.7em;display:flex;align-items:center;justify-content:center;text-shadow:0 2px 3px rgba(0,0,0,.3);
+  border-style:solid;border-width:0 .4em;border-color:transparent;border-image:url(3d/pill-orange.webp) 0 108 fill / 0 .85em / 0 stretch;
+  filter:drop-shadow(0 3px 2px rgba(90,46,12,.3));pointer-events:none;transition:left .15s}
+.nl-mark::after{content:"";position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);border:8px solid transparent;border-bottom:none;border-top-color:#e2600a}
+.nl-mark.ok{border-image-source:url(3d/pill-green.webp)} .nl-mark.ok::after{border-top-color:#1f8a50}
 .nl-mark.ghost{opacity:.4;transition:none}
 
 /* her sekmede aynı oyunlar */
@@ -674,11 +699,12 @@ body.noscroll{overflow:hidden}
 
 /* ---------- giriş sayfası ---------- */
 .brand{display:flex;align-items:center;gap:10px;min-width:0}
-/* logo: kendi kendine dönen küçük 3D abaküs (tıklayınca giriş sayfası) */
-/* boyut yazıya bağlı: font-size başlıkla aynı (h1), kutu 1.3em → görünen abaküs ≈ yazı yüksekliği */
-.logo-3d{flex:none;font-size:clamp(26px,5vw,38px);width:1.3em;height:1.3em;cursor:pointer;margin-right:-.2em}
-.logo-3d model-viewer{display:block;width:100%;height:100%;background:transparent;--poster-color:transparent;pointer-events:none}
-.logo-3d img[slot="poster"]{display:block;width:100%;height:100%;object-fit:contain}
+/* logo: hafifçe sallanan 3D abaküs (tıklayınca giriş sayfası). Blender'da 16 kare render edildi → tek şerit görsel,
+   CSS steps() ile oynar (eski model-viewer ~1.1 MB yerine 72 KB). Boyut yazıya bağlı: font-size = başlık (h1) */
+.logo-3d{flex:none;font-size:clamp(26px,5vw,38px);width:1.15em;height:1.15em;cursor:pointer;
+  background:url(3d/logo-abakus.webp) 0 0/1600% 100% no-repeat;animation:logoWobble 2.6s steps(16,jump-none) infinite}
+@keyframes logoWobble{to{background-position:100% 0}}
+@media (prefers-reduced-motion:reduce){ .logo-3d{animation:none} }
 body.at-home .logo-3d{cursor:default}
 .home-btn{flex:none;width:46px;height:46px;border-radius:14px;border:3px solid var(--or);background:var(--white);font-size:24px;line-height:1;cursor:pointer;
   box-shadow:0 4px 0 var(--or-l);display:flex;align-items:center;justify-content:center}
