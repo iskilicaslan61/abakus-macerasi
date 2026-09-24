@@ -1,8 +1,19 @@
 // ---------- dil / language / Sprache ----------
-// sayfa her açılışta Almanca başlar
+// Başlangıç dili, sırayla:
+//   1) adresteki ?lang=xx (Impressum / Datenschutz'dan dönüş, paylaşılan linkler)
+//   2) ziyaretçinin daha önce dil düğmesiyle seçtiği dil (tarayıcıda saklanır)
+//   3) tarayıcı dili (navigator.languages: "fr-FR" → fr, "de-AT" → de, "tr" → tr …)
+//   4) hiçbiri uymazsa Almanca (sitenin ana dili)
+const LANGS = ["de", "en", "tr", "fr"];
 let lang = "de";
-// Impressum / Datenschutz'dan dönünce dili koru (?lang=xx)
-{ const q = new URLSearchParams(location.search).get("lang"); if(["de","en","tr","fr"].includes(q)) lang = q; }
+{
+  const q = new URLSearchParams(location.search).get("lang");
+  let saved = null;
+  try{ saved = localStorage.getItem("lang"); }catch(e){}
+  const browser = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""])
+    .map(l => String(l).slice(0, 2).toLowerCase()).find(l => LANGS.includes(l));
+  lang = [q, saved, browser].find(l => LANGS.includes(l)) || "de";
+}
 
 // Türkçe metin anahtardır → [English, Deutsch, Français]. ${...} değerleri {0}, {1} ... olarak yazılır.
 const I18N = {
@@ -2449,7 +2460,11 @@ function setLang(l){
   updToggles(); updHome();
   if(atHome()) showHome();
 }
-document.querySelectorAll("[data-lang]").forEach(b => b.onclick = () => setLang(b.dataset.lang));
+// dil düğmesiyle seçilen dil hatırlanır (bir sonraki ziyarette tarayıcı dilinden önce gelir)
+document.querySelectorAll("[data-lang]").forEach(b => b.onclick = () => {
+  setLang(b.dataset.lang);
+  try{ localStorage.setItem("lang", b.dataset.lang); }catch(e){}
+});
 markLang(); applyStatic();
 
 // ---------- telefon: ayarlar açılır / kapanır menü ----------
