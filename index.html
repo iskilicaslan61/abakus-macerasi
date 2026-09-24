@@ -28,6 +28,13 @@
   <header>
     <div class="brand">
       <button class="home-btn" id="homeBtn" type="button" aria-label="🏠">🏠</button>
+      <!-- logo: Blender'da yapılan 3D abaküs (model-viewer yerel dosyadan, sayfa yüklendikten sonra gelir; o zamana kadar poster) -->
+      <div class="logo-3d" id="logo3d" aria-hidden="true">
+        <model-viewer id="abacus3d" src="3d/abakus.glb" alt="" disable-zoom disable-pan disable-tap interaction-prompt="none"
+          camera-orbit="18deg 82deg auto" field-of-view="24deg" environment-image="neutral" tone-mapping="neutral" exposure="1.05">
+          <img slot="poster" src="3d/abakus-poster.webp" alt="" width="560" height="498" decoding="async">
+        </model-viewer>
+      </div>
       <h1 id="logo">Abaküs <span>Macerası</span></h1>
     </div>
     <div class="stats">
@@ -52,6 +59,14 @@
   <!-- ============ GİRİŞ SAYFASI: her kategoriye geçiş ============ -->
   <section class="home" id="home">
     <div class="home-hero">
+      <div class="hero-art">
+      <!-- Blender'da yapılan anime çocuk: boncukları tek tek sayar (boncuklar script.js'te eklenir) -->
+      <div class="kid" id="kid" role="group" aria-label="">
+        <img class="kid-img on" data-pose="open" src="3d/kid-open.webp" alt="" width="540" height="720" decoding="async">
+        <img class="kid-img" data-pose="talk" src="3d/kid-talk.webp" alt="" width="540" height="720" decoding="async">
+        <img class="kid-img" data-pose="blink" src="3d/kid-blink.webp" alt="" width="540" height="720" decoding="async">
+        <span class="kid-count" id="kidCount" aria-hidden="true"></span>      </div>
+      </div>
       <h2>Matematiği oynayarak öğren!</h2>
       <p>Bir dünya seç ve maceraya başla 👇</p>
     </div>
@@ -219,7 +234,7 @@
     <div class="side-main">
       <div class="track" id="track">
         <div class="line"></div><div class="fill" id="fill"></div>
-        <div class="rocket" id="rocket">🚀</div><div class="moon">🌙</div>
+        <div class="rocket" id="rocket" aria-hidden="true"></div><div class="moon" aria-hidden="true"></div>
         <div class="timer" id="timer" hidden>60</div>
         <div class="count" id="count" hidden></div>
       </div>
@@ -344,7 +359,7 @@
     <div class="side-main">
       <div class="track" id="asTrack">
         <div class="line"></div><div class="fill" id="asFill"></div>
-        <div class="rocket" id="asRocket">🚀</div><div class="moon">🌙</div>
+        <div class="rocket" id="asRocket" aria-hidden="true"></div><div class="moon" aria-hidden="true"></div>
         <div class="timer" id="asTimer" hidden>60</div>
         <div class="count" id="asCount" hidden></div>
       </div>

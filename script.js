@@ -8,6 +8,14 @@ let lang = "de";
 const I18N = {
   // --- sayfa / menüler ---
   "Abaküs Macerası": ["Abacus Adventure", "Abakus-Abenteuer", "L'aventure du boulier"],
+  "Anime bir çocuk abaküsteki boncukları birer birer sayıyor: 1, 2, 3 … 10.": [
+    "An anime child counts the beads on an abacus one by one: 1, 2, 3 … 10.",
+    "Ein Anime-Kind zählt die Perlen am Abakus einzeln: 1, 2, 3 … 10.",
+    "Un enfant manga compte les perles du boulier une à une : 1, 2, 3 … 10."],
+  "Mavi çerçeveli 3D abaküs: turuncu ve beyaz boncuklar 1'den 10'a kadar sayıları gösteriyor. Döndürmek için sürükle.": [
+    "3D abacus with a blue frame: orange and white beads show the numbers 1 to 10. Drag to turn it.",
+    "3D-Abakus mit blauem Rahmen: orange und weiße Perlen zeigen die Zahlen 1 bis 10. Zum Drehen ziehen.",
+    "Boulier 3D au cadre bleu : les perles orange et blanches montrent les nombres de 1 à 10. Fais-le tourner en le faisant glisser."],
   "Abaküs": ["Abacus", "Abakus", "L'aventure"],
   "Macerası": ["Adventure", "Abenteuer", "du boulier"],
   "🧮 Abaküs": ["🧮 Abacus", "🧮 Abakus", "🧮 Boulier"],
@@ -344,6 +352,9 @@ function applyStatic(){
   staticTexts.forEach(({n, orig}) => { const k = orig.trim(); n.nodeValue = orig.replace(k, tKey(k)); });
   document.title = tKey("Abaküs Macerası");
   document.documentElement.lang = lang;
+  const kid = document.getElementById("kid");
+  if(kid) kid.setAttribute("aria-label", tKey("Anime bir çocuk abaküsteki boncukları birer birer sayıyor: 1, 2, 3 … 10."));  const mv = document.getElementById("abacus3d");
+  if(mv) mv.setAttribute("alt", tKey("Mavi çerçeveli 3D abaküs: turuncu ve beyaz boncuklar 1'den 10'a kadar sayıları gösteriyor. Döndürmek için sürükle."));
 }
 
 const ROD_NAMES = () => [$t`Yüzler`, $t`Onlar`, $t`Birler`];
@@ -380,6 +391,7 @@ function buildAbacus(){
     for(let i=0;i<BEADS;i++){
       const b = document.createElement("div");
       b.className = "bead " + (i<5 ? "o" : "w");
+      b.style.zIndex = BEADS - i;   // 3D boncuklar hafif üstten görünür: üstteki boncuk alttakinin önünde
       b.addEventListener("click", () => clickBead(r, i));
       rod.appendChild(b);
     }
@@ -769,7 +781,7 @@ function mNew(){
   box.innerHTML = "";
   [...opts].sort(() => Math.random() - .5).forEach((n, i) => {
     const b = document.createElement("button");
-    b.className = "balloon" + (i % 2 ? " w" : "");
+    b.className = "balloon b" + (i % 4);   // 4 renk: turuncu, beyaz, mavi, açık mavi
     b.style.animationDelay = (i * .35) + "s";
     b.textContent = n;
     b.onclick = () => pick(b, n);
@@ -968,8 +980,11 @@ function trEr(n){
   return ("aeıioöuü".includes(w.at(-1)) ? "ş" : "") + (back ? "ar" : "er");
 }
 const erer = n => lang === "en" ? `by ${n}s` : lang === "de" ? `in ${n}er-Schritten` : lang === "fr" ? `de ${n} en ${n}` : `${n}'${trEr(n)} ${n}'${trEr(n)}`;
+// Blender'da yapılan kurbağa pozları: ilk zıplamada takılmasın diye önceden yükle
+let frogImgs;
 function frogNew(){
   mLocked = false; stopG(); if(noTables()) return;
+  frogImgs = frogImgs || ["sit", "crouch", "jump"].map(p => { const im = new Image(); im.src = `3d/frog-${p}.webp`; return im; });
   const n = pickTable();
   const miss = new Set(shuffle([2,3,4,5,6,7,8,9,10]).slice(0, 4));
   frog = {n, miss, pos:0, ask:-1};
@@ -982,7 +997,7 @@ function frogDraw(){
   $("gq").innerHTML = `<div class="gtitle">${$t`🐸 <b>${erer(n)}</b> say!`}</div><div class="pads">${
     Array.from({length:11}, (_, i) => {
       const cls = "lp" + (miss.has(i) ? " miss" : "") + (i === ask ? " ask" : "") + (i < pos ? " past" : "");
-      return `<div class="${cls}">${miss.has(i) ? "?" : i*n}${i === pos ? '<span class="frog">🐸</span>' : ""}</div>`;
+      return `<div class="${cls}">${miss.has(i) ? "?" : i*n}${i === pos ? '<span class="frog" aria-hidden="true"></span>' : ""}</div>`;
     }).join("")}</div>`;
 }
 function frogWalk(){
@@ -1104,7 +1119,7 @@ function targetNew(){
   shuffle(cards);
   let left = good.length;
   $("gq").innerHTML = `<div class="gtitle">${$t`Sonucu <b>${T}</b> olan bütün işlemleri bul! 🎯`}</div>
-    <div class="target">${T}</div><div class="tgrid2" id="tg"></div>`;
+    <div class="target${T >= 100 ? " long" : ""}">${T}</div><div class="tgrid2" id="tg"></div>`;
   $("gopts").innerHTML = "";
   gMsg($t`Bulunacak: ${left} işlem`);
   cards.forEach(c => {
@@ -1153,7 +1168,7 @@ function houseNew(){
   const k = rnd(2, 10), N = t * k;
   const inTable = x => N % x === 0 && N / x <= 10;
   const wrongs = shuffle([2,3,4,5,6,7,8,9,10].filter(x => !inTable(x))).slice(0, 3);
-  $("gq").innerHTML = `<div class="gtitle">${$t`<b>${N}</b> hangi tablonun sayısı?`}</div><div class="target">${N}</div>`;
+  $("gq").innerHTML = `<div class="gtitle">${$t`<b>${N}</b> hangi tablonun sayısı?`}</div><div class="target${N >= 100 ? " long" : ""}">${N}</div>`;
   gMsg($t`Sadece bir tablo doğru! 🏠`);
   options(shuffle([t, ...wrongs]).map(x => ({label:`${x} ×`, value:x})), t, (b, right) => {
     if(right){ mLocked = true; b.classList.add("yes"); gRight($t`Evet! ${k} × ${t} = ${N} ✔`, houseNew, 1600); }
@@ -1193,7 +1208,7 @@ function catchNew(){
     if(isMul) v = n * rnd(1, 10);
     else do{ v = rnd(2, n*10); } while(v % n === 0);
     const d = document.createElement("button");
-    d.className = "drop" + (Math.random() < .5 ? " w" : "");
+    d.className = "drop b" + rnd(0, 3);   // 4 renk (balonlardaki gibi)
     d.textContent = v;
     d.style.left = rnd(2, 84) + "%";
     const sp = CATCH_SPEEDS[catchSpeed];
@@ -1364,7 +1379,7 @@ function asBalloon(){
   const box = $("asOpts"); box.innerHTML = ""; box.className = "balloons";
   near(f).forEach((n, i) => {
     const b = document.createElement("button");
-    b.className = "balloon" + (i % 2 ? " w" : ""); b.style.animationDelay = (i * .35) + "s"; b.textContent = n;
+    b.className = "balloon b" + (i % 4); b.style.animationDelay = (i * .35) + "s"; b.textContent = n;
     b.onclick = () => {
       if(asLocked) return;
       if(asGame === "time" && !asRaceOn) asStartRace();
@@ -1545,7 +1560,7 @@ function asTarget(){
   shuffle(cards);
   let left = good.length;
   $("asQ").innerHTML = `<div class="gtitle">${$t`Sonucu <b>${T}</b> olan bütün işlemleri bul! 🎯`}</div>
-    <div class="target">${T}</div><div class="tgrid2" id="asTg"></div>`;
+    <div class="target${T >= 100 ? " long" : ""}">${T}</div><div class="tgrid2" id="asTg"></div>`;
   $("asOpts").innerHTML = ""; $("asOpts").className = "";
   asMsg($t`Bulunacak: ${left} işlem`);
   const calc = ([a, b]) => asOp === "+" ? a + b : asOp === "/" ? a / b : a - b;
@@ -1586,7 +1601,7 @@ function asCatch(){
     if(Math.random() < .45) f = goodFact();
     else { let g = 0; do{ f = asFact(); } while(f.ans === T && g++ < 30); f = {t:short(f.t), ans:f.ans}; }
     const d = document.createElement("button");
-    d.className = "drop expr" + (Math.random() < .5 ? " w" : "");
+    d.className = "drop expr b" + rnd(0, 3);
     d.textContent = f.t;
     d.style.left = rnd(2, 78) + "%";
     const sp = CATCH_SPEEDS[catchSpeed];
@@ -2230,13 +2245,13 @@ function fishGame(c){
     <div class="mq">${f.a} <span class="op">${SIGN[c.op]}</span> ${f.b} <span class="op">=</span> ?</div><div class="pond"></div>`;
   c.msg($t`Balığa dokun 👆`);
   const pond = c.q().querySelector(".pond");
-  const fish = ["🐟", "🐡", "🐟", "🐡"];
+  const fish = shuffle(["orange", "blue", "yellow", "sky"]);   // Blender'da yapılan 4 balık (3d/fish-*.webp)
   shuffle(nums).forEach((n, i) => {
     const b = document.createElement("button"); b.type = "button"; b.className = "fish";
     // her balık kendi hızında ve kendi yerinden başlasın
     const dur = 7 + Math.random() * 5;
     b.style.cssText = `top:${3 + i * 22}%;animation-duration:${dur}s;animation-delay:${-Math.random() * dur}s`;
-    b.innerHTML = `<span class="fe" style="animation-duration:${dur}s;animation-delay:inherit">${fish[i]}</span><b>${n}</b>`;
+    b.innerHTML = `<span class="fe ${fish[i]}" style="animation-duration:${dur}s;animation-delay:inherit"></span><b>${n}</b>`;
     b.onclick = () => {
       if(c.locked()) return;
       if(n === f.ans){
@@ -2304,7 +2319,7 @@ function asHouseDiv(){
   const N = f.a, t = Math.max(2, f.b);
   // yanlış seçenekler gerçekten tam bölmeyen sayılar olmalı (ör. 30 için 2 de doğru olurdu)
   const wrongs = shuffle([2,3,4,5,6,7,8,9,10].filter(x => N % x !== 0)).slice(0, 3);
-  $("asQ").innerHTML = `<div class="gtitle">${$t`<b>${N}</b> hangi sayıya tam bölünür?`}</div><div class="target">${N}</div>`;
+  $("asQ").innerHTML = `<div class="gtitle">${$t`<b>${N}</b> hangi sayıya tam bölünür?`}</div><div class="target${N >= 100 ? " long" : ""}">${N}</div>`;
   asMsg($t`Sadece bir cevap doğru! 🏠`);
   asOptions(shuffle([t, ...wrongs]).map(x => ({label:`÷ ${x}`, value:x})), t, (b, right) => {
     if(right){ asLocked = true; b.classList.add("yes"); asRight($t`Evet! ${N} ÷ ${t} = ${N / t} ✔`, asHouseDiv, 1600); }
@@ -2521,7 +2536,7 @@ function route(){
   window.scrollTo(0, 0);
 }
 document.querySelectorAll("[data-go]").forEach(c => c.onclick = () => { location.hash = c.dataset.go; });
-$("homeBtn").onclick = $("logo").onclick = () => { if(!atHome()) location.hash = ""; };
+$("homeBtn").onclick = $("logo").onclick = $("logo3d").onclick = () => { if(!atHome()) location.hash = ""; };
 // sekmeler arasında geçince adres de değişsin (geri tuşu giriş sayfasına döner)
 document.querySelectorAll("[data-tab]").forEach(b => b.addEventListener("click", () => {
   const r = Object.keys(ROUTES).find(k => tabBtn(k) === b);
@@ -2530,3 +2545,87 @@ document.querySelectorAll("[data-tab]").forEach(b => b.addEventListener("click",
 window.addEventListener("hashchange", route);
 updHome();
 route();
+
+// ---------- giriş sayfası: 3D abaküs ----------
+// model-viewer (~1 MB) sayfa açıldıktan sonra, boşta yüklenir; o ana kadar poster görünür.
+// Hareket azaltma açıksa kendi kendine dönmez.
+(function load3D(){
+  const mv = $("abacus3d");
+  if(!mv || !("customElements" in window)) return;
+  // logo: tam tur yerine önden bakarken ±28° sallanır (yandan ince çizgiye dönüşmesin)
+  if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
+    customElements.whenDefined("model-viewer").then(() => {
+      let last = 0;
+      const wobble = t => {
+        if(t - last > 33){ last = t; mv.cameraOrbit = `${(Math.sin(t / 1400) * 28).toFixed(2)}deg 82deg auto`; }   // ~30 fps yeter
+        requestAnimationFrame(wobble);
+      };
+      requestAnimationFrame(wobble);
+    });
+  }
+  const go = () => {
+    const s = document.createElement("script");
+    s.type = "module"; s.src = "vendor/model-viewer/model-viewer.min.js";
+    document.head.appendChild(s);
+  };
+  const idle = () => ("requestIdleCallback" in window) ? requestIdleCallback(go, {timeout: 2500}) : setTimeout(go, 600);
+  if(document.readyState === "complete") idle(); else window.addEventListener("load", idle, {once: true});
+})();
+
+// ---------- giriş sayfası: abaküsle sayan anime çocuk ----------
+// Görseller Blender'da render edildi; üst sıradaki 10 boncuk burada canlandırılır.
+// Konumlar Blender kamerasından hesaplandı (görsel genişliğine/yüksekliğine göre oran).
+(function kidCounter(){
+  const kid = $("kid");
+  if(!kid) return;
+  // sahne 960×600, çocuk çapraz durduğu için çubuk hafif eğik: her boncukta x ve y birlikte ilerler
+  const X0 = 0.63943, XS = 0.014343, Y0 = 0.71596, YS = 0.0013863, BEAD = 0.02389;   // oranlar (genişlik / yükseklik)
+  const DX = -0.09981 / BEAD, DY = -0.00964 * (600 / 960) / BEAD;                     // kayma, boncuk boyu cinsinden
+  const beads = Array.from({length:10}, (_, k) => {
+    const b = document.createElement("span");
+    b.className = "kid-bead" + (k < 5 ? "" : " w");
+    b.style.left = ((X0 + k*XS) * 100) + "%"; b.style.top = ((Y0 + k*YS) * 100) + "%";
+    b.style.setProperty("--dx", DX); b.style.setProperty("--dy", DY);
+    kid.insertBefore(b, $("kidCount"));
+    return b;
+  });
+  const imgs = {}; kid.querySelectorAll(".kid-img").forEach(im => imgs[im.dataset.pose] = im);
+  const pose = p => Object.entries(imgs).forEach(([k, im]) => im.classList.toggle("on", k === p));
+  const bubble = $("kidCount");
+  let n = 0, timer = null, blinkT = null, talking = false;
+
+  // hareket azaltma: sabit bir an (5 sayılmış)
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches){
+    beads.slice(0, 5).forEach(b => b.classList.add("on"));
+    bubble.textContent = "5"; bubble.classList.add("show");
+    return;
+  }
+
+  function step(){
+    if(n < 10){
+      beads[n].classList.add("on"); n++;
+      bubble.textContent = n; bubble.classList.remove("show"); void bubble.offsetWidth; bubble.classList.add("show");
+      talking = true; pose("talk"); setTimeout(() => { talking = false; pose("open"); }, 320);
+      timer = setTimeout(step, n === 10 ? 1800 : 850);
+    } else {
+      // hepsini geri kaydır, baştan say
+      bubble.classList.remove("show");
+      beads.slice().reverse().forEach((b, i) => setTimeout(() => b.classList.remove("on"), i * 45));
+      n = 0; timer = setTimeout(step, 1300);
+    }
+  }
+  function blink(){
+    blinkT = setTimeout(() => {
+      if(!talking){ pose("blink"); setTimeout(() => { if(!talking) pose("open"); }, 130); }
+      blink();
+    }, 2600 + Math.random() * 2600);
+  }
+  // sadece giriş sayfası ekrandayken ve sekme açıkken çalış
+  const run = () => { if(!timer){ timer = setTimeout(step, 700); blink(); } };
+  const stop = () => { clearTimeout(timer); clearTimeout(blinkT); timer = blinkT = null; };
+  let visible = false;
+  const sync = () => (visible && atHome() && !document.hidden) ? run() : stop();
+  new IntersectionObserver(e => { visible = e[0].isIntersecting; sync(); }).observe(kid);
+  document.addEventListener("visibilitychange", sync);
+  window.addEventListener("hashchange", sync);
+})();

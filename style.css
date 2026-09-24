@@ -46,22 +46,29 @@ h1 span{color:var(--ink)}
 .msg.ok{color:var(--ok)} .msg.bad{color:var(--bad)}
 
 /* Abacus */
+/* 3D görünüm: kabartmalı turuncu çerçeve, içe gömük panel, silindir çubuklar, Blender'da render edilen boncuklar */
 .abacus{
-  background:linear-gradient(#ff8f3a,#e8660f);border-radius:26px;padding:14px;
-  box-shadow:0 8px 0 #c2530a; display:flex;flex-direction:column;gap:8px;
+  background:linear-gradient(#ff9a4d,#f07015 55%,#e2600a);border-radius:26px;padding:14px;
+  box-shadow:inset 0 3px 0 rgba(255,255,255,.35), inset 0 -4px 0 rgba(0,0,0,.12), 0 8px 0 #c2530a, 0 16px 26px rgba(194,83,10,.22);
+  display:flex;flex-direction:column;gap:8px;
 }
-.frame{background:var(--white);border-radius:16px;display:flex;justify-content:space-around;padding:10px 6px;position:relative}
+.frame{background:linear-gradient(#fffdf9,#fff6ec);border-radius:16px;display:flex;justify-content:space-around;padding:10px 6px;position:relative;
+  box-shadow:inset 0 6px 14px rgba(90,46,12,.16), inset 0 -2px 0 rgba(255,255,255,.9)}
 .rod{position:relative;width:min(110px,28vw);height:330px}
-.rod::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:8px;margin-left:-4px;background:#c9a27e;border-radius:4px}
+/* ahşap çubuk: yuvarlak görünsün diye yandan ışık alan gradyan */
+.rod::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:10px;margin-left:-5px;border-radius:5px;
+  background:linear-gradient(90deg,#8a6546,#e8cba8 38%,#c79d74 62%,#7a583b);box-shadow:0 0 6px rgba(90,46,12,.18)}
+/* boncuk: tıklama kutusu aynı (86×28), görsel ::before ile; 3D boncuk biraz taşar */
 .bead{
   position:absolute;left:50%;width:min(86px,24vw);height:28px;margin-left:calc(min(86px,24vw) / -2);
-  border-radius:14px;cursor:pointer;border:3px solid var(--or-d);
-  transition:top .28s cubic-bezier(.5,1.6,.5,1);
-  box-shadow:inset 0 -5px 0 rgba(0,0,0,.12), inset 0 5px 0 rgba(255,255,255,.45);
+  cursor:pointer;transition:top .28s cubic-bezier(.5,1.6,.5,1);
 }
-.bead.o{background:var(--or)}
-.bead.w{background:var(--white)}
+.bead::before{content:"";position:absolute;left:-3%;right:-3%;top:50%;height:calc(min(86px,24vw) * 1.06 / 2.55);transform:translateY(-50%);
+  background:url(3d/bead-blue.webp) center/100% 100% no-repeat;filter:drop-shadow(0 2px 1px rgba(90,46,12,.28))}
+/* ilk 5 boncuk (.o) mavi, sonraki 5 (.w) turuncu – 5'li gruplar net ayrılsın */
+.bead.w::before{background-image:url(3d/bead-orange.webp)}
 .bead:hover{filter:brightness(1.07)}
+.bead:active::before{transform:translateY(-50%) scale(.96)}
 .labels{display:flex;justify-content:space-around;color:var(--white);font-weight:800;text-align:center}
 .labels div{width:min(110px,28vw)}
 .labels .v{font-size:34px;line-height:1}
@@ -76,7 +83,8 @@ h1 span{color:var(--ink)}
 }
 .actions button.main{background:var(--or);color:var(--white);box-shadow:0 5px 0 #c2530a}
 .actions button:active{transform:translateY(4px);box-shadow:none}
-@media (max-width:560px){ .actions{grid-template-columns:repeat(2,1fr)} .rod{height:300px} }
+/* telefonda da boncukların kayacak yeri olsun: 10 × (28+2) = 300px → en az 1 boncukluk boşluk */
+@media (max-width:560px){ .actions{grid-template-columns:repeat(2,1fr)} .rod{height:336px} }
 
 .shake{animation:shake .45s}
 @keyframes shake{20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
@@ -156,20 +164,27 @@ h1 span{color:var(--ink)}
   display:flex;align-items:center;padding:0 56px 0 12px}
 .track .line{flex:1;height:10px;border-radius:5px;background:var(--or-xl)}
 .track .fill{position:absolute;left:12px;width:0;height:10px;border-radius:5px;background:var(--or);transition:width .5s}
-.rocket{position:absolute;left:12px;font-size:40px;transition:left .5s cubic-bezier(.4,1.6,.5,1);transform:translateX(-30%) rotate(45deg)}
-.moon{position:absolute;right:10px;font-size:38px}
+/* 3D roket ve ay (Blender, 3d/rocket.webp · 3d/moon.webp); roket her doğru cevapta aya ilerler (script: moveRocket/asMove) */
+.rocket{position:absolute;z-index:1;left:12px;top:50%;width:60px;aspect-ratio:448/240;margin-top:-16px;transform:translateX(-18%);   /* hedefte ayın önünde: "aya vardı" */
+  background:url(3d/rocket.webp) center/contain no-repeat;transition:left .5s cubic-bezier(.4,1.6,.5,1);animation:rocketBob 1.8s ease-in-out infinite}
+@keyframes rocketBob{50%{translate:0 -3px}}
+.moon{position:absolute;right:8px;top:50%;width:44px;height:44px;margin-top:-22px;background:url(3d/moon.webp) center/contain no-repeat}
+@media (prefers-reduced-motion:reduce){ .rocket{animation:none} }
 .timer{position:absolute;top:-14px;right:60px;background:var(--or);color:var(--white);font-weight:800;border-radius:999px;padding:0 12px;font-size:18px}
 
 .mq{text-align:center;font-size:clamp(64px,14vw,130px);font-weight:800;line-height:1.05}
 .mq .op{color:var(--or)}
 .balloons{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:10px 0 30px;min-height:190px}
 @media (max-width:560px){ .balloons{grid-template-columns:repeat(2,1fr)} }
-.balloon{position:relative;justify-self:center;width:min(130px,38vw);aspect-ratio:.85;border:none;cursor:pointer;
-  border-radius:50% 50% 48% 48% / 55% 55% 45% 45%;font:inherit;font-weight:800;font-size:clamp(34px,6vw,48px);color:var(--white);
-  background:radial-gradient(circle at 30% 28%,rgba(255,255,255,.55) 0 12%,transparent 13%),var(--c,var(--or));
-  box-shadow:inset -8px -10px 0 rgba(0,0,0,.12);animation:float 2.6s ease-in-out infinite;transition:transform .15s}
-.balloon::after{content:"";position:absolute;left:50%;bottom:-26px;width:2px;height:22px;background:#c9a27e}
-.balloon.w{--c:#ffffff;color:var(--or-d);box-shadow:inset -8px -10px 0 rgba(255,122,26,.15),0 0 0 3px var(--or)}
+/* 3D balonlar (Blender, 3d/balloon-*.webp): 4 renk – turuncu, beyaz, mavi, açık mavi (mavi tonlar terazi ağırlıklarıyla aynı) */
+.balloon{position:relative;justify-self:center;width:min(130px,38vw);aspect-ratio:.85;border:none;cursor:pointer;padding:0 0 9%;
+  font:inherit;font-weight:800;font-size:clamp(34px,6vw,48px);color:var(--white);text-shadow:0 2px 3px rgba(0,0,0,.3);
+  background:url(3d/balloon-orange.webp) center/contain no-repeat;
+  filter:drop-shadow(0 6px 5px rgba(90,46,12,.18));animation:float 2.6s ease-in-out infinite;transition:transform .15s}
+.balloon::after{content:"";position:absolute;left:50%;bottom:-24px;width:2px;height:28px;margin-left:-1px;background:#b89272;z-index:-1}
+.balloon.b1{background-image:url(3d/balloon-white.webp);color:var(--or-d);text-shadow:none}
+.balloon.b2{background-image:url(3d/balloon-blue.webp)}
+.balloon.b3{background-image:url(3d/balloon-sky.webp);color:#10306e;text-shadow:0 1px 0 rgba(255,255,255,.5)}   /* açık maviye lacivert yazı: okunaklı */
 .balloon:hover{transform:scale(1.06)}
 .balloon.pop{animation:popB .35s forwards}
 .balloon.no{opacity:.35;animation:shake .45s;pointer-events:none}
@@ -220,32 +235,52 @@ h1 span{color:var(--ink)}
 .lp.miss{border-style:dashed;background:var(--or-xl);color:var(--or)}
 .lp.miss.ask{animation:pop .8s infinite;border-color:var(--or-d)}
 .lp.past{background:var(--or);color:var(--white)}
-.lp .frog{position:absolute;top:-36px;font-size:36px;animation:hop .4s}
+/* kurbağa: Blender'da render edilen 3 poz; zıplarken çömel → havada → in → otur */
+.lp .frog{position:absolute;top:-46px;left:50%;width:56px;height:56px;margin-left:-28px;pointer-events:none;
+  background:url(3d/frog-sit.webp) center/contain no-repeat;animation:hop .4s,frogPose .4s step-end}   /* step-end: pozlar karışmadan değişir */
 @keyframes hop{0%{transform:translate(-40px,0)}50%{transform:translate(-20px,-26px)}100%{transform:none}}
+@keyframes frogPose{
+  0%{background-image:url(3d/frog-crouch.webp)}
+  15%{background-image:url(3d/frog-jump.webp)}
+  80%{background-image:url(3d/frog-crouch.webp)}
+  100%{background-image:url(3d/frog-sit.webp)}}
 
 .qbox{display:inline-block;min-width:1.2em;border:5px dashed var(--or);border-radius:18px;background:var(--or-xl);color:var(--or);padding:0 .12em}
 .tfq.cmp{display:flex;align-items:center;gap:.3em;font-size:clamp(46px,9vw,96px)}
 .gopts.three{grid-template-columns:repeat(3,1fr)}
 .gopts.three button{font-size:clamp(40px,7vw,64px);padding:4px}
 
-.target{font-size:clamp(70px,12vw,120px);font-weight:800;color:var(--white);background:var(--or);border-radius:50%;
-  width:1.7em;aspect-ratio:1;display:flex;align-items:center;justify-content:center;line-height:1;
-  box-shadow:0 0 0 10px var(--white),0 0 0 16px var(--or),0 0 0 26px var(--white),0 0 0 32px var(--or-l);margin:30px 0 26px}
-.tgrid2{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:100%}
+/* 🎯 3D hedef tahtası (Blender, 3d/target.webp): mavi/beyaz/açık mavi halkalar, turuncu merkez, saplanmış dart.
+   Sayı turuncu merkezde; boyut kartın genişliğine bağlı (--tw), yazı tahtayla birlikte ölçeklenir */
+.target{--tw:clamp(180px,46cqw,270px);width:var(--tw);aspect-ratio:1;margin:6px 0 10px;
+  display:flex;align-items:center;justify-content:center;padding-left:1.6%;line-height:1;
+  font-size:calc(var(--tw) * .225);font-weight:800;color:var(--white);text-shadow:0 2px 4px rgba(122,40,0,.5);
+  background:url(3d/target.webp) center/contain no-repeat}
+.target.long{font-size:calc(var(--tw) * .17)}   /* 3 basamak (100): turuncu merkeze (%38) sığsın */
+.tgrid2{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;width:100%}
 @media (max-width:560px){ .tgrid2{grid-template-columns:repeat(2,1fr)} }
-.tgrid2 button{font:inherit;font-weight:800;font-size:clamp(24px,3.6vw,34px);padding:8px;border-radius:16px;cursor:pointer;
-  border:4px solid var(--or);background:var(--white);color:var(--or-d);box-shadow:0 5px 0 var(--or-l)}
-.tgrid2 button.no{animation:shake .45s;border-color:var(--bad);color:var(--bad)}
-.tgrid2 button.yes{background:var(--ok);border-color:var(--ok);color:var(--white);animation:pop .5s}
+/* işlem kartları: oyuncak blok (kabarık yüz + kalın alt kenar), basınca çöker */
+.tgrid2 button{font:inherit;font-weight:800;font-size:clamp(24px,3.6vw,34px);padding:10px 8px;border-radius:18px;cursor:pointer;
+  border:3px solid var(--or);color:var(--or-d);background:linear-gradient(#ffffff,#fff1e2);
+  box-shadow:inset 0 3px 0 #fff,inset 0 -5px 0 rgba(255,122,26,.16),0 6px 0 var(--or-d),0 11px 14px rgba(194,83,10,.18);
+  transition:transform .12s,box-shadow .12s}
+.tgrid2 button:active{transform:translateY(5px);box-shadow:inset 0 3px 0 #fff,inset 0 -5px 0 rgba(255,122,26,.16),0 1px 0 var(--or-d)}
+.tgrid2 button.no{animation:shake .45s;border-color:var(--bad);color:var(--bad);box-shadow:inset 0 3px 0 #fff,0 6px 0 #b8332a}
+.tgrid2 button.yes{border-color:#1f8a50;color:var(--white);text-shadow:0 2px 2px rgba(0,60,20,.35);animation:pop .5s;
+  background:linear-gradient(#4fd48a,#2fb36b);box-shadow:inset 0 3px 0 rgba(255,255,255,.4),0 6px 0 #1f8a50,0 11px 14px rgba(31,138,80,.25)}
 
 .rain{position:relative;width:100%;height:clamp(340px,50vh,480px);overflow:hidden;border-radius:20px;
   background:linear-gradient(var(--or-xl),#fff);border:4px solid var(--or-l)}
-.drop{position:absolute;top:-80px;width:74px;height:74px;border-radius:50%;border:none;cursor:pointer;
-  font:inherit;font-weight:800;font-size:30px;color:var(--white);background:var(--or);box-shadow:inset -6px -8px 0 rgba(0,0,0,.12);
+/* 3D toplar (Blender, 3d/ball-*.webp) – balonlarla aynı 4 renk: turuncu, beyaz, mavi, açık mavi; yanlışta kırmızı */
+.drop{position:absolute;top:-80px;width:74px;height:74px;border:none;cursor:pointer;padding:0;
+  font:inherit;font-weight:800;font-size:30px;color:var(--white);text-shadow:0 2px 3px rgba(0,0,0,.3);
+  background:url(3d/ball-orange.webp) center/contain no-repeat;filter:drop-shadow(0 4px 3px rgba(90,46,12,.2));
   animation:drop linear forwards}
-.drop.w{background:var(--white);color:var(--or-d);box-shadow:inset -6px -8px 0 rgba(255,122,26,.15),0 0 0 3px var(--or)}
+.drop.b1{background-image:url(3d/ball-white.webp);color:var(--or-d);text-shadow:none}
+.drop.b2{background-image:url(3d/ball-blue.webp)}
+.drop.b3{background-image:url(3d/ball-sky.webp);color:#10306e;text-shadow:0 1px 0 rgba(255,255,255,.5)}
 .drop.got{animation:popB .3s forwards}
-.drop.bad{background:var(--bad);color:var(--white);animation:shake .4s}
+.drop.bad{background-image:url(3d/ball-red.webp);color:var(--white);text-shadow:0 2px 3px rgba(0,0,0,.3);animation:shake .4s}
 @keyframes drop{to{top:calc(100% + 10px)}}
 
 /* toplama / çıkarma */
@@ -258,7 +293,14 @@ h1 span{color:var(--ink)}
 .pic .gone{position:relative;display:inline-block}
 .pic .gone i{font-style:normal;opacity:.3}
 .pic .gone::after{content:"✖";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--bad);font-size:.9em}
-.drop.expr{width:auto;min-width:96px;padding:0 14px;border-radius:40px;font-size:26px}
+/* işlemli toplar: 3D kapsül; genişlik yazıya göre değişir → 9-slice (uçlar 108/216 px dilim = yüksekliğin yarısı, orta uzar) */
+.drop.expr{width:auto;min-width:110px;padding:0 6px;font-size:26px;background:none;
+  border-style:solid;border-width:0 22px;border-color:transparent;
+  border-image:url(3d/pill-orange.webp) 0 108 fill / 0 37px / 0 stretch}
+.drop.expr.b1{border-image-source:url(3d/pill-white.webp)}
+.drop.expr.b2{border-image-source:url(3d/pill-blue.webp)}
+.drop.expr.b3{border-image-source:url(3d/pill-sky.webp)}
+.drop.expr.bad{border-image-source:url(3d/pill-red.webp)}
 
 .table-card h3{font-size:22px;margin-bottom:8px;color:var(--or-d)}
 .tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
@@ -281,7 +323,6 @@ body{padding:max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-r
 .mq{font-size:clamp(40px,14cqw,130px)}
 .tfq{font-size:clamp(34px,12cqw,120px)}
 .tfq.cmp{font-size:clamp(28px,9.5cqw,96px)}
-.target{font-size:clamp(56px,16cqw,120px)}
 .mc .f{font-size:clamp(18px,5.5cqw,44px)}
 .balloon{width:min(130px,100%)}
 .tgrid2{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
@@ -335,7 +376,6 @@ html{scrollbar-gutter:stable}
 .gopts.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 .mgrid{grid-template-columns:repeat(4,minmax(0,1fr))}
 .gopts button, .tabs button, .set .modes button{overflow-wrap:anywhere}
-.rocket{transform:rotate(45deg)}
 @media (max-width:560px){
   .balloons{grid-template-columns:repeat(2,minmax(0,1fr))}
   .mgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -398,6 +438,7 @@ body.noscroll{overflow:hidden}
 .side-main.fs .balloon{width:min(170px,100%)}
 .side-main.fs .rain{height:min(62vh,680px)}
 .side-main.fs .lp{width:clamp(56px,8vw,90px);font-size:clamp(20px,3.2vw,34px)}
+.side-main.fs .lp .frog{width:clamp(56px,7vw,80px);height:clamp(56px,7vw,80px);margin-left:calc(-.5 * clamp(56px,7vw,80px));top:calc(-.82 * clamp(56px,7vw,80px))}
 
 /* ---------- telefon: üst çubuk ---------- */
 .lang-drop{display:none;position:relative}
@@ -423,6 +464,7 @@ body.noscroll{overflow:hidden}
 /* ---------- telefon: daha okunaklı başlık ve sekmeler ---------- */
 @media (max-width:760px){
   header h1{font-size:clamp(30px,8.4vw,44px);line-height:1.08}
+  .logo-3d{font-size:clamp(30px,8.4vw,44px)}
   .tabs{gap:6px;padding:6px}
   .tabs button{font-size:17px;line-height:1.15;padding:10px 4px;min-height:54px;display:flex;align-items:center;justify-content:center;text-align:center}
 }
@@ -508,18 +550,37 @@ body.noscroll{overflow:hidden}
 .tri .q.ok{background:var(--ok);border:4px solid var(--ok);color:var(--white);animation:pop .5s}
 
 /* 🐟 Balık Tut */
+/* akvaryum: Blender arka planı (su, kum, yosun, kayalar, sandık) + mavi cam çerçeve + CSS ışık huzmeleri ve kabarcıklar */
 .pond{position:relative;width:100%;height:clamp(230px,38vw,300px);margin-top:10px;border-radius:24px;overflow:hidden;
-  background:linear-gradient(#bfe6ff,#6ec3f2);box-shadow:inset 0 6px 0 rgba(255,255,255,.5)}
-.fish{position:absolute;left:0;display:flex;align-items:center;gap:2px;border:0;background:none;cursor:pointer;padding:4px;
+  background:url(3d/aquarium-bg.webp) center bottom/cover no-repeat #6ec3f2;
+  border:6px solid #1d5fd8;box-shadow:inset 0 5px 0 rgba(255,255,255,.55),0 6px 0 #143f96}
+.pond::before{content:"";position:absolute;inset:-20% -10% 30%;pointer-events:none;z-index:0;opacity:.55;
+  background:repeating-linear-gradient(100deg,transparent 0 60px,rgba(255,255,255,.22) 60px 90px,transparent 90px 170px);
+  animation:rays 7s ease-in-out infinite alternate}
+.pond::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(circle,rgba(255,255,255,.85) 0 3px,rgba(255,255,255,.25) 4px,transparent 5px) 14% 110%/12px 12px no-repeat,
+    radial-gradient(circle,rgba(255,255,255,.85) 0 2px,rgba(255,255,255,.25) 3px,transparent 4px) 17% 125%/9px 9px no-repeat,
+    radial-gradient(circle,rgba(255,255,255,.85) 0 4px,rgba(255,255,255,.25) 5px,transparent 6px) 81% 118%/14px 14px no-repeat,
+    radial-gradient(circle,rgba(255,255,255,.85) 0 2px,rgba(255,255,255,.25) 3px,transparent 4px) 84% 135%/9px 9px no-repeat,
+    radial-gradient(circle,rgba(255,255,255,.85) 0 3px,rgba(255,255,255,.25) 4px,transparent 5px) 55% 150%/12px 12px no-repeat;
+  animation:bubbles 6s linear infinite}
+@keyframes rays{to{transform:translateX(8%);opacity:.3}}
+@keyframes bubbles{to{background-position:14% -20%,17% -40%,81% -25%,84% -45%,55% -30%}}
+@media (prefers-reduced-motion:reduce){ .pond::before, .pond::after{animation:none} }
+.fish{position:absolute;z-index:1;left:0;display:flex;align-items:center;gap:2px;border:0;background:none;cursor:pointer;padding:4px;
   font:inherit;animation:swim linear infinite}
-.fish .fe{font-size:clamp(38px,6vw,54px);animation:face linear infinite;display:inline-block}
+/* 3D balıklar (Blender, 3d/fish-*.webp): görsel sağa bakar → sola yüzerken çevrilir */
+.fish .fe{width:clamp(58px,9vw,84px);aspect-ratio:324/200;display:inline-block;background:url(3d/fish-orange.webp) center/contain no-repeat;
+  animation:faceR linear infinite;filter:drop-shadow(0 3px 2px rgba(20,60,110,.25))}
+.fish .fe.blue{background-image:url(3d/fish-blue.webp)} .fish .fe.yellow{background-image:url(3d/fish-yellow.webp)} .fish .fe.sky{background-image:url(3d/fish-sky.webp)}
+@keyframes faceR{0%,49.9%{transform:none}50%,100%{transform:scaleX(-1)}}
 .fish b{font-size:clamp(20px,3.6vw,30px);font-weight:800;color:var(--ink);background:var(--white);border-radius:999px;padding:0 10px;
   box-shadow:0 3px 0 rgba(0,0,0,.12)}
 .fish.no b{background:var(--bad);color:var(--white)}
 .fish.no{animation-play-state:paused}
 .fish.yes b{background:var(--ok);color:var(--white);animation:pop .5s}
 .pond.done .fish, .pond.done .fe{animation-play-state:paused}
-@keyframes swim{0%,100%{left:0}50%{left:calc(100% - 130px)}}
+@keyframes swim{0%,100%{left:0}50%{left:calc(100% - clamp(130px,17vw,160px))}}   /* balık + rakam etiketi sağ camdan çıkmasın */
 @keyframes face{0%,49.9%{transform:scaleX(-1)}50%,100%{transform:none}}
 @media (prefers-reduced-motion:reduce){ .fish, .fish .fe{animation-duration:40s !important} }
 /* 🧱 Sayı Duvarı */
@@ -530,30 +591,59 @@ body.noscroll{overflow:hidden}
 .brick.q{border-style:dashed;background:var(--or-xl);color:var(--or)}
 
 /* 🟠 Nokta Tarlası (Punktefeld): 5'lik gruplar arasında boşluk */
-.dots{display:grid;grid-template-columns:repeat(5,minmax(0,1fr)) 2px repeat(5,minmax(0,1fr));gap:4px;width:min(100%,420px);touch-action:manipulation}
-.dot{aspect-ratio:1;border-radius:50%;border:2px solid var(--or-l);background:var(--white);padding:0;cursor:pointer;min-width:0}
-.dot[data-c="5"]{grid-column-start:7} .dot[data-r="4"]{margin-bottom:6px}
-.dot.on{background:var(--or);border-color:var(--or-d)}
-.dots.done .dot.on{background:var(--ok);border-color:var(--ok)}
+/* 3D nokta tarlası (Blender): yıldızlı mavi oyuncak çerçeve, 4 renkli çeyrek (mavi/sarı/yeşil/pembe), ortada turuncu çıtalar + yuvalar + pullar.
+   Pullar her çeyreğin tam ortasında: tahtada renkli çeyrek %7.64 → %48.52 (tahta genişliğine göre).
+   padding %9.6 → dış boşluk %1.96; orta aralık (2 × gap %0.8 + orta şerit %5.4) = %7 → iç boşluk da %1.96.
+   Tahta kare → tüm aralıklar yüzde (içerik kutusu %80.8: gap 0.8/80.8 = %0.99, orta şerit 5.4/80.8 = %6.683). */
+/* padding % üst kutunun genişliğine göre hesaplanır → tahtanın kendi genişliğinden (min(100%,540px)) hesapla */
+.dots{--mid:6.683%;display:grid;width:min(100%,540px);aspect-ratio:1;padding:calc(min(100%,540px) * .096);gap:0.99%;touch-action:manipulation;
+  grid-template-columns:repeat(5,minmax(0,1fr)) var(--mid) repeat(5,minmax(0,1fr));
+  grid-template-rows:repeat(5,minmax(0,1fr)) var(--mid) repeat(5,minmax(0,1fr));
+  background:url(3d/dot-board.webp) center/100% 100% no-repeat}
+.dot{aspect-ratio:1;border:none;border-radius:50%;background:url(3d/dot-socket.webp) center/contain no-repeat;padding:0;cursor:pointer;min-width:0;
+  transition:transform .12s}
+.dot:hover{filter:brightness(1.05)}
+.dot:active{transform:scale(.92)}
+.dot:focus-visible{outline:3px solid var(--or-d);outline-offset:1px}
+/* her pul kendi hücresinde: 0–4 → iz 1–5, 5–9 → iz 7–11 (6. iz = ortadaki çıta) */
+.dot[data-c="0"]{grid-column:1} .dot[data-c="1"]{grid-column:2} .dot[data-c="2"]{grid-column:3} .dot[data-c="3"]{grid-column:4} .dot[data-c="4"]{grid-column:5}
+.dot[data-c="5"]{grid-column:7} .dot[data-c="6"]{grid-column:8} .dot[data-c="7"]{grid-column:9} .dot[data-c="8"]{grid-column:10} .dot[data-c="9"]{grid-column:11}
+.dot[data-r="0"]{grid-row:1} .dot[data-r="1"]{grid-row:2} .dot[data-r="2"]{grid-row:3} .dot[data-r="3"]{grid-row:4} .dot[data-r="4"]{grid-row:5}
+.dot[data-r="5"]{grid-row:7} .dot[data-r="6"]{grid-row:8} .dot[data-r="7"]{grid-row:9} .dot[data-r="8"]{grid-row:10} .dot[data-r="9"]{grid-row:11}
+.dot{width:100%;height:100%;align-self:center;justify-self:center}
+.dot.on{background-image:url(3d/dot-orange.webp)}
+.dots.done .dot.on{background-image:url(3d/dot-green.webp)}
 .dots-lbl{font-size:clamp(26px,5vw,40px);font-weight:800;color:var(--or-d);min-height:1.2em}
 /* 🏋️ Terazi: kefeler kiriş yatınca da düz kalır */
-.scale{--a:0deg;position:relative;width:min(100%,480px);height:240px;margin:6px auto 0}
-.stand{position:absolute;left:50%;top:62px;bottom:0;width:12px;transform:translateX(-50%);background:var(--ink);border-radius:6px}
-.stand::after{content:"";position:absolute;bottom:0;left:50%;width:110px;height:12px;transform:translateX(-50%);background:var(--ink);border-radius:6px}
-.beam{position:absolute;top:56px;left:4%;right:4%;height:10px;background:var(--ink);border-radius:5px;transform:rotate(var(--a));transition:transform .45s cubic-bezier(.3,1.4,.5,1)}
-.pan{position:absolute;top:10px;width:42%;min-height:74px;display:flex;flex-wrap:wrap;align-items:flex-end;align-content:flex-end;justify-content:center;gap:3px;
-  padding:6px;background:var(--or-xl);border:3px solid var(--or);border-top:none;border-radius:0 0 44px 44px;
-  transform:rotate(calc(var(--a) * -1));transform-origin:top center;transition:transform .45s cubic-bezier(.3,1.4,.5,1)}
+/* 3D terazi: parçalar Blender'da render edildi (3d/scale-*.webp). Ölçüler 480×240 tasarımına göre yüzde → her genişlikte hizalı.
+   mil merkezi y=69px · ayak: 130×190 (mil üstten 16px) · kol: %92 × 32px (askılar %15 / %85, uçları alttan 3px yukarıda)
+   kefe: kolun %42'si, 185×142.5 (askı halkası en üstte). Görsellerde kontur kesilmesin diye her kenarda pay var. */
+.scale{--a:0deg;position:relative;width:min(100%,480px);aspect-ratio:2/1;margin:6px auto 0}
+.stand{position:absolute;left:50%;top:22.08%;height:79.17%;width:27.08%;transform:translateX(-50%);
+  background:url(3d/scale-stand.webp) center/100% 100% no-repeat}
+.beam{position:absolute;top:22.08%;left:4%;right:4%;height:13.33%;background:url(3d/scale-beam.webp) center/100% 100% no-repeat;
+  transform:rotate(var(--a));transition:transform .45s cubic-bezier(.3,1.4,.5,1)}
+/* kefe askıdan sarkar (üst orta), kol dönerken düz kalır; ağırlıklar tabağın üstünde durur */
+/* wrap-reverse: ağırlıklar alttan dizilir (dolu sıra tabakta, fazlası üstünde) – bu yüzden "start" = alt */
+.pan{position:absolute;top:90.6%;width:42%;aspect-ratio:185/142.5;display:flex;flex-wrap:wrap-reverse;align-items:flex-start;align-content:flex-start;justify-content:center;gap:2px;
+  /* padding % kolun genişliğine göre hesaplanır: kefenin %8 / %21'i = kolun %3.4 / %8.8'i → tabağın üst yüzü */
+  padding:0 3.4% 8.8%;background:url(3d/scale-pan.webp) center/100% 100% no-repeat;
+  transform:rotate(calc(var(--a) * -1));transform-origin:top center;transition:transform .45s cubic-bezier(.3,1.4,.5,1),filter .3s}
 .pan.L{left:-6%} .pan.R{right:-6%}
-.load{font-size:clamp(24px,4.5vw,36px);font-weight:800;color:var(--ink);align-self:center}
-.scale.done .pan{border-color:var(--ok);background:#e3f7ec}
+.load{font-size:clamp(20px,4vw,32px);font-weight:800;color:var(--ink);background:rgba(255,255,255,.85);border-radius:10px;padding:0 .3em;line-height:1.2}
+.scale.done .pan{filter:drop-shadow(0 0 10px rgba(47,179,107,.9))}
 .psum{font-weight:800;font-size:clamp(18px,3vw,24px);color:var(--or-d);min-height:1.3em}
 .weights{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.wt{font:inherit;font-weight:800;color:var(--white);background:var(--ink);border:none;cursor:pointer;border-radius:12px 12px 8px 8px;
-  min-width:52px;height:52px;font-size:24px;box-shadow:0 4px 0 #3a1d07}
-.wt:active{transform:translateY(3px);box-shadow:none}
-.wt.w2{background:#7a4a1f} .wt.w5{background:var(--or-d)} .wt.w10{background:#c2530a} .wt.w20{background:#8e3a06}
-.pan .wt{min-width:30px;height:30px;font-size:15px;border-radius:8px 8px 5px 5px;box-shadow:none;padding:0 4px}
+/* 3D ağırlıklar: boş gövde görseli + rakam gövdenin üstüne yazılır */
+.wt{font:inherit;font-weight:800;color:var(--white);border:none;cursor:pointer;width:60px;height:60px;padding:0 0 .6em;   /* rakam gövdenin ortasında */
+  display:inline-flex;align-items:flex-end;justify-content:center;font-size:21px;line-height:1;
+  background:url(3d/weight-1.webp) center/contain no-repeat;text-shadow:0 1px 2px rgba(0,0,0,.45);
+  filter:drop-shadow(0 3px 2px rgba(90,46,12,.25));transition:transform .12s}
+.wt:active{transform:translateY(3px) scale(.95)}
+.wt:focus-visible{outline:3px solid var(--or-d);outline-offset:2px;border-radius:12px}
+.wt.w2{background-image:url(3d/weight-2.webp)} .wt.w5{background-image:url(3d/weight-5.webp)}
+.wt.w10{background-image:url(3d/weight-10.webp)} .wt.w20{background-image:url(3d/weight-20.webp)}
+.pan .wt{width:clamp(24px,5.2vw,32px);height:clamp(24px,5.2vw,32px);font-size:clamp(10px,2.2vw,13px);filter:none}
 /* 📏 Sayı Doğrusu */
 .nline{position:relative;align-self:stretch;height:96px;margin:6px 22px 0;cursor:pointer;touch-action:manipulation;-webkit-user-select:none;user-select:none}
 .nl-bar{position:absolute;left:-10px;right:-10px;top:52px;height:6px;background:var(--ink);border-radius:3px}
@@ -567,8 +657,8 @@ body.noscroll{overflow:hidden}
 .nl-mark.ghost{opacity:.4;transition:none}
 
 /* her sekmede aynı oyunlar */
-.dot.base{background:var(--or-l);border-color:var(--or)}
-.dot.gone{background:var(--or-xl);border-style:dashed;opacity:.55}
+.dot.base{background-image:url(3d/dot-sky.webp)}              /* toplama/çıkarma: başlangıç sayısı */
+.dot.gone{background-image:url(3d/dot-ghost.webp);opacity:.45}  /* çıkarılan pullar */
 .pic .candies{max-width:260px}
 /* 🏠 Sayı Evi */
 .nhouse{display:flex;flex-direction:column;align-items:center;width:min(100%,300px)}
@@ -584,6 +674,12 @@ body.noscroll{overflow:hidden}
 
 /* ---------- giriş sayfası ---------- */
 .brand{display:flex;align-items:center;gap:10px;min-width:0}
+/* logo: kendi kendine dönen küçük 3D abaküs (tıklayınca giriş sayfası) */
+/* boyut yazıya bağlı: font-size başlıkla aynı (h1), kutu 1.3em → görünen abaküs ≈ yazı yüksekliği */
+.logo-3d{flex:none;font-size:clamp(26px,5vw,38px);width:1.3em;height:1.3em;cursor:pointer;margin-right:-.2em}
+.logo-3d model-viewer{display:block;width:100%;height:100%;background:transparent;--poster-color:transparent;pointer-events:none}
+.logo-3d img[slot="poster"]{display:block;width:100%;height:100%;object-fit:contain}
+body.at-home .logo-3d{cursor:default}
 .home-btn{flex:none;width:46px;height:46px;border-radius:14px;border:3px solid var(--or);background:var(--white);font-size:24px;line-height:1;cursor:pointer;
   box-shadow:0 4px 0 var(--or-l);display:flex;align-items:center;justify-content:center}
 .home-btn:active{transform:translateY(3px);box-shadow:none}
@@ -594,6 +690,25 @@ body.at-home .tabs, body.at-home .subbar, body.at-home .view{display:none !impor
 body.at-home .home-btn{display:none}
 body.at-home #logo{cursor:default}
 .home-hero{text-align:center;padding:18px 12px 4px}
+/* giriş görseli: sınıfta, tahtanın önünde çapraz duran anime çocuk (3D abaküs artık başlıkta logo) */
+.hero-art{--art-h:clamp(180px,30vw,290px);display:flex;justify-content:center;margin:0 auto 6px}
+/* sahne 960×600: arka plan (sınıf) + 3 şeffaf çocuk pozu üst üste, sadece .on görünür;
+   boncuklar yüzde ile konumlanır (Blender kamerasından hesaplandı; çocuk çapraz → çubuk hafif eğik) */
+.kid{position:relative;width:min(100%,calc(var(--art-h) * 1.6));aspect-ratio:960/600;flex:none;border-radius:22px;overflow:hidden;
+  background:url(3d/classroom-bg.webp) center/cover no-repeat #dcecff;box-shadow:0 6px 0 var(--or-l)}
+.kid-img{position:absolute;inset:0;width:100%;height:100%;opacity:0;-webkit-user-drag:none;user-select:none}
+.kid-img.on{opacity:1}
+.kid-bead{position:absolute;width:2.389%;aspect-ratio:1;margin:-1.1945% 0 0 -1.1945%;
+  background:url(3d/kid-bead-o.webp) center/contain no-repeat;transition:transform .38s cubic-bezier(.3,1.4,.5,1)}
+.kid-bead.w{background-image:url(3d/kid-bead-w.webp)}
+.kid-bead.on{transform:translate(calc(var(--dx) * 100%),calc(var(--dy) * 100%))}
+.kid-count{position:absolute;top:27%;right:2.5%;   /* sağ kenara göre: küçük sahnede de taşmaz */min-width:1.9em;padding:.12em .45em;border-radius:999px;background:var(--white);
+  color:var(--or-d);font-weight:800;font-size:clamp(18px,3.2vw,30px);line-height:1.2;text-align:center;
+  box-shadow:0 4px 0 var(--or-l);opacity:0;transform:scale(.6);transition:opacity .2s,transform .25s cubic-bezier(.3,1.6,.5,1)}
+.kid-count.show{opacity:1;transform:none}
+.kid-count::after{content:"";position:absolute;left:18%;bottom:-7px;border:7px solid transparent;border-top-color:var(--white);border-bottom:0}
+@media (max-width:420px){ .hero-art{--art-h:200px} }
+@media (max-height:520px) and (orientation:landscape){ .hero-art{--art-h:140px} }
 .home-hero h2{font-size:clamp(30px,6vw,52px);line-height:1.05;font-weight:800;color:var(--ink)}
 .home-hero p{font-size:clamp(18px,3vw,24px);font-weight:700;color:var(--or-d);margin-top:6px}
 .home-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}

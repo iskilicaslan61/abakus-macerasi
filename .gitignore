@@ -1,0 +1,7 @@
+# Yerel geliştirme araçları – siteyle birlikte yayınlanmasın
+.claude/
+.mcp.json
+.tieline/
+
+# Test/önizleme dosyaları
+_*.html
